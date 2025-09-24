@@ -1,21 +1,59 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using ShoeCartBackend.Data;
+using ShoeCartBackend.Models;
+using ShoeCartBackend.Repositories.Implementations;
+using ShoeCartBackend.Repositories.Interfaces;
+using ShoeCartBackend.Services.Implementations;
+using ShoeCartBackend.Services.Interfaces;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// ----------------- DATABASE -----------------
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 
+// ----------------- REPOSITORIES -----------------
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+// ----------------- SERVICES -----------------
+builder.Services.AddScoped<IAuthService, AuthService>();
+// add other services if you have more
+
+// ----------------- JWT AUTH -----------------
+var jwtSecret = builder.Configuration["Jwt:Secret"];
+var key = Encoding.ASCII.GetBytes(jwtSecret);
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ClockSkew = TimeSpan.Zero
+    };
+});
+
+// ----------------- CONTROLLERS & SWAGGER -----------------
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<AppDbContext>(options=>
- options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// ----------------- MIDDLEWARE -----------------
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -24,6 +62,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();  // must come BEFORE UseAuthorization
 app.UseAuthorization();
 
 app.MapControllers();

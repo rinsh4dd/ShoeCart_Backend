@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "ShoeCartBackend.Controllers.AuthController",
+    "Method": "AddUser",
+    "RelativePath": "api/Auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registerRequestDto",
+        "Type": "ShoeCartBackend.DTOs.AuthDTO.RegisterRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

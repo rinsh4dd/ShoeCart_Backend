@@ -10,7 +10,6 @@ namespace ShoeCartBackend.Data
         {
         }
 
-        // DbSets for all tables
         public DbSet<Product> Products { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<User> Users { get; set; }  
@@ -18,12 +17,12 @@ namespace ShoeCartBackend.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            //// Unique Email for User
-            //modelBuilder.Entity<User>()
-            //    .HasIndex(u => u.Email)
-            //    .IsUnique();
-
             
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+
+
 
             modelBuilder.Entity<Product>()
                 .HasOne(p => p.Category)
@@ -55,7 +54,6 @@ namespace ShoeCartBackend.Data
                 .WithMany()
                 .HasForeignKey(o=>o.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
-
             modelBuilder.Entity<OrderItem>()
                 .HasOne(oi => oi.Order)
                 .WithMany(o => o.Items)      
