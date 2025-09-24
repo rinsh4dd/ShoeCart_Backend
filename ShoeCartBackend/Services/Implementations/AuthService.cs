@@ -17,10 +17,12 @@ namespace ShoeCartBackend.Services.Implementations
     {
         private readonly AppDbContext _appDbContext;
         private readonly IGenericRepository<User> _userRepo;
-        public AuthService(AppDbContext appDbContext,IGenericRepository<User>userRepo)
+        private readonly IConfiguration _configuration;
+        public AuthService(AppDbContext appDbContext, IGenericRepository<User> userRepo,IConfiguration configuration)
         {
             _appDbContext = appDbContext;
-            _userRepo =userRepo;
+            _userRepo = userRepo;
+            _configuration = configuration;
         }
 
 
@@ -60,59 +62,58 @@ namespace ShoeCartBackend.Services.Implementations
             }
         }
 
-        //public async Task<User?> GetUserByEmailAsync(string email)
-        //{
-        //    var users = await _userRepo.GetAllAsync();
-        //    return users.FirstOrDefault(u => u.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
-        //}
+        public async Task<AuthResponseDto> LoginAsync(LoginRequestDto loginRequestDto)
+        {
+            try
+            {
+                if (loginRequestDto == null)
+                {
+                    throw new ArgumentException("Login request cannot be null");
+                }
+                loginRequestDto.Email = loginRequestDto.Email.Trim().ToLower();
+                loginRequestDto.Password = loginRequestDto.Password.Trim();
 
-        //public async Task<string> LoginAsync(string email, string password)
-        //{
-        //    var users = await _userRepo.GetAllAsync();
-        //    var user = users.FirstOrDefault(u => u.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
+                var user = await _appDbContext.Users
+                    .SingleOrDefaultAsync(u => u.Email == loginRequestDto.Email);
+                if (user == null || !BCrypt.Net.BCrypt.Verify(loginRequestDto.Password, user.PasswordHash))
+                {
+                    return new AuthResponseDto(401, "Invalid username or password");
+                }
+                else if (user.IsBlocked)
+                {
+                    return new AuthResponseDto(403, "This Account has been Blocked!");
+                }
+                var token = GenerateJwtToken(user);
+                return new AuthResponseDto(200, "Login Successful", token);
+            }
+            catch (Exception ex)
+            { 
+                return new AuthResponseDto(500, $"Error While Login{ex.Message}");
+            }
+        }
 
-        //    if (user == null || !VerifyPassword(password, user.PasswordHash))
-        //        throw new Exception("Invalid email or password.");
+        private string GenerateJwtToken(User user)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]);
 
-        //    if (user.IsBlocked)
-        //        throw new Exception("User is blocked. Contact admin.");
-
-        //    return GenerateJwt(user);
-        //}
-
-        //private string HashPassword(string password)
-        //{
-        //    return BCrypt.Net.BCrypt.HashPassword(password);
-        //}
-
-        //private bool VerifyPassword(string password, string hash)
-        //{
-        //    return BCrypt.Net.BCrypt.Verify(password, hash);
-        //}
-
-        //private string GenerateJwt(User user)
-        //{
-        //    var tokenHandler = new JwtSecurityTokenHandler();
-        //    var key = Encoding.ASCII.GetBytes(_jwtSecret);
-
-        //    var tokenDescriptor = new SecurityTokenDescriptor
-        //    {
-        //        Subject = new ClaimsIdentity(new[]
-        //        {
-        //            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-        //            new Claim(ClaimTypes.Name, user.Name),
-        //            new Claim(ClaimTypes.Email, user.Email),
-        //            new Claim(ClaimTypes.Role, user.Role.ToString())
-        //        }),
-        //        Expires = DateTime.UtcNow.AddHours(1),
-        //        SigningCredentials = new SigningCredentials(
-        //            new SymmetricSecurityKey(key),
-        //            SecurityAlgorithms.HmacSha256Signature
-        //        )
-        //    };
-
-        //    var token = tokenHandler.CreateToken(tokenDescriptor);
-        //    return tokenHandler.WriteToken(token);
-        //}
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.Name),
+                new Claim(ClaimTypes.Email, user.Email)
+            };
+            var TokenDiscriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.UtcNow.AddHours(1),
+                SigningCredentials = new SigningCredentials(
+                new SymmetricSecurityKey(key),
+                SecurityAlgorithms.HmacSha256Signature
+            )
+            };
+            var token = tokenHandler.CreateToken(TokenDiscriptor);
+            return tokenHandler.WriteToken(token);
+        }
     }
 }

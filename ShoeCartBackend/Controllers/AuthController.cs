@@ -46,32 +46,12 @@ namespace ShoeCartBackend.Controllers
 
         }
 
-        // -------------------- LOGIN --------------------
-        //[HttpPost("login")]
-        //public async Task<IActionResult> Login([FromBody] LoginRequestDto dto)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return BadRequest(ModelState);
-
-        //    try
-        //    {
-        //        var token = await _authService.LoginAsync(dto.Email, dto.Password);
-        //        var user = await _authService.GetUserByEmailAsync(dto.Email);
-
-        //        return Ok(new AuthResponseDto
-        //        {
-        //            Token = token,
-        //            UserId = user!.Id,
-        //            Name = user.Name,
-        //            Email = user.Email,
-        //            Role = user.Role.ToString()
-        //        });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Unauthorized(new { message = ex.Message });
-        //    }
-
-        //}
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequestDto loginRequestDto)
+        {
+            var Result = await _authService.LoginAsync(loginRequestDto);
+            return StatusCode(Result.StatusCode, Result);
+        }
+        
     }
 }
