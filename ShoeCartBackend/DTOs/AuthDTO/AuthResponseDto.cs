@@ -1,9 +1,12 @@
+using System.Text.Json.Serialization;
+
 namespace ShoeCartBackend.DTOs.AuthDTO
 {
     public class AuthResponseDto
     {
         public int StatusCode { get; set; }  
         public string Message { get; set; }=null!;
+        [JsonIgnore(Condition=JsonIgnoreCondition.WhenWritingNull)]
         public string? Token { get; set; } 
        
 

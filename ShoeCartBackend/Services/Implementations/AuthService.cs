@@ -17,9 +17,10 @@ namespace ShoeCartBackend.Services.Implementations
     {
         private readonly AppDbContext _appDbContext;
         private readonly IGenericRepository<User> _userRepo;
-        public AuthService(AppDbContext appDbContext)
+        public AuthService(AppDbContext appDbContext,IGenericRepository<User>userRepo)
         {
             _appDbContext = appDbContext;
+            _userRepo =userRepo;
         }
 
 
