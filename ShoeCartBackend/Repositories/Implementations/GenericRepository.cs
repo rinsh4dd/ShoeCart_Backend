@@ -20,7 +20,7 @@ namespace ShoeCartBackend.Repositories.Implementations
 
         public async Task<IEnumerable<T>> GetAllAsync() => await _dbSet.ToListAsync();
 
-        public async Task<T> GetByIdAsync(int id) => await _dbSet.FindAsync(id);
+        public virtual async Task<T> GetByIdAsync(int id) => await _dbSet.FindAsync(id);
 
         public async Task AddAsync(T entity)
         {

@@ -18,9 +18,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // ----------------- REPOSITORIES -----------------
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
 
 // ----------------- SERVICES -----------------
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+//builder.Services.AddScoped<IProductService, ProductService>(); // <-- Add this line
+
 // add other services if you have more
 
 // ----------------- JWT AUTH -----------------

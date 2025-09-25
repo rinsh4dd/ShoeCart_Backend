@@ -1,40 +1,86 @@
+using ShoeCartBackend.DTOs;
 using ShoeCartBackend.Models;
 using ShoeCartBackend.Repositories.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-public class ProductService : IProductService
+namespace ShoeCartBackend.Services.Implementations
 {
-    private readonly IGenericRepository<Product> _repo;
-
-    public ProductService(IGenericRepository<Product> repo)
+    public class ProductService : IProductService
     {
-        _repo = repo;
-    }
+        private readonly IProductRepository _repository;
 
-    public async Task<IEnumerable<Product>> GetAllAsync()
-    {
-        return await _repo.GetAllAsync();
-    }
+        public ProductService(IProductRepository repository)
+        {
+            _repository = repository;
+        }
 
-    public async Task<Product?> GetByIdAsync(int id)
-    {
-        return await _repo.GetByIdAsync(id);
-    }
+        // Get all products by category
+        public async Task<IEnumerable<ProductDTO>> GetProductsByCategoryAsync(int categoryId)
+        {
+            var products = await _repository.GetProductsByCategoryAsync(categoryId);
 
-    public async Task AddAsync(Product product)
-    {
-        await _repo.AddAsync(product);
-    }
+            return products.Select(p => new ProductDTO
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Description = p.Description,
+                Price = p.Price,
+                Brand = p.Brand,
+                InStock = p.InStock,
+                SpecialOffer = p.SpecialOffer,
+                CategoryName = p.Category.Name,
+                Sizes = p.AvailableSizes.Select(s => s.Size).ToList(),
+                ImageUrl = p.Images.FirstOrDefault(i => i.IsMain)?.ImageData != null
+                    ? $"data:{p.Images.FirstOrDefault(i => i.IsMain)?.ImageMimeType};base64," +
+                      Convert.ToBase64String(p.Images.FirstOrDefault(i => i.IsMain)!.ImageData)
+                    : null
+            }).ToList();
+        }
 
-    public async Task UpdateAsync(Product product)
-    {
-        await _repo.UpdateAsync(product);
-    }
+        // Get product by Id
+        public async Task<ProductDTO?> GetProductByIdAsync(int id)
+        {
+            var p = await _repository.GetProductWithDetailsAsync(id);
+            if (p == null) return null;
 
-    public async Task DeleteAsync(int id)
-    {
-        await _repo.DeleteAsync(id);
+            return new ProductDTO
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Description = p.Description,
+                Price = p.Price,
+                Brand = p.Brand,
+                InStock = p.InStock,
+                SpecialOffer = p.SpecialOffer,
+                CategoryName = p.Category.Name,
+                Sizes = p.AvailableSizes.Select(s => s.Size).ToList(),
+                ImageUrl = p.Images.FirstOrDefault(i => i.IsMain)?.ImageData != null
+                    ? $"data:{p.Images.FirstOrDefault(i => i.IsMain)?.ImageMimeType};base64," +
+                      Convert.ToBase64String(p.Images.FirstOrDefault(i => i.IsMain)!.ImageData)
+                    : null
+            };
+        }
+
+        // Add new product
+        public async Task<ProductDTO> AddProductAsync(ProductDTO dto)
+        {
+            var product = new Product
+            {
+                Name = dto.Name,
+                Description = dto.Description,
+                Price = dto.Price,
+                Brand = dto.Brand,
+                InStock = dto.InStock,
+                SpecialOffer = dto.SpecialOffer,
+                CategoryId = dto.CategoryId
+            };
+
+            await _repository.AddAsync(product);
+
+            dto.Id = product.Id; // assign the generated Id
+            return dto;
+        }
     }
 }

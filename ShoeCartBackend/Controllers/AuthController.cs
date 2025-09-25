@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ShoeCartBackend.Common;
 using ShoeCartBackend.DTOs.AuthDTO;
 using ShoeCartBackend.Services.Interfaces;
 using System.Linq;
@@ -17,7 +18,6 @@ namespace ShoeCartBackend.Controllers
             _authService = authService;
         }
 
-        // -------------------- REGISTER --------------------
         [HttpPost("register")]
         public async Task<IActionResult> AddUser([FromBody] RegisterRequestDto registerRequestDto)
         {
@@ -49,9 +49,21 @@ namespace ShoeCartBackend.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto loginRequestDto)
         {
-            var Result = await _authService.LoginAsync(loginRequestDto);
-            return StatusCode(Result.StatusCode, Result);
+            // Call your AuthService
+            var result = await _authService.LoginAsync(loginRequestDto);
+
+            // Wrap the service result in ApiResponse
+            var response = new ApiResponse<object>
+            {
+             StatusCode = result.StatusCode,
+             Message = result.Message,
+             Data=result.Token
+            };
+
+            // Return response with the same HTTP status code as from the service
+            return StatusCode(result.StatusCode, response);
         }
-        
+
+
     }
 }
