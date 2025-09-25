@@ -89,7 +89,7 @@ namespace ShoeCartBackend.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Carts");
+                    b.ToTable("Carts", (string)null);
                 });
 
             modelBuilder.Entity("ShoeCartBackend.Models.CartItem", b =>
@@ -158,7 +158,7 @@ namespace ShoeCartBackend.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("CartItem");
+                    b.ToTable("CartItem", (string)null);
                 });
 
             modelBuilder.Entity("ShoeCartBackend.Models.Category", b =>
@@ -199,7 +199,7 @@ namespace ShoeCartBackend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("ShoeCartBackend.Models.Order", b =>
@@ -281,7 +281,7 @@ namespace ShoeCartBackend.Migrations
 
                     b.HasIndex("UserId1");
 
-                    b.ToTable("Order");
+                    b.ToTable("Order", (string)null);
                 });
 
             modelBuilder.Entity("ShoeCartBackend.Models.OrderItem", b =>
@@ -350,7 +350,7 @@ namespace ShoeCartBackend.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderItem");
+                    b.ToTable("OrderItem", (string)null);
                 });
 
             modelBuilder.Entity("ShoeCartBackend.Models.Product", b =>
@@ -414,7 +414,7 @@ namespace ShoeCartBackend.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("ShoeCartBackend.Models.ProductImage", b =>
@@ -467,7 +467,7 @@ namespace ShoeCartBackend.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductImage");
+                    b.ToTable("ProductImage", (string)null);
                 });
 
             modelBuilder.Entity("ShoeCartBackend.Models.ProductSize", b =>
@@ -513,7 +513,7 @@ namespace ShoeCartBackend.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductSize");
+                    b.ToTable("ProductSize", (string)null);
                 });
 
             modelBuilder.Entity("ShoeCartBackend.Models.User", b =>
@@ -572,7 +572,7 @@ namespace ShoeCartBackend.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("ShoeCartBackend.Models.Cart", b =>

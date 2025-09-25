@@ -19,14 +19,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // ----------------- REPOSITORIES -----------------
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
-
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 // ----------------- SERVICES -----------------
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
-//builder.Services.AddScoped<IProductService, ProductService>(); // <-- Add this line
-
-// add other services if you have more
 
 // ----------------- JWT AUTH -----------------
 var jwtSecret = builder.Configuration["Jwt:Secret"];
@@ -56,18 +54,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAutoMapper(typeof(Program));
+
 var app = builder.Build();
 
 // ----------------- MIDDLEWARE -----------------
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(); // Default Swagger behavior, no RoutePrefix, no redirect
 }
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication();  // must come BEFORE UseAuthorization
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

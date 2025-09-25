@@ -3,10 +3,11 @@
     "ShoeCartBackend": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:58476;http://localhost:58477"
+      "applicationUrl": "http://localhost:58477;https://localhost:58476"
     }
   }
 }

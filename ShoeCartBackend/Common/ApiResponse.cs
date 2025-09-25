@@ -19,7 +19,7 @@ namespace ShoeCartBackend.Common
             Message = message;
             StatusCode =statusCode;
         }
-
+     
         public ApiResponse(int statusCode,string message)
         {
             Message = message;

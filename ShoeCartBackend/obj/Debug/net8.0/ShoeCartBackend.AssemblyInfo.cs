@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShoeCartBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b5808c1fe9617494afee13345163fa7190d20ca")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ddaa97adfb98a32ef6442f245b694eb702bb952f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShoeCartBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShoeCartBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

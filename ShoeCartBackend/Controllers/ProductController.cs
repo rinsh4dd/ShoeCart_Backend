@@ -22,8 +22,7 @@ public class ProductsController : ControllerBase
         var products = await _productService.GetProductsByCategoryAsync(categoryId);
         if (products == null || !products.Any())
             return NotFound(new ApiResponse<List<ProductDTO>>(404,"No products found in this category"));
-               return Ok(new ApiResponse<List<ProductDTO>>(200, "Products fetched successfully"));
-
+        return Ok(new ApiResponse<List<ProductDTO>>(200, "Products fetched successfully", products.ToList()));
     }
 
     // GET: api/products/5

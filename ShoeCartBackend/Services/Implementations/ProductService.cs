@@ -20,7 +20,7 @@ namespace ShoeCartBackend.Services.Implementations
         public async Task<IEnumerable<ProductDTO>> GetProductsByCategoryAsync(int categoryId)
         {
             var products = await _repository.GetProductsByCategoryAsync(categoryId);
-
+       
             return products.Select(p => new ProductDTO
             {
                 Id = p.Id,
@@ -37,6 +37,7 @@ namespace ShoeCartBackend.Services.Implementations
                       Convert.ToBase64String(p.Images.FirstOrDefault(i => i.IsMain)!.ImageData)
                     : null
             }).ToList();
+
         }
 
         // Get product by Id

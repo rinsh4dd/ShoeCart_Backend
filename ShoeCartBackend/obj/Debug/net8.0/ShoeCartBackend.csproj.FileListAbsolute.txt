@@ -172,3 +172,5 @@ C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\obj\Debug\net8.0\Sho
 C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\obj\Debug\net8.0\ref\ShoeCartBackend.dll
 C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
