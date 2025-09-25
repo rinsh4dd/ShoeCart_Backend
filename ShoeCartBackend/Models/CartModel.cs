@@ -1,24 +1,11 @@
+using System.Collections.Generic;
 
-namespace ShoeCartBackend.Models
+public class Cart
 {
-	public class Cart : BaseEntity
-	{
-		public int UserId { get; set; }
-		public User User { get; set; }
+    public int Id { get; set; }
+    public int UserId { get; set; }
+    public bool IsDeleted { get; set; } = false;
 
-		public int ProductId { get; set; }
-		public Product Product { get; set; }
-
-		// Snapshot fields
-		public string Name { get; set; }
-		public decimal Price { get; set; }
-		public string Size { get; set; }
-		public int Quantity { get; set; } = 1;
-
-		// Snapshot of product image
-		public byte[] ImageData { get; set; }
-		public string ImageMimeType { get; set; }
-
-        public ICollection<CartItem> Items { get; set; } = new List<CartItem>();
-    }
+    // Navigation property
+    public List<CartItem> Items { get; set; } = new List<CartItem>();
 }
