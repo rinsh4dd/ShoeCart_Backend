@@ -11,7 +11,7 @@ namespace ShoeCartBackend.Models
 
         public string PasswordHash { get; set; } = null!;
 
-        public Roles Role { get; set; } = Roles.user;
+        public Roles Role { get; set; } = Roles.admin;
         public bool IsBlocked { get; set; } = false;
 
         public Cart? Cart { get; set; }

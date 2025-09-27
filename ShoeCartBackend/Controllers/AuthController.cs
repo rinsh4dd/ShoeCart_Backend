@@ -19,7 +19,7 @@ namespace ShoeCartBackend.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> AddUser([FromBody] RegisterRequestDto registerRequestDto)
+        public async Task<IActionResult> AddUser([FromForm] RegisterRequestDto registerRequestDto)
         {
 
             if (!ModelState.IsValid)
@@ -47,12 +47,10 @@ namespace ShoeCartBackend.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginRequestDto loginRequestDto)
+        public async Task<IActionResult> Login([FromForm] LoginRequestDto loginRequestDto)
         {
-            // Call your AuthService
             var result = await _authService.LoginAsync(loginRequestDto);
 
-            // Wrap the service result in ApiResponse
             var response = new ApiResponse<object>
             {
              StatusCode = result.StatusCode,
@@ -60,7 +58,6 @@ namespace ShoeCartBackend.Controllers
              Data=result.Token
             };
 
-            // Return response with the same HTTP status code as from the service
             return StatusCode(result.StatusCode, response);
         }
 

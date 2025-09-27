@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ShoeCartBackend.Data;
@@ -52,6 +53,12 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+builder.Services.AddAuthorization(Options =>
+{
+    Options.AddPolicy("Admin", policy => policy.RequireRole("admin"));
+    Options.AddPolicy("User", policy => policy.RequireRole("user","admin"));
+    Options.AddPolicy("Customer", policy => policy.RequireRole("user"));
+});
 // ----------------- CONTROLLERS & SWAGGER -----------------
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

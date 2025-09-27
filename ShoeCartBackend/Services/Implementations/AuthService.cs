@@ -50,7 +50,7 @@ namespace ShoeCartBackend.Services.Implementations
                     Email = registerRequestDto.Email,
                     Name = registerRequestDto.Name,
                     PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerRequestDto.Password),
-                    Role = Roles.user
+                    Role = Roles.admin
                 };
                 await _userRepo.AddAsync(newUser);
                 return new AuthResponseDto(200, "Registration Successfull");
@@ -101,7 +101,8 @@ namespace ShoeCartBackend.Services.Implementations
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Name),
-                new Claim(ClaimTypes.Email, user.Email)
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Role,user.Role.ToString().ToLower())
             };
             var TokenDiscriptor = new SecurityTokenDescriptor
             {

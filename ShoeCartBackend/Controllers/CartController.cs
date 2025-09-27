@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using ShoeCartBackend.Common;
 using ShoeCartBackend.DTOs.CartDTO;
-using ShoeCartBackend.Models;
 using System.Security.Claims;
 
 [Authorize]
@@ -16,73 +15,71 @@ public class CartController : ControllerBase
     {
         _cartService = cartService;
     }
+
+    [Authorize(Policy = "Customer")]
     [HttpPost("add")]
-    public async Task<IActionResult> AddToCart(AddToCartDTO dto)
+    public async Task<IActionResult> AddToCart([FromForm] AddToCartDTO dto)
     {
-        var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
-
-        await _cartService.AddToCartAsync(userId, dto.ProductId, dto.Size, dto.Quantity);
-
-        return Ok(new
-        {
-            Status = 200,
-            Message = "Product added to cart successfully"
-        });
+        int userId = GetUserId();
+        var response = await _cartService.AddToCartAsync(userId, dto.ProductId, dto.Size, dto.Quantity);
+        return StatusCode(response.StatusCode, response);
     }
 
-   [HttpGet]
-    public async Task<IActionResult> GetCart()
+    [Authorize(Roles = "user,admin")] 
+    [HttpGet("{userId?}")]
+    public async Task<IActionResult> GetCart(int? userId = null)
     {
-        var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
-        var cart = await _cartService.GetCartByUserIdAsync(userId);
+        int currentUserId = GetUserId();
 
-        if (cart == null || !cart.Items.Any())
-            return Ok(new ApiResponse<object>(200, "Cart is empty", new { Items = Array.Empty<object>() }));
-
-        var cartResponse = new
+        // If the requester is a regular user, force their own userId
+        if (!User.IsInRole("admin"))
         {
-            TotalQuantity = cart.Items.Sum(i => i.Quantity),
-            TotalPrice = cart.Items.Sum(i => i.Price * i.Quantity),
-            Items = cart.Items.Select(i => new
-            {
-                i.Id,
-                i.ProductId,
-                i.Name,
-                i.Price,
-                i.Size,
-                i.Quantity,
-                i.ImageData,
-                i.ImageMimeType
-            })
-        };
+            userId = currentUserId;
+        }
+        else
+        {
+            // Admin must provide a userId to view a specific user's cart
+            if (userId == null)
+                return BadRequest(new { Status = 400, Message = "UserId is required for admin" });
+        }
 
-        return Ok(new ApiResponse<object>(200, "Cart fetched successfully", cartResponse));
+        var response = await _cartService.GetCartForUserAsync(userId.Value);
+        return StatusCode(response.StatusCode, response);
     }
+
 
     [HttpPut("{cartItemId}")]
-    public async Task<IActionResult> UpdateCartItem(int cartItemId, [FromBody] int quantity)
-    {
-        var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
-        await _cartService.UpdateCartItemAsync(userId, cartItemId, quantity);
+    [Authorize(Policy = "Customer")]
 
-        return Ok(new ApiResponse<string>(200, "Cart item quantity updated successfully"));
+    public async Task<IActionResult> UpdateCartItem([FromForm]int cartItemId, [FromBody] int quantity)
+    {
+        int userId = GetUserId();
+        var response = await _cartService.UpdateCartItemAsync(userId, cartItemId, quantity);
+        return StatusCode(response.StatusCode, response);
     }
 
+    [Authorize(Policy = "Customer")]
     [HttpDelete("{cartItemId}")]
     public async Task<IActionResult> RemoveCartItem(int cartItemId)
     {
-        var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
-        await _cartService.RemoveCartItemAsync(userId, cartItemId);
-
-        return Ok(new ApiResponse<string>(200, "Cart item removed successfully"));
+        int userId = GetUserId();
+        var response = await _cartService.RemoveCartItemAsync(userId, cartItemId);
+        return StatusCode(response.StatusCode, response);
     }
 
+    [Authorize(Policy = "Customer")]
     [HttpDelete("clear")]
     public async Task<IActionResult> ClearCart()
     {
-        var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
-        await _cartService.ClearCartAsync(userId);
+        int userId = GetUserId();
+        var response = await _cartService.ClearCartAsync(userId);
+        return StatusCode(response.StatusCode, response);
+    }
 
-        return Ok(new ApiResponse<string>(200, "Cart cleared successfully"));
+    private int GetUserId()
+    {
+        var claim = User.FindFirst(ClaimTypes.NameIdentifier);
+        if (claim == null) throw new UnauthorizedAccessException("User claim not found.");
+        return int.Parse(claim.Value);
     }
 }
