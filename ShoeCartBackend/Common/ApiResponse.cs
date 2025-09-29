@@ -6,11 +6,10 @@ namespace ShoeCartBackend.Common
     public class ApiResponse<T>
     {
         public int StatusCode { get; set; }  
-        public string? Message { get; set; } // optional message
+        public string? Message { get; set; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-        public T? Data { get; set; } // the actual data
+        public T? Data { get; set; }
 
-        // Constructors
         public ApiResponse() { }
 
         public ApiResponse(int statusCode, string? message = null, T data=default)
@@ -20,10 +19,5 @@ namespace ShoeCartBackend.Common
             StatusCode =statusCode;
         }
      
-        public ApiResponse(int statusCode,string message)
-        {
-            Message = message;
-            StatusCode = statusCode;
-        }
     }
 }

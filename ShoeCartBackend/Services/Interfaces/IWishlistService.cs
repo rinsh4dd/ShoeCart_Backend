@@ -1,8 +1,7 @@
+using ShoeCartBackend.Common;
+
 public interface IWishlistService
 {
-    Task<IEnumerable<Wishlist?>> GetAllAsync();
-    Task<Wishlist?> GetByIdAsync(int id);
-    Task AddAsync(Wishlist wishlist);
-    Task UpdateAsync(Wishlist wishlist);
-    Task DeleteAsync(int id);
+    Task<ApiResponse<object>> GetWishlistAsync(int userId);
+    Task<ApiResponse<string>> ToggleWishlistAsync(int userId, int productId);
 }

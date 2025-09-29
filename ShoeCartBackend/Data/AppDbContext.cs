@@ -14,6 +14,7 @@ namespace ShoeCartBackend.Data
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
 
+        public DbSet<Wishlist> Wishlists { get; set; }
         public DbSet<User> Users { get; set; }  
         public DbSet<Category>Categories{ get; set;}
 
@@ -70,7 +71,31 @@ namespace ShoeCartBackend.Data
         .WithMany()
         .HasForeignKey(oi => oi.ProductId)
         .OnDelete(DeleteBehavior.Restrict);
-}
+    // Wishlist → User
+    modelBuilder.Entity<Wishlist>()
+        .HasOne(w => w.User)
+        .WithMany()
+        .HasForeignKey(w => w.UserId)
+        .OnDelete(DeleteBehavior.Cascade);
 
+    // Wishlist → Product
+    modelBuilder.Entity<Wishlist>()
+        .HasOne(w => w.Product)
+        .WithMany()
+        .HasForeignKey(w => w.ProductId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Order>()
+                             .Property(o => o.PaymentStatus)
+                             .HasConversion<string>();
+
+            modelBuilder.Entity<Order>()
+                .Property(o => o.PaymentMethod)
+                .HasConversion<string>();
+
+            modelBuilder.Entity<Order>()
+                .Property(o => o.OrderStatus)
+                .HasConversion<string>();
+        }
     }
 }

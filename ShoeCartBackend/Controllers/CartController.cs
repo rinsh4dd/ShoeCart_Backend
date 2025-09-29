@@ -18,27 +18,25 @@ public class CartController : ControllerBase
 
     [Authorize(Policy = "Customer")]
     [HttpPost("add")]
-    public async Task<IActionResult> AddToCart([FromForm] AddToCartDTO dto)
+    public async Task<IActionResult> AddToCart([FromBody] AddToCartDTO dto)
     {
         int userId = GetUserId();
         var response = await _cartService.AddToCartAsync(userId, dto.ProductId, dto.Size, dto.Quantity);
         return StatusCode(response.StatusCode, response);
     }
 
-    [Authorize(Roles = "user,admin")] 
+    [Authorize(Roles = "user,admin")]
     [HttpGet("{userId?}")]
     public async Task<IActionResult> GetCart(int? userId = null)
     {
         int currentUserId = GetUserId();
 
-        // If the requester is a regular user, force their own userId
         if (!User.IsInRole("admin"))
         {
             userId = currentUserId;
         }
         else
         {
-            // Admin must provide a userId to view a specific user's cart
             if (userId == null)
                 return BadRequest(new { Status = 400, Message = "UserId is required for admin" });
         }
@@ -47,14 +45,20 @@ public class CartController : ControllerBase
         return StatusCode(response.StatusCode, response);
     }
 
-
     [HttpPut("{cartItemId}")]
     [Authorize(Policy = "Customer")]
-
-    public async Task<IActionResult> UpdateCartItem([FromForm]int cartItemId, [FromBody] int quantity)
+    public async Task<IActionResult> UpdateCartItem(int cartItemId, [FromBody] UpdateQuantityDTO dto)
     {
         int userId = GetUserId();
-        var response = await _cartService.UpdateCartItemAsync(userId, cartItemId, quantity);
+        string role = User.FindFirst("role")?.Value ?? "";
+
+        if (role.ToLower() != "Customer")
+        {
+            return StatusCode(403, new { StatusCode = 403, Message = "Only customers can update cart items." });
+
+        }
+        var response = await _cartService.UpdateCartItemAsync(userId, cartItemId, dto.Quantity);
+       
         return StatusCode(response.StatusCode, response);
     }
 

@@ -7,7 +7,7 @@ public class CartService : ICartService
 {
     private readonly AppDbContext _context;
     private readonly IProductRepository _productRepository;
-
+        
     public CartService(AppDbContext context, IProductRepository productRepository)
     {
         _context = context;
@@ -92,7 +92,6 @@ public class CartService : ICartService
             .FirstOrDefaultAsync(ci => ci.Id == cartItemId && ci.Cart.UserId == userId);
 
         if (cartItem == null) return new ApiResponse<string>(404, "Cart item not found");
-
         cartItem.Quantity = quantity;
         await _context.SaveChangesAsync();
         return new ApiResponse<string>(200, "Cart item quantity updated successfully");
