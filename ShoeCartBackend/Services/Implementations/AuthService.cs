@@ -50,7 +50,7 @@ namespace ShoeCartBackend.Services.Implementations
                     Email = registerRequestDto.Email,
                     Name = registerRequestDto.Name,
                     PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerRequestDto.Password),
-                    Role = Roles.admin
+                    Role = Roles.user
                 };
                 await _userRepo.AddAsync(newUser);
                 return new AuthResponseDto(200, "Registration Successfull");

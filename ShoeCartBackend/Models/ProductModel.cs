@@ -16,7 +16,7 @@ namespace ShoeCartBackend.Models
         public bool InStock { get; set; } = true;  // flag if stock > 0
         public bool IsActive { get; set; } = true;
 
-        public string SpecialOffer { get; set; }
+        public string? SpecialOffer { get; set; }
 
         // Stock tracking
         public int CurrentStock { get; set; }  // new field

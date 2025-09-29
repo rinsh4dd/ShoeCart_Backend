@@ -16,9 +16,9 @@ public class ProductDTO
 
     public string SpecialOffer { get; set; }
 
-    // Output-friendly
-    public string CategoryName { get; set; }
+    public int CategoryId { get; set; }
 
+    public string CategoryName { get; set; }
     // Stock info
     public int CurrentStock { get; set; }
 

@@ -1,3 +1,4 @@
+using ShoeCartBackend.Common;
 using ShoeCartBackend.DTOs;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -5,7 +6,7 @@ using System.Threading.Tasks;
 public interface IProductService
 {
     // Create
-    Task<ProductDTO> AddProductAsync(CreateProductDTO dto);
+    Task<ApiResponse<ProductDTO>> AddProductAsync(CreateProductDTO dto);
 
     // Read
     Task<ProductDTO?> GetProductByIdAsync(int id);
@@ -13,8 +14,8 @@ public interface IProductService
     Task<IEnumerable<ProductDTO>> GetAllProductsAsync();
 
     // Update
-    Task<ProductDTO> UpdateProductAsync(UpdateProductDTO dto);
+    Task<ApiResponse<ProductDTO>>UpdateProductAsync(UpdateProductDTO dto);
 
     // Delete
-    Task<bool> DeleteProductAsync(int id);
+    Task<ApiResponse<string>> ToggleProductStatusAsync(int id);
 }

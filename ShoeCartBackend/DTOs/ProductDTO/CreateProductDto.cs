@@ -18,7 +18,7 @@ public class CreateProductDTO
 
     [Required(ErrorMessage = "Category is required")]
     public int CategoryId { get; set; }
-
+    public string SpecialOffer { get; set;}
     [Required(ErrorMessage = "At least one size is required")]
     [MinLength(1, ErrorMessage = "At least one size is required")]
     public List<string> AvailableSizes { get; set; } = new List<string>();

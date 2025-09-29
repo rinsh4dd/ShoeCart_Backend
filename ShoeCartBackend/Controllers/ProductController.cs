@@ -15,13 +15,13 @@ public class ProductsController : ControllerBase
         _productService = productService;
     }
 
-    // ================= Admin Endpoints =================
     [HttpPost("add")]
     [Authorize(Roles = "admin")]
     public async Task<IActionResult> AddProduct([FromForm] CreateProductDTO dto)
     {
         var product = await _productService.AddProductAsync(dto);
-        return Ok(new ApiResponse<ProductDTO>(200, "Product added successfully", product));
+        //return Ok(new ApiResponse<ProductDTO>(200, "Product added successfully", product));
+        return StatusCode(product.StatusCode,product);
     }
 
     [HttpPut("update")]
@@ -29,19 +29,19 @@ public class ProductsController : ControllerBase
     public async Task<IActionResult> UpdateProduct([FromForm] UpdateProductDTO dto)
     {
         var product = await _productService.UpdateProductAsync(dto);
-        return Ok(new ApiResponse<ProductDTO>(200, "Product updated successfully", product));
+        return StatusCode(product.StatusCode, product);
     }
 
-    [HttpDelete("{id}")]
+    [HttpPatch("{id}/toggle-status")]
     [Authorize(Roles = "admin")]
-    public async Task<IActionResult> DeleteProduct(int id)
+
+    public async Task<IActionResult> ToggleProductStatus(int id)
     {
-        var success = await _productService.DeleteProductAsync(id);
-        if (!success) return NotFound(new ApiResponse<object>(404, "Product not found"));
-        return Ok(new ApiResponse<object>(200, "Product deleted successfully"));
+        var newStatus = await _productService.ToggleProductStatusAsync(id);
+        return StatusCode(newStatus.StatusCode, newStatus);
+
     }
 
-    // ================= Public Endpoints =================
     [HttpGet("category/{categoryId}")]
     [AllowAnonymous]
     public async Task<IActionResult> GetProductsByCategory(int categoryId)
@@ -54,7 +54,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [AllowAnonymous]
+    [AllowAnonymous]    
     public async Task<IActionResult> GetProductById(int id)
     {
         var product = await _productService.GetProductByIdAsync(id);

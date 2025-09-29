@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ShoeCartBackend.Common;
 using ShoeCartBackend.Data;
 using ShoeCartBackend.DTOs;
 using ShoeCartBackend.Models;
@@ -19,7 +20,7 @@ namespace ShoeCartBackend.Services.Implementations
         }
 
         // ================= Add Product =================
-        public async Task<ProductDTO> AddProductAsync(CreateProductDTO dto)
+        public async Task<ApiResponse<ProductDTO>> AddProductAsync(CreateProductDTO dto)
         {
             // Map basic fields
             var product = new Product
@@ -31,6 +32,7 @@ namespace ShoeCartBackend.Services.Implementations
                 CategoryId = dto.CategoryId,
                 CurrentStock = dto.CurrentStock,
                 InStock = dto.CurrentStock > 0,
+                SpecialOffer = dto.SpecialOffer,
                 IsActive = true,
                 AvailableSizes = dto.AvailableSizes.Select(s => new ProductSize { Size = s }).ToList(),
                 Images = new List<ProductImage>()
@@ -51,35 +53,42 @@ namespace ShoeCartBackend.Services.Implementations
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
-            return MapToDTO(product);
+            return new ApiResponse<ProductDTO>(200,"Product Added Successfully");
         }
 
         // ================= Update Product =================
-        public async Task<ProductDTO> UpdateProductAsync(UpdateProductDTO dto)
+        public async Task<ApiResponse<ProductDTO>> UpdateProductAsync(UpdateProductDTO dto)
         {
             var product = await _context.Products
                 .Include(p => p.AvailableSizes)
                 .Include(p => p.Images)
-                .FirstOrDefaultAsync(p => p.Id == dto.Id);
+                .SingleOrDefaultAsync(p => p.Id == dto.Id);
 
             if (product == null)
-                throw new KeyNotFoundException("Product not found");
+                return new ApiResponse<ProductDTO>(404, "Product not Found");
 
-            // Update basic fields
-            product.Name = dto.Name;
-            product.Brand = dto.Brand;
-            product.Description = dto.Description;
-            product.Price = dto.Price;
-            product.CategoryId = dto.CategoryId;
-            product.CurrentStock = dto.CurrentStock;
-            product.InStock = dto.CurrentStock > 0;
+            // Update only if values are provided
+            if (!string.IsNullOrWhiteSpace(dto.Name)) product.Name = dto.Name.Trim();
+            if (!string.IsNullOrWhiteSpace(dto.Description)) product.Description = dto.Description.Trim();
+            if (!string.IsNullOrWhiteSpace(dto.Brand)) product.Brand = dto.Brand.Trim();
+            if (!string.IsNullOrWhiteSpace(dto.SpecialOffer)) product.SpecialOffer = dto.SpecialOffer.Trim();
+            if (dto.Price.HasValue) product.Price = dto.Price.Value;
+            if (dto.CategoryId.HasValue) product.CategoryId = dto.CategoryId.Value;
+            if (dto.CurrentStock.HasValue)
+            {
+                product.CurrentStock = dto.CurrentStock.Value;
+                product.InStock = dto.CurrentStock.Value > 0;
+            }
 
             if (dto.IsActive.HasValue)
                 product.IsActive = dto.IsActive.Value;
 
-            // Update sizes
-            product.AvailableSizes.Clear();
-            product.AvailableSizes = dto.AvailableSizes.Select(s => new ProductSize { Size = s }).ToList();
+            // Update sizes if provided
+            if (dto.AvailableSizes != null && dto.AvailableSizes.Any())
+            {
+                product.AvailableSizes.Clear();
+                product.AvailableSizes = dto.AvailableSizes.Select(s => new ProductSize { Size = s }).ToList();
+            }
 
             // Add new images if any
             if (dto.NewImages != null && dto.NewImages.Any())
@@ -97,10 +106,9 @@ namespace ShoeCartBackend.Services.Implementations
             }
 
             await _context.SaveChangesAsync();
-            return MapToDTO(product);
+            return new ApiResponse<ProductDTO>(200,"Product Updated Successfully");
         }
 
-        // ================= Get Product by Id =================
         public async Task<ProductDTO?> GetProductByIdAsync(int id)
         {
             var product = await _context.Products
@@ -113,7 +121,6 @@ namespace ShoeCartBackend.Services.Implementations
             return MapToDTO(product);
         }
 
-        // ================= Get Products by Category =================
         public async Task<IEnumerable<ProductDTO>> GetProductsByCategoryAsync(int categoryId)
         {
             var products = await _context.Products
@@ -126,7 +133,6 @@ namespace ShoeCartBackend.Services.Implementations
             return products.Select(MapToDTO).ToList();
         }
 
-        // ================= Get All Products =================
         public async Task<IEnumerable<ProductDTO>> GetAllProductsAsync()
         {
             var products = await _context.Products
@@ -138,18 +144,30 @@ namespace ShoeCartBackend.Services.Implementations
             return products.Select(MapToDTO).ToList();
         }
 
-        // ================= Delete Product =================
-        public async Task<bool> DeleteProductAsync(int id)
+        public async Task<ApiResponse<string>> ToggleProductStatusAsync(int id)
         {
             var product = await _context.Products.FindAsync(id);
-            if (product == null) return false;
 
-            _context.Products.Remove(product);
+            if (product == null)
+            {
+                return new ApiResponse<string>(404, "Product not found");
+            }
+            product.IsActive = !product.IsActive;
+           
+            product.IsDeleted = !product.IsDeleted;
             await _context.SaveChangesAsync();
-            return true;
-        }
 
-        // ================= Helper: Map Product → ProductDTO =================
+            if (product.IsActive==true && product.IsDeleted == false)
+            {
+                return new ApiResponse<string>(200, "Product Activated Successfully");
+            }
+            else
+            {
+                return new ApiResponse<string>(200, "Product Deactivated Successfully");
+            }
+           
+
+        }
         private ProductDTO MapToDTO(Product p)
         {
             return new ProductDTO
@@ -162,6 +180,7 @@ namespace ShoeCartBackend.Services.Implementations
                 InStock = p.InStock,
                 CurrentStock = p.CurrentStock,
                 SpecialOffer = p.SpecialOffer,
+                CategoryId =p.CategoryId,
                 CategoryName = p.Category?.Name,
                 AvailableSizes = p.AvailableSizes.Select(s => s.Size).ToList(),
                 ImageBase64 = p.Images
