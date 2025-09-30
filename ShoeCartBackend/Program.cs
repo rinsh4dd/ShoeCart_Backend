@@ -63,7 +63,6 @@ builder.Services.AddAuthorization(Options =>
     Options.AddPolicy("User", policy => policy.RequireRole("user","admin"));
     Options.AddPolicy("Customer", policy => policy.RequireRole("user"));
 });
-// ----------------- CONTROLLERS & SWAGGER -----------------
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -100,7 +99,6 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 
-// ----------------- MIDDLEWARE -----------------
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

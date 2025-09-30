@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoeCartBackend.Common;
-using ShoeCartBackend.DTOs;
-using ShoeCartBackend.Services.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -15,36 +14,33 @@ public class ProductsController : ControllerBase
         _productService = productService;
     }
 
-    [HttpPost("add")]
+    [HttpPost]
     [Authorize(Roles = "admin")]
-    public async Task<IActionResult> AddProduct([FromForm] CreateProductDTO dto)
+    public async Task<IActionResult> Create([FromForm] CreateProductDTO dto)
     {
         var product = await _productService.AddProductAsync(dto);
-        //return Ok(new ApiResponse<ProductDTO>(200, "Product added successfully", product));
-        return StatusCode(product.StatusCode,product);
+        return StatusCode(product.StatusCode, product);
     }
 
-    [HttpPut("update")]
+    [HttpPut]
     [Authorize(Roles = "admin")]
-    public async Task<IActionResult> UpdateProduct([FromForm] UpdateProductDTO dto)
+    public async Task<IActionResult> Update([FromForm] UpdateProductDTO dto)
     {
         var product = await _productService.UpdateProductAsync(dto);
         return StatusCode(product.StatusCode, product);
     }
 
-    [HttpPatch("{id}/toggle-status")]
+    [HttpPatch("{id}/status")]
     [Authorize(Roles = "admin")]
-
-    public async Task<IActionResult> ToggleProductStatus(int id)
+    public async Task<IActionResult> ToggleStatus([Range(1, int.MaxValue)] int id)
     {
         var newStatus = await _productService.ToggleProductStatusAsync(id);
         return StatusCode(newStatus.StatusCode, newStatus);
-
     }
 
     [HttpGet("category/{categoryId}")]
     [AllowAnonymous]
-    public async Task<IActionResult> GetProductsByCategory(int categoryId)
+    public async Task<IActionResult> GetByCategory(int categoryId)
     {
         var products = await _productService.GetProductsByCategoryAsync(categoryId);
         if (products == null || !products.Any())
@@ -54,8 +50,8 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [AllowAnonymous]    
-    public async Task<IActionResult> GetProductById(int id)
+    [AllowAnonymous]
+    public async Task<IActionResult> GetById(int id)
     {
         var product = await _productService.GetProductByIdAsync(id);
         if (product == null)
@@ -64,9 +60,9 @@ public class ProductsController : ControllerBase
         return Ok(new ApiResponse<ProductDTO>(200, "Product fetched successfully", product));
     }
 
-    [HttpGet("all")]
+    [HttpGet]
     [AllowAnonymous]
-    public async Task<IActionResult> GetAllProducts()
+    public async Task<IActionResult> GetAll()
     {
         var products = await _productService.GetAllProductsAsync();
         return Ok(new ApiResponse<List<ProductDTO>>(200, "All products fetched successfully", products.ToList()));

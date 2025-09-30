@@ -107,7 +107,7 @@
         }
       }
     },
-    "/api/Cart/add": {
+    "/api/Cart": {
       "post": {
         "tags": [
           "Cart"
@@ -131,6 +131,26 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Cart"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Cart"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -216,18 +236,6 @@
               "format": "int32"
             }
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Cart/clear": {
-      "delete": {
-        "tags": [
-          "Cart"
         ],
         "responses": {
           "200": {
@@ -361,7 +369,7 @@
         }
       }
     },
-    "/api/Products/add": {
+    "/api/Products": {
       "post": {
         "tags": [
           "Products"
@@ -461,9 +469,7 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/Products/update": {
+      },
       "put": {
         "tags": [
           "Products"
@@ -569,9 +575,19 @@
             "description": "OK"
           }
         }
+      },
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
-    "/api/Products/{id}/toggle-status": {
+    "/api/Products/{id}/status": {
       "patch": {
         "tags": [
           "Products"
@@ -582,6 +598,8 @@
             "in": "path",
             "required": true,
             "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
               "type": "integer",
               "format": "int32"
             }
@@ -632,18 +650,6 @@
               "format": "int32"
             }
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Products/all": {
-      "get": {
-        "tags": [
-          "Products"
         ],
         "responses": {
           "200": {

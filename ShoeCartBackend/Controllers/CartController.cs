@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ShoeCartBackend.Common;
 using ShoeCartBackend.DTOs.CartDTO;
+using ShoeCartBackend.Models;
 using System.Security.Claims;
 
 [Authorize]
@@ -16,55 +16,54 @@ public class CartController : ControllerBase
         _cartService = cartService;
     }
 
+    // POST: api/cart/add
     [Authorize(Policy = "Customer")]
-    [HttpPost("add")]
-    public async Task<IActionResult> AddToCart([FromBody] AddToCartDTO dto)
+    [HttpPost]
+    public async Task<IActionResult> Add([FromBody] AddToCartDTO dto)
     {
         int userId = GetUserId();
         var response = await _cartService.AddToCartAsync(userId, dto.ProductId, dto.Size, dto.Quantity);
         return StatusCode(response.StatusCode, response);
     }
 
-    [Authorize(Roles = "user,admin")]
+    // GET: api/cart/{userId?}
+    [Authorize(Policy = "Admin")]
     [HttpGet("{userId?}")]
-    public async Task<IActionResult> GetCart(int? userId = null)
+    public async Task<IActionResult> Get(int userId )
     {
-        int currentUserId = GetUserId();
-
-        if (!User.IsInRole("admin"))
-        {
-            userId = currentUserId;
-        }
-        else
-        {
-            if (userId == null)
-                return BadRequest(new { Status = 400, Message = "UserId is required for admin" });
-        }
-
-        var response = await _cartService.GetCartForUserAsync(userId.Value);
+        var response = await _cartService.GetCartForUserAsync(userId);
+        return StatusCode(response.StatusCode, response);
+    }
+    [Authorize(Policy = "Customer")]
+    [HttpGet]
+    public async Task<IActionResult> Get()
+    {
+        int UserId = GetUserId();
+        var response = await _cartService.GetCartForUserAsync(UserId);
         return StatusCode(response.StatusCode, response);
     }
 
-    [HttpPut("{cartItemId}")]
+    // PUT: api/cart/{cartItemId}
     [Authorize(Policy = "Customer")]
-    public async Task<IActionResult> UpdateCartItem(int cartItemId, [FromBody] UpdateQuantityDTO dto)
+    [HttpPut("{cartItemId}")]
+    public async Task<IActionResult> UpdateItem(int cartItemId, [FromBody] UpdateQuantityDTO dto)
     {
         int userId = GetUserId();
-        string role = User.FindFirst("role")?.Value ?? "";
+        //string role = User.FindFirst("role")?.Value ?? "";
 
-        if (role.ToLower() != "Customer")
-        {
-            return StatusCode(403, new { StatusCode = 403, Message = "Only customers can update cart items." });
+        //if (role.ToLower() != "customer")
+        //{
+        //    return StatusCode(403, new { StatusCode = 403, Message = "Only customers can update cart items." });
+        //}
 
-        }
         var response = await _cartService.UpdateCartItemAsync(userId, cartItemId, dto.Quantity);
-       
         return StatusCode(response.StatusCode, response);
     }
 
+    // DELETE: api/cart/{cartItemId}
     [Authorize(Policy = "Customer")]
     [HttpDelete("{cartItemId}")]
-    public async Task<IActionResult> RemoveCartItem(int cartItemId)
+    public async Task<IActionResult> DeleteItem(int cartItemId)
     {
         int userId = GetUserId();
         var response = await _cartService.RemoveCartItemAsync(userId, cartItemId);
@@ -72,8 +71,8 @@ public class CartController : ControllerBase
     }
 
     [Authorize(Policy = "Customer")]
-    [HttpDelete("clear")]
-    public async Task<IActionResult> ClearCart()
+    [HttpDelete]
+    public async Task<IActionResult> Clear()
     {
         int userId = GetUserId();
         var response = await _cartService.ClearCartAsync(userId);

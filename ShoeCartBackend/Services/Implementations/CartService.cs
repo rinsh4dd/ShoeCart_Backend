@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ShoeCartBackend.Common;
 using ShoeCartBackend.Data;
 using ShoeCartBackend.Models;
@@ -57,7 +57,6 @@ public class CartService : ICartService
     {
         var cart = await _context.Carts
             .Include(c => c.Items)
-            .ThenInclude(i => i.product)
             .FirstOrDefaultAsync(c => c.UserId == userId && !c.IsDeleted);
 
         if (cart == null || !cart.Items.Any())
@@ -75,13 +74,16 @@ public class CartService : ICartService
                 i.Price,
                 i.Size,
                 i.Quantity,
-                i.ImageData,
-                i.ImageMimeType
+                // 👇 Convert byte[] to Base64 string if exists
+                Image = i.ImageData != null
+                    ? $"data:{i.ImageMimeType};base64,{Convert.ToBase64String(i.ImageData)}"
+                    : null
             })
         };
 
         return new ApiResponse<object>(200, "Cart fetched successfully", cartResponse);
     }
+
 
     public async Task<ApiResponse<string>> UpdateCartItemAsync(int userId, int cartItemId, int quantity)
     {

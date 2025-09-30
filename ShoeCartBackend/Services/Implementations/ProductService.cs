@@ -38,7 +38,6 @@ namespace ShoeCartBackend.Services.Implementations
                 Images = new List<ProductImage>()
             };
 
-            // Process uploaded images
             foreach (var file in dto.Images)
             {
                 using var ms = new MemoryStream();
@@ -51,12 +50,12 @@ namespace ShoeCartBackend.Services.Implementations
             }
 
             _context.Products.Add(product);
-            await _context.SaveChangesAsync();
+            var isAdded =  await _context.SaveChangesAsync()>0;
 
-            return new ApiResponse<ProductDTO>(200,"Product Added Successfully");
+            return isAdded? new ApiResponse<ProductDTO>(200,"Product Added Successfully"):
+                new ApiResponse<ProductDTO>(500, "Failed to add product");
         }
 
-        // ================= Update Product =================
         public async Task<ApiResponse<ProductDTO>> UpdateProductAsync(UpdateProductDTO dto)
         {
             var product = await _context.Products
@@ -67,7 +66,6 @@ namespace ShoeCartBackend.Services.Implementations
             if (product == null)
                 return new ApiResponse<ProductDTO>(404, "Product not Found");
 
-            // Update only if values are provided
             if (!string.IsNullOrWhiteSpace(dto.Name)) product.Name = dto.Name.Trim();
             if (!string.IsNullOrWhiteSpace(dto.Description)) product.Description = dto.Description.Trim();
             if (!string.IsNullOrWhiteSpace(dto.Brand)) product.Brand = dto.Brand.Trim();
