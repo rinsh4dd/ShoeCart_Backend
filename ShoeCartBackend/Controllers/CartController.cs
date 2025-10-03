@@ -16,6 +16,14 @@ public class CartController : ControllerBase
         _cartService = cartService;
     }
 
+    [HttpGet("test-error")]
+    [AllowAnonymous] // <--- bypass JWT auth for testing
+
+    public IActionResult TestError()
+    {
+        throw new Exception("Test exception from controller!");
+    }
+
     // POST: api/cart/add
     [Authorize(Policy = "Customer")]
     [HttpPost]

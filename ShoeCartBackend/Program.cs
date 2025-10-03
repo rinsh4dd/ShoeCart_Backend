@@ -1,40 +1,51 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Serilog;
+using ShoeCartBackend.Common;
 using ShoeCartBackend.Data;
-using ShoeCartBackend.Models;
+using ShoeCartBackend.Repositories;
 using ShoeCartBackend.Repositories.Implementations;
 using ShoeCartBackend.Repositories.Interfaces;
+using ShoeCartBackend.Services;
 using ShoeCartBackend.Services.Implementations;
 using ShoeCartBackend.Services.Interfaces;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ----------------- DATABASE -----------------
+// serilog configuration
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.Console()
+    .WriteTo.File("Logs/app-.log",
+    rollingInterval: RollingInterval.Day) // daily logs
+    .CreateLogger();
+
+builder.Host.UseSerilog();//replaced .net logger with siri logger
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
-// ----------------- AUTOMAPPER -----------------
-//builder.Services.AddAutoMapper(typeof(GeneralMappingProfile));
+
+// automapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-// ----------------- REPOSITORIES -----------------
+// repositories
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-
-// ----------------- SERVICES -----------------
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+// services
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IWishlistService, WishlistService>();
 
-
-// ----------------- JWT AUTH -----------------
+//jwt authentication
 var jwtSecret = builder.Configuration["Jwt:Secret"];
 var key = Encoding.ASCII.GetBytes(jwtSecret);
 
@@ -57,19 +68,22 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddAuthorization(Options =>
+//auth policies
+builder.Services.AddAuthorization(options =>
 {
-    Options.AddPolicy("Admin", policy => policy.RequireRole("admin"));
-    Options.AddPolicy("User", policy => policy.RequireRole("user","admin"));
-    Options.AddPolicy("Customer", policy => policy.RequireRole("user"));
+    options.AddPolicy("Admin", policy => policy.RequireRole("admin"));
+    options.AddPolicy("User", policy => policy.RequireRole("user", "admin"));
+    options.AddPolicy("Customer", policy => policy.RequireRole("user"));
 });
+
+//swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "ShoeCartBackend API", Version = "v1" });
 
-    // Enable JWT Authentication in Swagger
+    // JWT Auth in Swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -95,21 +109,34 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-builder.Services.AddAutoMapper(typeof(Program));
-
 var app = builder.Build();
 
+// pipeline configuration
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionMiddleware>(); // global exception handling
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
-app.Run();
+
+
+//handling unexpected app crash
+try
+{
+    Log.Information("Starting up ShoeCartBackend...");
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Application startup failed!");
+}
+finally
+{
+    Log.CloseAndFlush();
+}

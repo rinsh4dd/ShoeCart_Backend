@@ -1,0 +1,334 @@
+2025-10-03 09:35:44.072 +05:30 [INF] Starting up ShoeCartBackend...
+2025-10-03 09:35:44.232 +05:30 [INF] User profile is available. Using 'C:\Users\rinsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-03 09:35:44.690 +05:30 [INF] Now listening on: http://localhost:58477
+2025-10-03 09:35:44.692 +05:30 [INF] Now listening on: https://localhost:58476
+2025-10-03 09:35:45.012 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-03 09:35:45.018 +05:30 [INF] Hosting environment: Development
+2025-10-03 09:35:45.029 +05:30 [INF] Content root path: C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend
+2025-10-03 09:35:47.418 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:58477/ - null null
+2025-10-03 09:35:47.791 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:58477/ - 307 0 null 386.7447ms
+2025-10-03 09:35:47.903 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/ - null null
+2025-10-03 09:35:47.997 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/ - 404 0 null 94.0033ms
+2025-10-03 09:35:48.004 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:58476/, Response status code: 404
+2025-10-03 09:36:24.955 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/index.html - null null
+2025-10-03 09:36:25.150 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/index.html - 200 null text/html;charset=utf-8 205.1665ms
+2025-10-03 09:36:25.279 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-03 09:36:25.283 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_vs/browserLink - null null
+2025-10-03 09:36:25.352 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 74.4899ms
+2025-10-03 09:36:25.542 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_vs/browserLink - 200 null text/javascript; charset=UTF-8 259.2478ms
+2025-10-03 09:36:25.636 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-03 09:36:25.716 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 80.4454ms
+2025-10-03 09:36:47.240 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Auth/login - multipart/form-data; boundary=----WebKitFormBoundaryBDMHTUEi7zuMFsep 255
+2025-10-03 09:36:47.288 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend)'
+2025-10-03 09:36:47.379 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ShoeCartBackend.DTOs.AuthDTO.LoginRequestDto) on controller ShoeCartBackend.Controllers.AuthController (ShoeCartBackend).
+2025-10-03 09:36:48.487 +05:30 [WRN] The foreign key property 'Order.UserId1' was created in shadow state because a conflicting property with the simple name 'UserId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-10-03 09:36:48.526 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'CartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-03 09:36:48.528 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-03 09:36:50.231 +05:30 [INF] Executed DbCommand (156ms) [Parameters=[@__loginRequestDto_Email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreatedBy], [u].[CreatedOn], [u].[DeletedBy], [u].[DeletedOn], [u].[Email], [u].[IsBlocked], [u].[IsDeleted], [u].[ModifiedBy], [u].[ModifiedOn], [u].[Name], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginRequestDto_Email_0
+2025-10-03 09:36:50.716 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 09:36:50.738 +05:30 [INF] Executed action ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend) in 3351.7743ms
+2025-10-03 09:36:50.742 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend)'
+2025-10-03 09:36:50.757 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Auth/login - 401 null application/json; charset=utf-8 3517.5173ms
+2025-10-03 09:36:57.668 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Auth/login - multipart/form-data; boundary=----WebKitFormBoundarygFEgzWDNH19S5Paq 255
+2025-10-03 09:36:57.679 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend)'
+2025-10-03 09:36:57.681 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ShoeCartBackend.DTOs.AuthDTO.LoginRequestDto) on controller ShoeCartBackend.Controllers.AuthController (ShoeCartBackend).
+2025-10-03 09:36:57.753 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@__loginRequestDto_Email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreatedBy], [u].[CreatedOn], [u].[DeletedBy], [u].[DeletedOn], [u].[Email], [u].[IsBlocked], [u].[IsDeleted], [u].[ModifiedBy], [u].[ModifiedOn], [u].[Name], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginRequestDto_Email_0
+2025-10-03 09:36:58.105 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 09:36:58.121 +05:30 [INF] Executed action ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend) in 437.0652ms
+2025-10-03 09:36:58.123 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend)'
+2025-10-03 09:36:58.125 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Auth/login - 200 null application/json; charset=utf-8 458.0808ms
+2025-10-03 09:57:55.510 +05:30 [INF] Starting up ShoeCartBackend...
+2025-10-03 09:57:55.629 +05:30 [INF] User profile is available. Using 'C:\Users\rinsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-03 09:57:55.962 +05:30 [INF] Now listening on: http://localhost:58477
+2025-10-03 09:57:55.964 +05:30 [INF] Now listening on: https://localhost:58476
+2025-10-03 09:57:56.218 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-03 09:57:56.231 +05:30 [INF] Hosting environment: Development
+2025-10-03 09:57:56.232 +05:30 [INF] Content root path: C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend
+2025-10-03 09:57:57.034 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:58477/ - null null
+2025-10-03 09:57:57.644 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:58477/ - 307 0 null 625.3997ms
+2025-10-03 09:57:57.805 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/ - null null
+2025-10-03 09:57:57.909 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/ - 404 0 null 104.4883ms
+2025-10-03 09:57:57.919 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:58476/, Response status code: 404
+2025-10-03 09:58:01.618 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/index.html - null null
+2025-10-03 09:58:01.711 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/index.html - 200 null text/html;charset=utf-8 93.8966ms
+2025-10-03 09:58:01.870 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_vs/browserLink - null null
+2025-10-03 09:58:01.870 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-03 09:58:01.896 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 25.8418ms
+2025-10-03 09:58:01.932 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_vs/browserLink - 200 null text/javascript; charset=UTF-8 62.2035ms
+2025-10-03 09:58:02.012 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-03 09:58:02.037 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 26.9291ms
+2025-10-03 10:01:10.574 +05:30 [INF] Request starting HTTP/2 PATCH https://localhost:58476/api/Products/18/status - null null
+2025-10-03 10:01:10.688 +05:30 [INF] Executing endpoint 'ProductsController.ToggleStatus (ShoeCartBackend)'
+2025-10-03 10:01:10.730 +05:30 [INF] Route matched with {action = "ToggleStatus", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ToggleStatus(Int32) on controller ProductsController (ShoeCartBackend).
+2025-10-03 10:01:11.637 +05:30 [WRN] The foreign key property 'Order.UserId1' was created in shadow state because a conflicting property with the simple name 'UserId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-10-03 10:01:11.670 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'CartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-03 10:01:11.674 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-03 10:01:13.016 +05:30 [INF] Executed DbCommand (140ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__p_0
+2025-10-03 10:01:13.241 +05:30 [INF] Executed DbCommand (25ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p1='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Products] SET [IsActive] = @p0, [IsDeleted] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2025-10-03 10:01:13.263 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 10:01:13.277 +05:30 [INF] Executed action ProductsController.ToggleStatus (ShoeCartBackend) in 2538.0403ms
+2025-10-03 10:01:13.279 +05:30 [INF] Executed endpoint 'ProductsController.ToggleStatus (ShoeCartBackend)'
+2025-10-03 10:01:13.287 +05:30 [INF] Request finished HTTP/2 PATCH https://localhost:58476/api/Products/18/status - 200 null application/json; charset=utf-8 2714.0024ms
+2025-10-03 10:04:13.303 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Auth/register - multipart/form-data; boundary=----WebKitFormBoundaryVROok7Zs9JwY6O72 347
+2025-10-03 10:04:13.309 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.AuthController.AddUser (ShoeCartBackend)'
+2025-10-03 10:04:13.317 +05:30 [INF] Route matched with {action = "AddUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(ShoeCartBackend.DTOs.AuthDTO.RegisterRequestDto) on controller ShoeCartBackend.Controllers.AuthController (ShoeCartBackend).
+2025-10-03 10:04:13.369 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-10-03 10:04:13.398 +05:30 [INF] Executed action ShoeCartBackend.Controllers.AuthController.AddUser (ShoeCartBackend) in 79.1338ms
+2025-10-03 10:04:13.400 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.AuthController.AddUser (ShoeCartBackend)'
+2025-10-03 10:04:13.402 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Auth/register - 400 null application/problem+json; charset=utf-8 99.3362ms
+2025-10-03 10:04:22.893 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Auth/register - multipart/form-data; boundary=----WebKitFormBoundaryFuXIBWRWr7VDaqAV 347
+2025-10-03 10:04:22.918 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.AuthController.AddUser (ShoeCartBackend)'
+2025-10-03 10:04:22.921 +05:30 [INF] Route matched with {action = "AddUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(ShoeCartBackend.DTOs.AuthDTO.RegisterRequestDto) on controller ShoeCartBackend.Controllers.AuthController (ShoeCartBackend).
+2025-10-03 10:04:22.975 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-10-03 10:04:22.978 +05:30 [INF] Executed action ShoeCartBackend.Controllers.AuthController.AddUser (ShoeCartBackend) in 53.1663ms
+2025-10-03 10:04:22.980 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.AuthController.AddUser (ShoeCartBackend)'
+2025-10-03 10:04:22.980 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Auth/register - 400 null application/problem+json; charset=utf-8 88.1244ms
+2025-10-03 10:04:36.473 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Auth/register - multipart/form-data; boundary=----WebKitFormBoundaryflF96A0dlWHYReAw 350
+2025-10-03 10:04:36.480 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.AuthController.AddUser (ShoeCartBackend)'
+2025-10-03 10:04:36.482 +05:30 [INF] Route matched with {action = "AddUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(ShoeCartBackend.DTOs.AuthDTO.RegisterRequestDto) on controller ShoeCartBackend.Controllers.AuthController (ShoeCartBackend).
+2025-10-03 10:04:36.668 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@__registerRequestDto_Email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreatedBy], [u].[CreatedOn], [u].[DeletedBy], [u].[DeletedOn], [u].[Email], [u].[IsBlocked], [u].[IsDeleted], [u].[ModifiedBy], [u].[ModifiedOn], [u].[Name], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__registerRequestDto_Email_0
+2025-10-03 10:04:37.044 +05:30 [INF] Executed DbCommand (31ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 450), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([CreatedBy], [CreatedOn], [DeletedBy], [DeletedOn], [Email], [IsBlocked], [IsDeleted], [ModifiedBy], [ModifiedOn], [Name], [PasswordHash], [Role])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+2025-10-03 10:04:37.061 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.DTOs.AuthDTO.AuthResponseDto'.
+2025-10-03 10:04:37.064 +05:30 [INF] Executed action ShoeCartBackend.Controllers.AuthController.AddUser (ShoeCartBackend) in 579.4992ms
+2025-10-03 10:04:37.066 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.AuthController.AddUser (ShoeCartBackend)'
+2025-10-03 10:04:37.068 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Auth/register - 200 null application/json; charset=utf-8 595.1476ms
+2025-10-03 10:05:05.897 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Auth/login - multipart/form-data; boundary=----WebKitFormBoundarydAB6OSyRrApsuMp6 255
+2025-10-03 10:05:05.909 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend)'
+2025-10-03 10:05:05.915 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ShoeCartBackend.DTOs.AuthDTO.LoginRequestDto) on controller ShoeCartBackend.Controllers.AuthController (ShoeCartBackend).
+2025-10-03 10:05:05.933 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__loginRequestDto_Email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreatedBy], [u].[CreatedOn], [u].[DeletedBy], [u].[DeletedOn], [u].[Email], [u].[IsBlocked], [u].[IsDeleted], [u].[ModifiedBy], [u].[ModifiedOn], [u].[Name], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginRequestDto_Email_0
+2025-10-03 10:05:06.103 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 10:05:06.109 +05:30 [INF] Executed action ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend) in 192.1179ms
+2025-10-03 10:05:06.111 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend)'
+2025-10-03 10:05:06.112 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Auth/login - 200 null application/json; charset=utf-8 215.1936ms
+2025-10-03 10:05:29.960 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/Products - null null
+2025-10-03 10:05:29.977 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 10:05:29.981 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-03 10:05:30.103 +05:30 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-10-03 10:05:30.189 +05:30 [INF] Executed DbCommand (52ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-03 10:05:30.318 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 10:05:30.369 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 385.7458ms
+2025-10-03 10:05:30.371 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 10:05:30.374 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/Products - 200 null application/json; charset=utf-8 414.1309ms
+2025-10-03 10:06:48.443 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/Products/18 - null null
+2025-10-03 10:06:48.454 +05:30 [INF] Executing endpoint 'ProductsController.GetById (ShoeCartBackend)'
+2025-10-03 10:06:48.459 +05:30 [INF] Route matched with {action = "GetById", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller ProductsController (ShoeCartBackend).
+2025-10-03 10:06:48.477 +05:30 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-10-03 10:06:48.524 +05:30 [INF] Executed DbCommand (24ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Brand], [s].[CategoryId], [s].[CreatedBy], [s].[CreatedOn], [s].[CurrentStock], [s].[DeletedBy], [s].[DeletedOn], [s].[Description], [s].[InStock], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[ModifiedOn], [s].[Name], [s].[Price], [s].[SpecialOffer], [s].[Id0], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [s].[CreatedBy0], [s].[CreatedOn0], [s].[DeletedBy0], [s].[DeletedOn0], [s].[IsDeleted0], [s].[ModifiedBy0], [s].[ModifiedOn0], [s].[Name0]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id] AS [Id0], [c].[CreatedBy] AS [CreatedBy0], [c].[CreatedOn] AS [CreatedOn0], [c].[DeletedBy] AS [DeletedBy0], [c].[DeletedOn] AS [DeletedOn0], [c].[IsDeleted] AS [IsDeleted0], [c].[ModifiedBy] AS [ModifiedBy0], [c].[ModifiedOn] AS [ModifiedOn0], [c].[Name] AS [Name0]
+    FROM [Products] AS [p]
+    INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+    WHERE [p].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [ProductSize] AS [p0] ON [s].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [s].[Id] = [p1].[ProductId]
+ORDER BY [s].[Id], [s].[Id0], [p0].[Id]
+2025-10-03 10:06:48.530 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-03 10:06:48.533 +05:30 [INF] Executed action ProductsController.GetById (ShoeCartBackend) in 71.5294ms
+2025-10-03 10:06:48.534 +05:30 [INF] Executed endpoint 'ProductsController.GetById (ShoeCartBackend)'
+2025-10-03 10:06:48.535 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/Products/18 - 200 null application/json; charset=utf-8 92.9884ms
+2025-10-03 10:06:53.896 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/Products/25 - null null
+2025-10-03 10:06:53.913 +05:30 [INF] Executing endpoint 'ProductsController.GetById (ShoeCartBackend)'
+2025-10-03 10:06:53.915 +05:30 [INF] Route matched with {action = "GetById", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller ProductsController (ShoeCartBackend).
+2025-10-03 10:06:53.932 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Brand], [s].[CategoryId], [s].[CreatedBy], [s].[CreatedOn], [s].[CurrentStock], [s].[DeletedBy], [s].[DeletedOn], [s].[Description], [s].[InStock], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[ModifiedOn], [s].[Name], [s].[Price], [s].[SpecialOffer], [s].[Id0], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [s].[CreatedBy0], [s].[CreatedOn0], [s].[DeletedBy0], [s].[DeletedOn0], [s].[IsDeleted0], [s].[ModifiedBy0], [s].[ModifiedOn0], [s].[Name0]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id] AS [Id0], [c].[CreatedBy] AS [CreatedBy0], [c].[CreatedOn] AS [CreatedOn0], [c].[DeletedBy] AS [DeletedBy0], [c].[DeletedOn] AS [DeletedOn0], [c].[IsDeleted] AS [IsDeleted0], [c].[ModifiedBy] AS [ModifiedBy0], [c].[ModifiedOn] AS [ModifiedOn0], [c].[Name] AS [Name0]
+    FROM [Products] AS [p]
+    INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+    WHERE [p].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [ProductSize] AS [p0] ON [s].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [s].[Id] = [p1].[ProductId]
+ORDER BY [s].[Id], [s].[Id0], [p0].[Id]
+2025-10-03 10:06:53.936 +05:30 [INF] Executing NotFoundObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-03 10:06:53.937 +05:30 [INF] Executed action ProductsController.GetById (ShoeCartBackend) in 14.3936ms
+2025-10-03 10:06:53.940 +05:30 [INF] Executed endpoint 'ProductsController.GetById (ShoeCartBackend)'
+2025-10-03 10:06:53.942 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/Products/25 - 404 null application/json; charset=utf-8 45.6085ms
+2025-10-03 10:06:58.985 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/Products/30 - null null
+2025-10-03 10:06:58.990 +05:30 [INF] Executing endpoint 'ProductsController.GetById (ShoeCartBackend)'
+2025-10-03 10:06:58.992 +05:30 [INF] Route matched with {action = "GetById", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32) on controller ProductsController (ShoeCartBackend).
+2025-10-03 10:06:58.998 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Brand], [s].[CategoryId], [s].[CreatedBy], [s].[CreatedOn], [s].[CurrentStock], [s].[DeletedBy], [s].[DeletedOn], [s].[Description], [s].[InStock], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[ModifiedOn], [s].[Name], [s].[Price], [s].[SpecialOffer], [s].[Id0], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [s].[CreatedBy0], [s].[CreatedOn0], [s].[DeletedBy0], [s].[DeletedOn0], [s].[IsDeleted0], [s].[ModifiedBy0], [s].[ModifiedOn0], [s].[Name0]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id] AS [Id0], [c].[CreatedBy] AS [CreatedBy0], [c].[CreatedOn] AS [CreatedOn0], [c].[DeletedBy] AS [DeletedBy0], [c].[DeletedOn] AS [DeletedOn0], [c].[IsDeleted] AS [IsDeleted0], [c].[ModifiedBy] AS [ModifiedBy0], [c].[ModifiedOn] AS [ModifiedOn0], [c].[Name] AS [Name0]
+    FROM [Products] AS [p]
+    INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+    WHERE [p].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [ProductSize] AS [p0] ON [s].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [s].[Id] = [p1].[ProductId]
+ORDER BY [s].[Id], [s].[Id0], [p0].[Id]
+2025-10-03 10:06:59.005 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-03 10:06:59.009 +05:30 [INF] Executed action ProductsController.GetById (ShoeCartBackend) in 16.1703ms
+2025-10-03 10:06:59.012 +05:30 [INF] Executed endpoint 'ProductsController.GetById (ShoeCartBackend)'
+2025-10-03 10:06:59.014 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/Products/30 - 200 null application/json; charset=utf-8 28.886ms
+2025-10-03 11:44:41.640 +05:30 [INF] Starting up ShoeCartBackend...
+2025-10-03 11:44:41.800 +05:30 [INF] User profile is available. Using 'C:\Users\rinsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-03 11:44:42.216 +05:30 [INF] Now listening on: http://localhost:58477
+2025-10-03 11:44:42.218 +05:30 [INF] Now listening on: https://localhost:58476
+2025-10-03 11:44:42.452 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-03 11:44:42.454 +05:30 [INF] Hosting environment: Development
+2025-10-03 11:44:42.456 +05:30 [INF] Content root path: C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend
+2025-10-03 11:44:44.102 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:58477/ - null null
+2025-10-03 11:44:44.558 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:58477/ - 307 0 null 502.9412ms
+2025-10-03 11:44:44.704 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/ - null null
+2025-10-03 11:44:44.801 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/ - 404 0 null 97.9656ms
+2025-10-03 11:44:44.807 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:58476/, Response status code: 404
+2025-10-03 11:44:47.638 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/index.html - null null
+2025-10-03 11:44:47.835 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/index.html - 200 null text/html;charset=utf-8 196.8719ms
+2025-10-03 11:44:47.874 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_vs/browserLink - null null
+2025-10-03 11:44:47.874 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-03 11:44:47.940 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 65.8594ms
+2025-10-03 11:44:48.069 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_vs/browserLink - 200 null text/javascript; charset=UTF-8 195.2661ms
+2025-10-03 11:44:48.158 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-03 11:44:48.192 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 34.5937ms
+2025-10-03 11:45:23.132 +05:30 [INF] Starting up ShoeCartBackend...
+2025-10-03 11:45:23.237 +05:30 [INF] User profile is available. Using 'C:\Users\rinsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-03 11:45:23.469 +05:30 [INF] Now listening on: http://localhost:58477
+2025-10-03 11:45:23.470 +05:30 [INF] Now listening on: https://localhost:58476
+2025-10-03 11:45:23.581 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-03 11:45:23.584 +05:30 [INF] Hosting environment: Development
+2025-10-03 11:45:23.585 +05:30 [INF] Content root path: C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend
+2025-10-03 11:45:24.620 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:58477/ - null null
+2025-10-03 11:45:24.978 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:58477/ - 307 0 null 376.9156ms
+2025-10-03 11:45:25.087 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/ - null null
+2025-10-03 11:45:25.182 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/ - 404 0 null 95.45ms
+2025-10-03 11:45:25.188 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:58476/, Response status code: 404
+2025-10-03 11:45:29.178 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/index.html - null null
+2025-10-03 11:45:29.276 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/index.html - 200 null text/html;charset=utf-8 101.081ms
+2025-10-03 11:45:29.521 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-03 11:45:29.522 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_vs/browserLink - null null
+2025-10-03 11:45:29.531 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 10.1172ms
+2025-10-03 11:45:29.568 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_vs/browserLink - 200 null text/javascript; charset=UTF-8 46.3565ms
+2025-10-03 11:45:29.735 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-03 11:45:29.784 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 49.5861ms
+2025-10-03 11:45:38.635 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/Users - null null
+2025-10-03 11:45:39.065 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.UsersController.GetAllUsers (ShoeCartBackend)'
+2025-10-03 11:45:39.138 +05:30 [INF] Route matched with {action = "GetAllUsers", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllUsers() on controller ShoeCartBackend.Controllers.UsersController (ShoeCartBackend).
+2025-10-03 11:45:39.163 +05:30 [INF] Executed action ShoeCartBackend.Controllers.UsersController.GetAllUsers (ShoeCartBackend) in 9.8453ms
+2025-10-03 11:45:39.168 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.UsersController.GetAllUsers (ShoeCartBackend)'
+2025-10-03 11:45:39.313 +05:30 [ERR] Unhandled Exception: Unable to resolve service for type 'ShoeCartBackend.Services.Interfaces.IUserService' while attempting to activate 'ShoeCartBackend.Controllers.UsersController'.
+System.InvalidOperationException: Unable to resolve service for type 'ShoeCartBackend.Services.Interfaces.IUserService' while attempting to activate 'ShoeCartBackend.Controllers.UsersController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method9(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\Middlewares\ExceptionMiddleware.cs:line 19
+2025-10-03 11:45:39.736 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/Users - 500 null application/json 1101.7468ms
+2025-10-03 11:46:37.641 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Auth/login - multipart/form-data; boundary=----WebKitFormBoundaryp8JGycOOROCET3NX 255
+2025-10-03 11:46:37.652 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend)'
+2025-10-03 11:46:37.673 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ShoeCartBackend.DTOs.AuthDTO.LoginRequestDto) on controller ShoeCartBackend.Controllers.AuthController (ShoeCartBackend).
+2025-10-03 11:46:38.689 +05:30 [WRN] The foreign key property 'Order.UserId1' was created in shadow state because a conflicting property with the simple name 'UserId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-10-03 11:46:38.736 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'CartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-03 11:46:38.740 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-03 11:46:40.279 +05:30 [INF] Executed DbCommand (148ms) [Parameters=[@__loginRequestDto_Email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreatedBy], [u].[CreatedOn], [u].[DeletedBy], [u].[DeletedOn], [u].[Email], [u].[IsBlocked], [u].[IsDeleted], [u].[ModifiedBy], [u].[ModifiedOn], [u].[Name], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginRequestDto_Email_0
+2025-10-03 11:46:40.750 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 11:46:40.765 +05:30 [INF] Executed action ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend) in 3088.155ms
+2025-10-03 11:46:40.768 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend)'
+2025-10-03 11:46:40.778 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Auth/login - 200 null application/json; charset=utf-8 3136.9412ms
+2025-10-03 11:47:48.321 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/Users/8 - null null
+2025-10-03 11:47:48.435 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.UsersController.GetUserById (ShoeCartBackend)'
+2025-10-03 11:47:48.444 +05:30 [INF] Route matched with {action = "GetUserById", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(Int32) on controller ShoeCartBackend.Controllers.UsersController (ShoeCartBackend).
+2025-10-03 11:47:48.448 +05:30 [INF] Executed action ShoeCartBackend.Controllers.UsersController.GetUserById (ShoeCartBackend) in 2.1317ms
+2025-10-03 11:47:48.451 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.UsersController.GetUserById (ShoeCartBackend)'
+2025-10-03 11:47:48.526 +05:30 [ERR] Unhandled Exception: Unable to resolve service for type 'ShoeCartBackend.Services.Interfaces.IUserService' while attempting to activate 'ShoeCartBackend.Controllers.UsersController'.
+System.InvalidOperationException: Unable to resolve service for type 'ShoeCartBackend.Services.Interfaces.IUserService' while attempting to activate 'ShoeCartBackend.Controllers.UsersController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method134(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\Middlewares\ExceptionMiddleware.cs:line 19
+2025-10-03 11:47:48.540 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/Users/8 - 500 null application/json 223.6924ms
+2025-10-03 11:48:06.675 +05:30 [INF] Starting up ShoeCartBackend...
+2025-10-03 11:48:06.773 +05:30 [INF] User profile is available. Using 'C:\Users\rinsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-03 11:48:07.056 +05:30 [INF] Now listening on: http://localhost:58477
+2025-10-03 11:48:07.058 +05:30 [INF] Now listening on: https://localhost:58476
+2025-10-03 11:48:07.159 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-03 11:48:07.165 +05:30 [INF] Hosting environment: Development
+2025-10-03 11:48:07.176 +05:30 [INF] Content root path: C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend
+2025-10-03 11:48:08.909 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:58477/ - null null
+2025-10-03 11:48:09.103 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:58477/ - 307 0 null 203.7106ms
+2025-10-03 11:48:09.208 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/ - null null
+2025-10-03 11:48:09.303 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/ - 404 0 null 95.5236ms
+2025-10-03 11:48:09.315 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:58476/, Response status code: 404
+2025-10-03 11:48:20.202 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/index.html - null null
+2025-10-03 11:48:20.298 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/index.html - 200 null text/html;charset=utf-8 96.8454ms
+2025-10-03 11:48:20.446 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-03 11:48:20.447 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_vs/browserLink - null null
+2025-10-03 11:48:20.457 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 10.7239ms
+2025-10-03 11:48:20.491 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_vs/browserLink - 200 null text/javascript; charset=UTF-8 44.4315ms
+2025-10-03 11:48:20.565 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-03 11:48:20.592 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 27.7364ms
+2025-10-03 11:48:27.083 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/Users - null null
+2025-10-03 11:48:27.095 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.UsersController.GetAllUsers (ShoeCartBackend)'
+2025-10-03 11:48:27.135 +05:30 [INF] Route matched with {action = "GetAllUsers", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllUsers() on controller ShoeCartBackend.Controllers.UsersController (ShoeCartBackend).
+2025-10-03 11:48:27.147 +05:30 [INF] Executed action ShoeCartBackend.Controllers.UsersController.GetAllUsers (ShoeCartBackend) in 6.2074ms
+2025-10-03 11:48:27.151 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.UsersController.GetAllUsers (ShoeCartBackend)'
+2025-10-03 11:48:27.199 +05:30 [ERR] Unhandled Exception: Unable to resolve service for type 'ShoeCartBackend.Services.Interfaces.IUserService' while attempting to activate 'ShoeCartBackend.Controllers.UsersController'.
+System.InvalidOperationException: Unable to resolve service for type 'ShoeCartBackend.Services.Interfaces.IUserService' while attempting to activate 'ShoeCartBackend.Controllers.UsersController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method9(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\Middlewares\ExceptionMiddleware.cs:line 19
+2025-10-03 11:48:27.266 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/Users - 500 null application/json 183.279ms

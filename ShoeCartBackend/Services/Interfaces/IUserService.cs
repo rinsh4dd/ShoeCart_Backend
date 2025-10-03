@@ -1,10 +1,17 @@
+using ShoeCartBackend.Common;
+using ShoeCartBackend.DTOs; // If you want to create DTOs
 using ShoeCartBackend.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-public interface IUserService
+namespace ShoeCartBackend.Services.Interfaces
 {
-    Task<IEnumerable<User>> GetAllAsync();
-    Task<User?> GetByIdAsync(int id);
-    Task AddAsync(User user);
-    Task UpdateAsync(User user);
-    Task DeleteAsync(int id);
+    public interface IUserService
+    {
+        Task<ApiResponse<IEnumerable<User>>> GetAllUsersAsync();
+        Task<ApiResponse<User>> GetUserByIdAsync(int id);
+
+        Task<ApiResponse<string>> BlockUnblockUserAsync(int id);
+        Task<ApiResponse<string>> SoftDeleteUserAsync(int id);
+    }
 }

@@ -22,6 +22,7 @@ public class CartService : ICartService
         if (!product.InStock) return new ApiResponse<string>(400, "Product is out of stock");
         if (quantity < 1 || quantity > 5) return new ApiResponse<string>(400, "Quantity must be between 1 and 5");
 
+
         var cart = await _context.Carts.Include(c => c.Items).FirstOrDefaultAsync(c => c.UserId == userId && !c.IsDeleted)
                     ?? new Cart { UserId = userId, Items = new List<CartItem>() };
 

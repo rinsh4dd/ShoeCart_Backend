@@ -19,7 +19,7 @@ namespace ShoeCartBackend.Services.Implementations
             _context = context;
         }
 
-        // ================= Add Product =================
+        //  Add Product 
         public async Task<ApiResponse<ProductDTO>> AddProductAsync(CreateProductDTO dto)
         {
             // Map basic fields
