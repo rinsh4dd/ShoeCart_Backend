@@ -17,8 +17,10 @@ namespace ShoeCartBackend.Data
         public DbSet<Wishlist> Wishlists { get; set; }
         public DbSet<User> Users { get; set; }  
         public DbSet<Category>Categories{ get; set;}
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
-       protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     base.OnModelCreating(modelBuilder);
 
@@ -46,18 +48,17 @@ namespace ShoeCartBackend.Data
         .HasForeignKey(i => i.CartId);
 
     modelBuilder.Entity<CartItem>()
-        .HasOne(ci => ci.product)
+        .HasOne(ci => ci.Product)
         .WithMany()
         .HasForeignKey(ci => ci.ProductId)
         .OnDelete(DeleteBehavior.Restrict);
 
-    // Order → User
     modelBuilder.Entity<Order>()
-        .HasOne<User>()
-        .WithMany()
+        .HasOne(o => o.User)
+        .WithMany(u => u.Orders)
         .HasForeignKey(o => o.UserId)
         .OnDelete(DeleteBehavior.Restrict);
-
+  
     // Order → OrderItem
     modelBuilder.Entity<OrderItem>()
         .HasOne(oi => oi.Order)

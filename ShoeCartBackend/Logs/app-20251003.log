@@ -332,3 +332,407 @@ System.InvalidOperationException: Unable to resolve service for type 'ShoeCartBa
    at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
    at ExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\Middlewares\ExceptionMiddleware.cs:line 19
 2025-10-03 11:48:27.266 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/Users - 500 null application/json 183.279ms
+2025-10-03 11:54:59.596 +05:30 [INF] Starting up ShoeCartBackend...
+2025-10-03 11:54:59.736 +05:30 [INF] User profile is available. Using 'C:\Users\rinsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-03 11:55:00.065 +05:30 [INF] Now listening on: http://localhost:58477
+2025-10-03 11:55:00.067 +05:30 [INF] Now listening on: https://localhost:58476
+2025-10-03 11:55:00.211 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-03 11:55:00.216 +05:30 [INF] Hosting environment: Development
+2025-10-03 11:55:00.218 +05:30 [INF] Content root path: C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend
+2025-10-03 11:55:01.789 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:58477/ - null null
+2025-10-03 11:55:02.143 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:58477/ - 307 0 null 375.4266ms
+2025-10-03 11:55:02.287 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/ - null null
+2025-10-03 11:55:02.465 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/ - 404 0 null 177.7259ms
+2025-10-03 11:55:02.471 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:58476/, Response status code: 404
+2025-10-03 11:55:04.923 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/index.html - null null
+2025-10-03 11:55:05.122 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/index.html - 200 null text/html;charset=utf-8 199.525ms
+2025-10-03 11:55:05.191 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_vs/browserLink - null null
+2025-10-03 11:55:05.191 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-03 11:55:05.239 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 48.2279ms
+2025-10-03 11:55:05.287 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_vs/browserLink - 200 null text/javascript; charset=UTF-8 96.1408ms
+2025-10-03 11:55:05.376 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-03 11:55:05.435 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 58.5991ms
+2025-10-03 11:55:11.915 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/Users - null null
+2025-10-03 11:55:11.924 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.UsersController.GetAllUsers (ShoeCartBackend)'
+2025-10-03 11:55:11.956 +05:30 [INF] Route matched with {action = "GetAllUsers", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllUsers() on controller ShoeCartBackend.Controllers.UsersController (ShoeCartBackend).
+2025-10-03 11:55:12.664 +05:30 [WRN] The foreign key property 'Order.UserId1' was created in shadow state because a conflicting property with the simple name 'UserId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-10-03 11:55:12.696 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'CartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-03 11:55:12.698 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-03 11:55:13.582 +05:30 [INF] Executed DbCommand (125ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedOn], [u].[DeletedBy], [u].[DeletedOn], [u].[Email], [u].[IsBlocked], [u].[IsDeleted], [u].[ModifiedBy], [u].[ModifiedOn], [u].[Name], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+2025-10-03 11:55:13.683 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.IEnumerable`1[[ShoeCartBackend.Models.User, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 11:55:13.724 +05:30 [INF] Executed action ShoeCartBackend.Controllers.UsersController.GetAllUsers (ShoeCartBackend) in 1760.7593ms
+2025-10-03 11:55:13.726 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.UsersController.GetAllUsers (ShoeCartBackend)'
+2025-10-03 11:55:13.737 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/Users - 200 null application/json; charset=utf-8 1821.8696ms
+2025-10-03 13:47:26.811 +05:30 [INF] Request starting HTTP/2 DELETE https://localhost:58476/api/Users/9 - null null
+2025-10-03 13:47:26.872 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.UsersController.SoftDelete (ShoeCartBackend)'
+2025-10-03 13:47:26.969 +05:30 [INF] Route matched with {action = "SoftDelete", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SoftDelete(Int32) on controller ShoeCartBackend.Controllers.UsersController (ShoeCartBackend).
+2025-10-03 13:47:27.569 +05:30 [INF] Executed DbCommand (137ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedBy], [u].[CreatedOn], [u].[DeletedBy], [u].[DeletedOn], [u].[Email], [u].[IsBlocked], [u].[IsDeleted], [u].[ModifiedBy], [u].[ModifiedOn], [u].[Name], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-10-03 13:47:27.767 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[@p12='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 450), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [CreatedBy] = @p0, [CreatedOn] = @p1, [DeletedBy] = @p2, [DeletedOn] = @p3, [Email] = @p4, [IsBlocked] = @p5, [IsDeleted] = @p6, [ModifiedBy] = @p7, [ModifiedOn] = @p8, [Name] = @p9, [PasswordHash] = @p10, [Role] = @p11
+OUTPUT 1
+WHERE [Id] = @p12;
+2025-10-03 13:47:27.787 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 13:47:27.808 +05:30 [INF] Executed action ShoeCartBackend.Controllers.UsersController.SoftDelete (ShoeCartBackend) in 836.2062ms
+2025-10-03 13:47:27.810 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.UsersController.SoftDelete (ShoeCartBackend)'
+2025-10-03 13:47:27.813 +05:30 [INF] Request finished HTTP/2 DELETE https://localhost:58476/api/Users/9 - 200 null application/json; charset=utf-8 1006.736ms
+2025-10-03 13:47:36.245 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/Users - null null
+2025-10-03 13:47:36.274 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.UsersController.GetAllUsers (ShoeCartBackend)'
+2025-10-03 13:47:36.276 +05:30 [INF] Route matched with {action = "GetAllUsers", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllUsers() on controller ShoeCartBackend.Controllers.UsersController (ShoeCartBackend).
+2025-10-03 13:47:36.299 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[Id], [u].[CreatedBy], [u].[CreatedOn], [u].[DeletedBy], [u].[DeletedOn], [u].[Email], [u].[IsBlocked], [u].[IsDeleted], [u].[ModifiedBy], [u].[ModifiedOn], [u].[Name], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+2025-10-03 13:47:36.304 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.IEnumerable`1[[ShoeCartBackend.Models.User, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 13:47:36.311 +05:30 [INF] Executed action ShoeCartBackend.Controllers.UsersController.GetAllUsers (ShoeCartBackend) in 33.1708ms
+2025-10-03 13:47:36.313 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.UsersController.GetAllUsers (ShoeCartBackend)'
+2025-10-03 13:47:36.315 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/Users - 200 null application/json; charset=utf-8 70.7466ms
+2025-10-03 13:47:54.940 +05:30 [INF] Request starting HTTP/2 DELETE https://localhost:58476/api/Users/9 - null null
+2025-10-03 13:47:54.944 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.UsersController.SoftDelete (ShoeCartBackend)'
+2025-10-03 13:47:54.946 +05:30 [INF] Route matched with {action = "SoftDelete", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SoftDelete(Int32) on controller ShoeCartBackend.Controllers.UsersController (ShoeCartBackend).
+2025-10-03 13:47:54.964 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedBy], [u].[CreatedOn], [u].[DeletedBy], [u].[DeletedOn], [u].[Email], [u].[IsBlocked], [u].[IsDeleted], [u].[ModifiedBy], [u].[ModifiedOn], [u].[Name], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__p_0
+2025-10-03 13:47:54.967 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 13:47:54.969 +05:30 [INF] Executed action ShoeCartBackend.Controllers.UsersController.SoftDelete (ShoeCartBackend) in 20.2856ms
+2025-10-03 13:47:54.971 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.UsersController.SoftDelete (ShoeCartBackend)'
+2025-10-03 13:47:54.972 +05:30 [INF] Request finished HTTP/2 DELETE https://localhost:58476/api/Users/9 - 404 null application/json; charset=utf-8 32.7705ms
+2025-10-03 14:40:36.214 +05:30 [INF] Starting up ShoeCartBackend...
+2025-10-03 14:40:36.342 +05:30 [INF] User profile is available. Using 'C:\Users\rinsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-03 14:40:36.754 +05:30 [INF] Now listening on: http://localhost:58477
+2025-10-03 14:40:36.756 +05:30 [INF] Now listening on: https://localhost:58476
+2025-10-03 14:40:36.872 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-03 14:40:36.875 +05:30 [INF] Hosting environment: Development
+2025-10-03 14:40:36.878 +05:30 [INF] Content root path: C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend
+2025-10-03 14:40:37.507 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:58477/ - null null
+2025-10-03 14:40:37.723 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:58477/ - 307 0 null 232.4674ms
+2025-10-03 14:40:37.747 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/ - null null
+2025-10-03 14:40:37.831 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/ - 404 0 null 84.919ms
+2025-10-03 14:40:37.838 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:58476/, Response status code: 404
+2025-10-03 14:40:48.355 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/index.html - null null
+2025-10-03 14:40:48.451 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/index.html - 200 null text/html;charset=utf-8 96.9815ms
+2025-10-03 14:40:48.480 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-03 14:40:48.485 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_vs/browserLink - null null
+2025-10-03 14:40:48.492 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 12.7462ms
+2025-10-03 14:40:48.534 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_vs/browserLink - 200 null text/javascript; charset=UTF-8 49.6528ms
+2025-10-03 14:40:48.608 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-03 14:40:48.626 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.3243ms
+2025-10-03 16:42:30.664 +05:30 [INF] Starting up ShoeCartBackend...
+2025-10-03 16:42:30.796 +05:30 [INF] User profile is available. Using 'C:\Users\rinsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-03 16:42:31.268 +05:30 [INF] Now listening on: http://localhost:58477
+2025-10-03 16:42:31.270 +05:30 [INF] Now listening on: https://localhost:58476
+2025-10-03 16:42:31.818 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-03 16:42:31.842 +05:30 [INF] Hosting environment: Development
+2025-10-03 16:42:31.843 +05:30 [INF] Content root path: C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend
+2025-10-03 16:42:31.965 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:58477/ - null null
+2025-10-03 16:42:32.222 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:58477/ - 307 0 null 269.5002ms
+2025-10-03 16:42:32.331 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/ - null null
+2025-10-03 16:42:32.400 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/ - 404 0 null 69.7272ms
+2025-10-03 16:42:32.406 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:58476/, Response status code: 404
+2025-10-03 16:42:36.551 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/index.html - null null
+2025-10-03 16:42:36.680 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/index.html - 200 null text/html;charset=utf-8 129.5876ms
+2025-10-03 16:42:36.727 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-03 16:42:36.741 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_vs/browserLink - null null
+2025-10-03 16:42:36.755 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 28.9583ms
+2025-10-03 16:42:36.818 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_vs/browserLink - 200 null text/javascript; charset=UTF-8 77.425ms
+2025-10-03 16:42:36.908 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-03 16:42:36.934 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 26.9526ms
+2025-10-03 16:43:47.620 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api - null null
+2025-10-03 16:43:47.660 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api - 404 0 null 37.0572ms
+2025-10-03 16:43:47.678 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:58476/api, Response status code: 404
+2025-10-03 16:44:03.949 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/Auth/Register - null null
+2025-10-03 16:44:03.969 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-03 16:44:03.972 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-03 16:44:03.974 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/Auth/Register - 405 0 null 26.1909ms
+2025-10-03 16:44:28.247 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Auth/login - multipart/form-data; boundary=----WebKitFormBoundaryDlFwNmvnTWjTJQBV 282
+2025-10-03 16:44:28.256 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend)'
+2025-10-03 16:44:28.347 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ShoeCartBackend.DTOs.AuthDTO.LoginRequestDto) on controller ShoeCartBackend.Controllers.AuthController (ShoeCartBackend).
+2025-10-03 16:44:29.414 +05:30 [WRN] The foreign key property 'Order.UserId1' was created in shadow state because a conflicting property with the simple name 'UserId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-10-03 16:44:29.447 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'CartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-03 16:44:29.449 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-03 16:44:30.804 +05:30 [INF] Executed DbCommand (151ms) [Parameters=[@__loginRequestDto_Email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreatedBy], [u].[CreatedOn], [u].[DeletedBy], [u].[DeletedOn], [u].[Email], [u].[IsBlocked], [u].[IsDeleted], [u].[ModifiedBy], [u].[ModifiedOn], [u].[Name], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__loginRequestDto_Email_0
+2025-10-03 16:44:30.841 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 16:44:30.859 +05:30 [INF] Executed action ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend) in 2504.9014ms
+2025-10-03 16:44:30.862 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend)'
+2025-10-03 16:44:30.873 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Auth/login - 401 null application/json; charset=utf-8 2627.471ms
+2025-10-03 16:57:17.460 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Auth/register - multipart/form-data; boundary=----WebKitFormBoundaryIhPYEcT8lN99ArQ9 358
+2025-10-03 16:57:17.520 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.AuthController.AddUser (ShoeCartBackend)'
+2025-10-03 16:57:17.645 +05:30 [INF] Route matched with {action = "AddUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(ShoeCartBackend.DTOs.AuthDTO.RegisterRequestDto) on controller ShoeCartBackend.Controllers.AuthController (ShoeCartBackend).
+2025-10-03 16:57:18.043 +05:30 [INF] Executed DbCommand (71ms) [Parameters=[@__registerRequestDto_Email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreatedBy], [u].[CreatedOn], [u].[DeletedBy], [u].[DeletedOn], [u].[Email], [u].[IsBlocked], [u].[IsDeleted], [u].[ModifiedBy], [u].[ModifiedOn], [u].[Name], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__registerRequestDto_Email_0
+2025-10-03 16:57:18.766 +05:30 [INF] Executed DbCommand (46ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 450), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([CreatedBy], [CreatedOn], [DeletedBy], [DeletedOn], [Email], [IsBlocked], [IsDeleted], [ModifiedBy], [ModifiedOn], [Name], [PasswordHash], [Role])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+2025-10-03 16:57:18.811 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.DTOs.AuthDTO.AuthResponseDto'.
+2025-10-03 16:57:18.830 +05:30 [INF] Executed action ShoeCartBackend.Controllers.AuthController.AddUser (ShoeCartBackend) in 1182.2691ms
+2025-10-03 16:57:18.833 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.AuthController.AddUser (ShoeCartBackend)'
+2025-10-03 16:57:18.837 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Auth/register - 200 null application/json; charset=utf-8 1384.4887ms
+2025-10-03 17:00:02.543 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/users/b0e6 - null null
+2025-10-03 17:00:02.608 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.UsersController.GetUserById (ShoeCartBackend)'
+2025-10-03 17:00:02.652 +05:30 [INF] Route matched with {action = "GetUserById", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetUserById(Int32) on controller ShoeCartBackend.Controllers.UsersController (ShoeCartBackend).
+2025-10-03 17:00:02.754 +05:30 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-10-03 17:00:02.804 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-03 17:00:02.810 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:00:02.819 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-03 17:00:02.833 +05:30 [INF] Executed action ShoeCartBackend.Controllers.UsersController.GetUserById (ShoeCartBackend) in 173.2745ms
+2025-10-03 17:00:02.874 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.UsersController.GetUserById (ShoeCartBackend)'
+2025-10-03 17:00:02.886 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/users/b0e6 - 400 null application/problem+json; charset=utf-8 344.2105ms
+2025-10-03 17:00:03.114 +05:30 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-10-03 17:00:03.258 +05:30 [INF] Executed DbCommand (101ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-03 17:00:03.466 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 17:00:03.491 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-03 17:00:03.507 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-03 17:00:03.508 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:00:03.513 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:00:03.513 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-03 17:00:03.514 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-03 17:00:03.523 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 702.2278ms
+2025-10-03 17:00:03.527 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:00:03.536 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 732.5028ms
+2025-10-03 17:00:03.573 +05:30 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-03 17:00:03.590 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-03 17:00:03.638 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 17:00:03.647 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 17:00:03.647 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 128.5455ms
+2025-10-03 17:00:03.652 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:00:03.654 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 151.3402ms
+2025-10-03 17:00:03.654 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-03 17:00:03.656 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 139.608ms
+2025-10-03 17:00:03.662 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:00:03.663 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:00:03.665 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-03 17:00:03.667 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 175.4904ms
+2025-10-03 17:00:03.673 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-03 17:00:03.735 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 17:00:03.749 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 80.7825ms
+2025-10-03 17:00:03.749 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-03 17:00:03.751 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:00:03.756 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:00:03.757 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 102.8427ms
+2025-10-03 17:00:03.758 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-03 17:00:03.805 +05:30 [INF] Executed DbCommand (35ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-03 17:00:03.889 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 17:00:03.898 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 132.0945ms
+2025-10-03 17:00:03.900 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:00:03.903 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 154.3899ms
+2025-10-03 17:01:21.219 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - null null
+2025-10-03 17:01:21.238 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:21.241 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:21.244 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - 405 0 null 27.9834ms
+2025-10-03 17:01:24.001 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - null null
+2025-10-03 17:01:24.007 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:24.009 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:24.011 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - 405 0 null 14.1411ms
+2025-10-03 17:01:24.554 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - null null
+2025-10-03 17:01:24.558 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:24.559 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:24.561 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - 405 0 null 6.6701ms
+2025-10-03 17:01:24.914 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - null null
+2025-10-03 17:01:24.918 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:24.920 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:24.925 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - 405 0 null 8.9286ms
+2025-10-03 17:01:25.117 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - null null
+2025-10-03 17:01:25.132 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:25.135 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:25.137 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - 405 0 null 20.1991ms
+2025-10-03 17:01:25.459 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - null null
+2025-10-03 17:01:25.463 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:25.467 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:25.471 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - 405 0 null 10.768ms
+2025-10-03 17:01:25.611 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - null null
+2025-10-03 17:01:25.616 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:25.617 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:25.619 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - 405 0 null 8.1151ms
+2025-10-03 17:01:25.790 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - null null
+2025-10-03 17:01:25.794 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:25.795 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:25.797 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - 405 0 null 7.1826ms
+2025-10-03 17:01:25.977 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - null null
+2025-10-03 17:01:25.981 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:25.982 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:25.983 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - 405 0 null 6.673ms
+2025-10-03 17:01:26.128 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - null null
+2025-10-03 17:01:26.132 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:26.140 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:26.143 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - 405 0 null 15.1278ms
+2025-10-03 17:01:26.286 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - null null
+2025-10-03 17:01:26.296 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:26.298 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:26.300 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - 405 0 null 18.8236ms
+2025-10-03 17:01:26.415 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - null null
+2025-10-03 17:01:26.428 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:26.430 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:26.437 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - 405 0 null 22.688ms
+2025-10-03 17:01:26.597 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - null null
+2025-10-03 17:01:26.607 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:26.609 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:26.611 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - 405 0 null 27.0701ms
+2025-10-03 17:01:26.749 +05:30 [INF] Request starting HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - null null
+2025-10-03 17:01:26.752 +05:30 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:26.753 +05:30 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-10-03 17:01:26.760 +05:30 [INF] Request finished HTTP/2 OPTIONS https://localhost:58476/api/Auth/register - 405 0 null 11.6008ms
+2025-10-03 17:02:35.201 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-03 17:02:35.240 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:02:35.259 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-03 17:02:35.436 +05:30 [INF] Executed DbCommand (51ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-03 17:02:35.557 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 17:02:35.584 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-03 17:02:35.588 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-03 17:02:35.596 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:02:35.602 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:02:35.604 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-03 17:02:35.605 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-03 17:02:35.609 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 345.5498ms
+2025-10-03 17:02:35.611 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:02:35.615 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 420.1786ms
+2025-10-03 17:02:35.640 +05:30 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-03 17:02:35.643 +05:30 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-03 17:02:35.722 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 17:02:35.729 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 17:02:35.738 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 128.0564ms
+2025-10-03 17:02:35.739 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-03 17:02:35.749 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:02:35.749 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 142.6143ms
+2025-10-03 17:02:35.753 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:02:35.756 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:02:35.757 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 171.268ms
+2025-10-03 17:02:35.757 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-03 17:02:35.760 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 176.0484ms
+2025-10-03 17:02:35.782 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-03 17:02:35.826 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 17:02:35.834 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 69.1913ms
+2025-10-03 17:02:35.834 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-03 17:02:35.835 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:02:35.838 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:02:35.838 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 99.9552ms
+2025-10-03 17:02:35.839 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-03 17:02:35.848 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-03 17:02:35.923 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 17:02:35.933 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 86.7055ms
+2025-10-03 17:02:35.935 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-03 17:02:35.937 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 103.0921ms
+2025-10-03 18:15:06.664 +05:30 [INF] Starting up ShoeCartBackend...
+2025-10-03 18:15:06.855 +05:30 [INF] User profile is available. Using 'C:\Users\rinsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-03 18:15:07.407 +05:30 [INF] Now listening on: http://localhost:58477
+2025-10-03 18:15:07.410 +05:30 [INF] Now listening on: https://localhost:58476
+2025-10-03 18:15:07.620 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-03 18:15:07.625 +05:30 [INF] Hosting environment: Development
+2025-10-03 18:15:07.627 +05:30 [INF] Content root path: C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend
+2025-10-03 18:15:08.240 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:58477/ - null null
+2025-10-03 18:15:08.521 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:58477/ - 307 0 null 292.2778ms
+2025-10-03 18:15:08.637 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/ - null null
+2025-10-03 18:15:08.727 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/ - 404 0 null 90.3639ms
+2025-10-03 18:15:08.736 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:58476/, Response status code: 404
+2025-10-03 18:15:11.399 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/index.html - null null
+2025-10-03 18:15:11.564 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/index.html - 200 null text/html;charset=utf-8 164.6814ms
+2025-10-03 18:15:11.600 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-03 18:15:11.614 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_vs/browserLink - null null
+2025-10-03 18:15:11.628 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 27.9352ms
+2025-10-03 18:15:11.692 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_vs/browserLink - 200 null text/javascript; charset=UTF-8 79.4173ms
+2025-10-03 18:15:11.810 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-03 18:15:11.842 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 32.0007ms
+2025-10-03 18:15:59.823 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Auth/register - multipart/form-data; boundary=----WebKitFormBoundaryXHtLjopW3lVLb1Fm 361
+2025-10-03 18:15:59.954 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.AuthController.AddUser (ShoeCartBackend)'
+2025-10-03 18:16:00.080 +05:30 [INF] Route matched with {action = "AddUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddUser(ShoeCartBackend.DTOs.AuthDTO.RegisterRequestDto) on controller ShoeCartBackend.Controllers.AuthController (ShoeCartBackend).
+2025-10-03 18:16:07.803 +05:30 [WRN] The foreign key property 'Order.UserId1' was created in shadow state because a conflicting property with the simple name 'UserId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+2025-10-03 18:16:07.851 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'CartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-03 18:16:07.855 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-03 18:16:09.933 +05:30 [INF] Executed DbCommand (182ms) [Parameters=[@__registerRequestDto_Email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreatedBy], [u].[CreatedOn], [u].[DeletedBy], [u].[DeletedOn], [u].[Email], [u].[IsBlocked], [u].[IsDeleted], [u].[ModifiedBy], [u].[ModifiedOn], [u].[Name], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__registerRequestDto_Email_0
+2025-10-03 18:16:10.536 +05:30 [INF] Executed DbCommand (36ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 450), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (Size = 4000), @p8='?' (DbType = DateTime2), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([CreatedBy], [CreatedOn], [DeletedBy], [DeletedOn], [Email], [IsBlocked], [IsDeleted], [ModifiedBy], [ModifiedOn], [Name], [PasswordHash], [Role])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+2025-10-03 18:16:10.578 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.DTOs.AuthDTO.AuthResponseDto'.
+2025-10-03 18:16:10.610 +05:30 [INF] Executed action ShoeCartBackend.Controllers.AuthController.AddUser (ShoeCartBackend) in 10524.0248ms
+2025-10-03 18:16:10.613 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.AuthController.AddUser (ShoeCartBackend)'
+2025-10-03 18:16:10.623 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Auth/register - 200 null application/json; charset=utf-8 10805.5232ms
+2025-10-03 18:16:42.836 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Auth/login - multipart/form-data; boundary=----WebKitFormBoundary45CWBDnmRXqBggBA 255
+2025-10-03 18:16:42.853 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend)'
+2025-10-03 18:16:42.863 +05:30 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ShoeCartBackend.DTOs.AuthDTO.LoginRequestDto) on controller ShoeCartBackend.Controllers.AuthController (ShoeCartBackend).
+2025-10-03 18:16:42.937 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__loginRequestDto_Email_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [u].[Id], [u].[CreatedBy], [u].[CreatedOn], [u].[DeletedBy], [u].[DeletedOn], [u].[Email], [u].[IsBlocked], [u].[IsDeleted], [u].[ModifiedBy], [u].[ModifiedOn], [u].[Name], [u].[PasswordHash], [u].[Role]
+FROM [Users] AS [u] 
+WHERE [u].[Email] = @__loginRequestDto_Email_0
+2025-10-03 18:16:43.336 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-03 18:16:43.364 +05:30 [INF] Executed action ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend) in 497.3657ms
+2025-10-03 18:16:43.367 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.AuthController.Login (ShoeCartBackend)'
+2025-10-03 18:16:43.370 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Auth/login - 200 null application/json; charset=utf-8 534.3615ms

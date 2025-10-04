@@ -187,3 +187,6 @@ C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Debug\net8.0\Ser
 C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Debug\net8.0\Serilog.Sinks.Console.dll
 C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
 C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Debug\net8.0\Serilog.Sinks.File.dll
+C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Debug\net8.0\BouncyCastle.Crypto.dll
+C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Debug\net8.0\Razorpay.dll

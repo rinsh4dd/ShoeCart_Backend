@@ -37,6 +37,7 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 // services
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -44,6 +45,7 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IWishlistService, WishlistService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 //jwt authentication
 var jwtSecret = builder.Configuration["Jwt:Secret"];
@@ -77,7 +79,12 @@ builder.Services.AddAuthorization(options =>
 });
 
 //swagger
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -118,7 +125,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseMiddleware<ExceptionMiddleware>(); // global exception handling
+//app.UseMiddleware<ExceptionMiddleware>(); // global exception handling
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
@@ -127,16 +134,16 @@ app.MapControllers();
 
 
 //handling unexpected app crash
-try
-{
-    Log.Information("Starting up ShoeCartBackend...");
-    app.Run();
-}
-catch (Exception ex)
-{
-    Log.Fatal(ex, "Application startup failed!");
-}
-finally
-{
-    Log.CloseAndFlush();
-}
+//try
+//{
+//    Log.Information("Starting up ShoeCartBackend...");
+app.Run();
+//}
+//catch (Exception ex)
+//{
+//    Log.Fatal(ex, "Application startup failed!");
+//}
+//finally
+//{
+//    Log.CloseAndFlush();
+//}

@@ -1,11 +1,15 @@
-using ShoeCartBackend.Models;
+using ShoeCartBackend.DTOs;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-public interface IOrderService
+namespace ShoeCartBackend.Services.Interfaces
 {
-    Task<IEnumerable<Order>> GetAllAsync();
-    Task<Order> GetByIdAsync(int id);
-    Task AddAsync(Order order);
-    Task UpdateAsync(Order order);
-    Task DeleteAsync(int id);
-
+    public interface IOrderService
+    {
+        Task<OrderDto> CreateOrderAsync(int userId, CreateOrderDto dto);
+        Task<IEnumerable<OrderDto>> GetOrdersByUserAsync(int userId);
+        Task<OrderDto> GetOrderByIdAsync(int userId, int orderId);
+        Task<IEnumerable<OrderDto>> GetAllOrdersAsync();
+        Task CancelOrderAsync(int orderId);
+    }
 }

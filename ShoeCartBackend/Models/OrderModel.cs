@@ -18,7 +18,6 @@ namespace ShoeCartBackend.Models
         public PaymentMethod PaymentMethod { get; set; }
         public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
 
-        // Billing address (flattened for now; can be refactored later into Address entity)
         public string BillingStreet { get; set; }
         public string BillingCity { get; set; }
         public string BillingState { get; set; }

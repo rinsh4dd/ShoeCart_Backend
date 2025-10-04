@@ -80,6 +80,10 @@
               "target": "Package",
               "version": "[9.0.9, )"
             },
+            "Razorpay": {
+              "target": "Package",
+              "version": "[3.3.2, )"
+            },
             "Serilog.AspNetCore": {
               "target": "Package",
               "version": "[9.0.0, )"

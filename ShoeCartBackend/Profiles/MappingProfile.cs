@@ -5,13 +5,11 @@ using ShoeCartBackend.Models;
 
 public class MappingProfile : Profile
 {
-    public MappingProfile()
+     public MappingProfile()
     {
-        // Source -> Target
-        CreateMap<Product, ProductDTO>();
-        CreateMap<Category, CategoryDTO>();
+        CreateMap<OrderItem, OrderItemDto>()
+            .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name));
 
-        // For creating/updating, you might map from a DTO to the entity
-        //CreateMap<CreateProductDTO, Product>();
+        CreateMap<Order, OrderDto>();
     }
 }

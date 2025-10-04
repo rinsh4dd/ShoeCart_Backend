@@ -12,7 +12,7 @@ namespace ShoeCartBackend.Repositories.Implementations
         public CategoryRepository(AppDbContext context) : base(context)
         {
             _context = context;
-        }
+        } 
         public async Task<Category?> GetByNameAsync(string name)
         {
             return await _context.Categories

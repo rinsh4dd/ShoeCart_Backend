@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShoeCartBackend.Data;
 
@@ -11,9 +12,11 @@ using ShoeCartBackend.Data;
 namespace ShoeCartBackend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251004052732_AddOrders")]
+    partial class AddOrders
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -199,9 +202,14 @@ namespace ShoeCartBackend.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId1")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Orders");
                 });
@@ -565,7 +573,7 @@ namespace ShoeCartBackend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ShoeCartBackend.Models.Product", "Product")
+                    b.HasOne("ShoeCartBackend.Models.Product", "product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -573,15 +581,21 @@ namespace ShoeCartBackend.Migrations
 
                     b.Navigation("Cart");
 
-                    b.Navigation("Product");
+                    b.Navigation("product");
                 });
 
             modelBuilder.Entity("ShoeCartBackend.Models.Order", b =>
                 {
-                    b.HasOne("ShoeCartBackend.Models.User", "User")
-                        .WithMany("Orders")
+                    b.HasOne("ShoeCartBackend.Models.User", null)
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ShoeCartBackend.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId1")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -683,8 +697,6 @@ namespace ShoeCartBackend.Migrations
             modelBuilder.Entity("ShoeCartBackend.Models.User", b =>
                 {
                     b.Navigation("Cart");
-
-                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

@@ -50,7 +50,7 @@ namespace ShoeCartBackend.Services
                 return new ApiResponse<string>(404, "User not found");
 
             await _userRepo.SoftDeleteUserAsync(id);
-            return new ApiResponse<string>(200, "User soft-deleted successfully");
+            return new ApiResponse<string>(200, "User Soft-Deleted successfully");
         }
     }
 }
