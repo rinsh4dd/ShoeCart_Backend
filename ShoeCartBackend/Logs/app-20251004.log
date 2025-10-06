@@ -3147,3 +3147,269 @@ VALUES (@p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, 
 2025-10-04 16:08:43.705 +05:30 [INF] Executed action ShoeCartBackend.Controllers.OrdersController.CreateOrder (ShoeCartBackend) in 450.2887ms
 2025-10-04 16:08:43.707 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.OrdersController.CreateOrder (ShoeCartBackend)'
 2025-10-04 16:08:43.709 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Orders/checkout - 200 null application/json; charset=utf-8 477.6964ms
+2025-10-04 16:22:39.006 +05:30 [INF] User profile is available. Using 'C:\Users\rinsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-04 16:22:39.405 +05:30 [INF] Now listening on: http://localhost:58477
+2025-10-04 16:22:39.407 +05:30 [INF] Now listening on: https://localhost:58476
+2025-10-04 16:22:40.029 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-04 16:22:40.031 +05:30 [INF] Hosting environment: Development
+2025-10-04 16:22:40.051 +05:30 [INF] Content root path: C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend
+2025-10-04 16:22:40.784 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:58477/ - null null
+2025-10-04 16:22:41.135 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:58477/ - 307 0 null 378.9989ms
+2025-10-04 16:22:41.378 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/ - null null
+2025-10-04 16:22:41.564 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/ - 404 0 null 190.4611ms
+2025-10-04 16:22:41.580 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:58476/, Response status code: 404
+2025-10-04 16:22:42.576 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/index.html - null null
+2025-10-04 16:22:42.672 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/index.html - 200 null text/html;charset=utf-8 95.1826ms
+2025-10-04 16:22:42.733 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-04 16:22:42.755 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 22.2014ms
+2025-10-04 16:22:42.775 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_vs/browserLink - null null
+2025-10-04 16:22:42.842 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_vs/browserLink - 200 null text/javascript; charset=UTF-8 67.551ms
+2025-10-04 16:22:42.923 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-04 16:22:42.962 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 39.2892ms
+2025-10-04 16:23:09.807 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Orders/checkout - application/json 179
+2025-10-04 16:23:09.980 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.OrdersController.CreateOrder (ShoeCartBackend)'
+2025-10-04 16:23:10.023 +05:30 [INF] Route matched with {action = "CreateOrder", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrder(ShoeCartBackend.DTOs.CreateOrderDto) on controller ShoeCartBackend.Controllers.OrdersController (ShoeCartBackend).
+2025-10-04 16:23:11.156 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'CartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-04 16:23:11.159 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-04 16:23:12.512 +05:30 [INF] Executed DbCommand (198ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CartId], [c].[ImageData], [c].[ImageMimeType], [c].[Name], [c].[Price], [c].[ProductId], [c].[Quantity], [c].[Size], [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c0].[Id], [c0].[IsDeleted], [c0].[UserId]
+FROM [CartItems] AS [c]
+INNER JOIN [Carts] AS [c0] ON [c].[CartId] = [c0].[Id]
+INNER JOIN [Products] AS [p] ON [c].[ProductId] = [p].[Id]
+WHERE [c0].[UserId] = @__userId_0
+2025-10-04 16:23:12.647 +05:30 [INF] Executed action ShoeCartBackend.Controllers.OrdersController.CreateOrder (ShoeCartBackend) in 2617.1888ms
+2025-10-04 16:23:12.650 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.OrdersController.CreateOrder (ShoeCartBackend)'
+2025-10-04 16:23:12.656 +05:30 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: Cart is empty
+   at ShoeCartBackend.Services.OrderService.CreateOrderAsync(Int32 userId, CreateOrderDto dto) in C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\Services\Implementations\OrderService.cs:line 36
+   at ShoeCartBackend.Controllers.OrdersController.CreateOrder(CreateOrderDto dto) in C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\Controllers\OrderController.cs:line 34
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-10-04 16:23:12.724 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Orders/checkout - 500 null text/plain; charset=utf-8 2916.6519ms
+2025-10-04 16:23:53.486 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Cart - application/json 53
+2025-10-04 16:23:53.514 +05:30 [INF] Executing endpoint 'CartController.Add (ShoeCartBackend)'
+2025-10-04 16:23:53.528 +05:30 [INF] Route matched with {action = "Add", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(ShoeCartBackend.DTOs.CartDTO.AddToCartDTO) on controller CartController (ShoeCartBackend).
+2025-10-04 16:23:53.599 +05:30 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-10-04 16:23:53.684 +05:30 [INF] Executed DbCommand (55ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Brand], [s].[CategoryId], [s].[CreatedBy], [s].[CreatedOn], [s].[CurrentStock], [s].[DeletedBy], [s].[DeletedOn], [s].[Description], [s].[InStock], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[ModifiedOn], [s].[Name], [s].[Price], [s].[SpecialOffer], [s].[Id0], [s].[CreatedBy0], [s].[CreatedOn0], [s].[DeletedBy0], [s].[DeletedOn0], [s].[IsDeleted0], [s].[ModifiedBy0], [s].[ModifiedOn0], [s].[Name0], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id] AS [Id0], [c].[CreatedBy] AS [CreatedBy0], [c].[CreatedOn] AS [CreatedOn0], [c].[DeletedBy] AS [DeletedBy0], [c].[DeletedOn] AS [DeletedOn0], [c].[IsDeleted] AS [IsDeleted0], [c].[ModifiedBy] AS [ModifiedBy0], [c].[ModifiedOn] AS [ModifiedOn0], [c].[Name] AS [Name0]
+    FROM [Products] AS [p]
+    INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+    WHERE [p].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [ProductSize] AS [p0] ON [s].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [s].[Id] = [p1].[ProductId]
+ORDER BY [s].[Id], [s].[Id0], [p0].[Id]
+2025-10-04 16:23:53.848 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c1].[Id], [c1].[IsDeleted], [c1].[UserId], [c0].[Id], [c0].[CartId], [c0].[ImageData], [c0].[ImageMimeType], [c0].[Name], [c0].[Price], [c0].[ProductId], [c0].[Quantity], [c0].[Size]
+FROM (
+    SELECT TOP(1) [c].[Id], [c].[IsDeleted], [c].[UserId]
+    FROM [Carts] AS [c]
+    WHERE [c].[UserId] = @__userId_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+) AS [c1]
+LEFT JOIN [CartItems] AS [c0] ON [c1].[Id] = [c0].[CartId]
+ORDER BY [c1].[Id]
+2025-10-04 16:23:54.114 +05:30 [INF] Executed DbCommand (57ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 8000) (DbType = Binary), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [CartItems] ([CartId], [ImageData], [ImageMimeType], [Name], [Price], [ProductId], [Quantity], [Size])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-10-04 16:23:54.147 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-04 16:23:54.155 +05:30 [INF] Executed action CartController.Add (ShoeCartBackend) in 625.2572ms
+2025-10-04 16:23:54.157 +05:30 [INF] Executed endpoint 'CartController.Add (ShoeCartBackend)'
+2025-10-04 16:23:54.159 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Cart - 200 null application/json; charset=utf-8 674.2596ms
+2025-10-04 16:24:05.144 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Cart - application/json 53
+2025-10-04 16:24:05.161 +05:30 [INF] Executing endpoint 'CartController.Add (ShoeCartBackend)'
+2025-10-04 16:24:05.163 +05:30 [INF] Route matched with {action = "Add", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(ShoeCartBackend.DTOs.CartDTO.AddToCartDTO) on controller CartController (ShoeCartBackend).
+2025-10-04 16:24:05.228 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Brand], [s].[CategoryId], [s].[CreatedBy], [s].[CreatedOn], [s].[CurrentStock], [s].[DeletedBy], [s].[DeletedOn], [s].[Description], [s].[InStock], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[ModifiedOn], [s].[Name], [s].[Price], [s].[SpecialOffer], [s].[Id0], [s].[CreatedBy0], [s].[CreatedOn0], [s].[DeletedBy0], [s].[DeletedOn0], [s].[IsDeleted0], [s].[ModifiedBy0], [s].[ModifiedOn0], [s].[Name0], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id] AS [Id0], [c].[CreatedBy] AS [CreatedBy0], [c].[CreatedOn] AS [CreatedOn0], [c].[DeletedBy] AS [DeletedBy0], [c].[DeletedOn] AS [DeletedOn0], [c].[IsDeleted] AS [IsDeleted0], [c].[ModifiedBy] AS [ModifiedBy0], [c].[ModifiedOn] AS [ModifiedOn0], [c].[Name] AS [Name0]
+    FROM [Products] AS [p]
+    INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+    WHERE [p].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [ProductSize] AS [p0] ON [s].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [s].[Id] = [p1].[ProductId]
+ORDER BY [s].[Id], [s].[Id0], [p0].[Id]
+2025-10-04 16:24:05.242 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c1].[Id], [c1].[IsDeleted], [c1].[UserId], [c0].[Id], [c0].[CartId], [c0].[ImageData], [c0].[ImageMimeType], [c0].[Name], [c0].[Price], [c0].[ProductId], [c0].[Quantity], [c0].[Size]
+FROM (
+    SELECT TOP(1) [c].[Id], [c].[IsDeleted], [c].[UserId]
+    FROM [Carts] AS [c]
+    WHERE [c].[UserId] = @__userId_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+) AS [c1]
+LEFT JOIN [CartItems] AS [c0] ON [c1].[Id] = [c0].[CartId]
+ORDER BY [c1].[Id]
+2025-10-04 16:24:05.263 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 8000) (DbType = Binary), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [CartItems] ([CartId], [ImageData], [ImageMimeType], [Name], [Price], [ProductId], [Quantity], [Size])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-10-04 16:24:05.268 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-04 16:24:05.270 +05:30 [INF] Executed action CartController.Add (ShoeCartBackend) in 104.8632ms
+2025-10-04 16:24:05.272 +05:30 [INF] Executed endpoint 'CartController.Add (ShoeCartBackend)'
+2025-10-04 16:24:05.274 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Cart - 200 null application/json; charset=utf-8 140.5216ms
+2025-10-04 16:24:10.321 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Cart - application/json 53
+2025-10-04 16:24:10.324 +05:30 [INF] Executing endpoint 'CartController.Add (ShoeCartBackend)'
+2025-10-04 16:24:10.337 +05:30 [INF] Route matched with {action = "Add", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(ShoeCartBackend.DTOs.CartDTO.AddToCartDTO) on controller CartController (ShoeCartBackend).
+2025-10-04 16:24:10.355 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Brand], [s].[CategoryId], [s].[CreatedBy], [s].[CreatedOn], [s].[CurrentStock], [s].[DeletedBy], [s].[DeletedOn], [s].[Description], [s].[InStock], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[ModifiedOn], [s].[Name], [s].[Price], [s].[SpecialOffer], [s].[Id0], [s].[CreatedBy0], [s].[CreatedOn0], [s].[DeletedBy0], [s].[DeletedOn0], [s].[IsDeleted0], [s].[ModifiedBy0], [s].[ModifiedOn0], [s].[Name0], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id] AS [Id0], [c].[CreatedBy] AS [CreatedBy0], [c].[CreatedOn] AS [CreatedOn0], [c].[DeletedBy] AS [DeletedBy0], [c].[DeletedOn] AS [DeletedOn0], [c].[IsDeleted] AS [IsDeleted0], [c].[ModifiedBy] AS [ModifiedBy0], [c].[ModifiedOn] AS [ModifiedOn0], [c].[Name] AS [Name0]
+    FROM [Products] AS [p]
+    INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+    WHERE [p].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [ProductSize] AS [p0] ON [s].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [s].[Id] = [p1].[ProductId]
+ORDER BY [s].[Id], [s].[Id0], [p0].[Id]
+2025-10-04 16:24:10.359 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c1].[Id], [c1].[IsDeleted], [c1].[UserId], [c0].[Id], [c0].[CartId], [c0].[ImageData], [c0].[ImageMimeType], [c0].[Name], [c0].[Price], [c0].[ProductId], [c0].[Quantity], [c0].[Size]
+FROM (
+    SELECT TOP(1) [c].[Id], [c].[IsDeleted], [c].[UserId]
+    FROM [Carts] AS [c]
+    WHERE [c].[UserId] = @__userId_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+) AS [c1]
+LEFT JOIN [CartItems] AS [c0] ON [c1].[Id] = [c0].[CartId]
+ORDER BY [c1].[Id]
+2025-10-04 16:24:10.364 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 8000) (DbType = Binary), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [CartItems] ([CartId], [ImageData], [ImageMimeType], [Name], [Price], [ProductId], [Quantity], [Size])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-10-04 16:24:10.367 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-04 16:24:10.369 +05:30 [INF] Executed action CartController.Add (ShoeCartBackend) in 21.2024ms
+2025-10-04 16:24:10.370 +05:30 [INF] Executed endpoint 'CartController.Add (ShoeCartBackend)'
+2025-10-04 16:24:10.371 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Cart - 200 null application/json; charset=utf-8 50.3796ms
+2025-10-04 16:24:18.371 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Orders/checkout - application/json 179
+2025-10-04 16:24:18.389 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.OrdersController.CreateOrder (ShoeCartBackend)'
+2025-10-04 16:24:18.396 +05:30 [INF] Route matched with {action = "CreateOrder", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrder(ShoeCartBackend.DTOs.CreateOrderDto) on controller ShoeCartBackend.Controllers.OrdersController (ShoeCartBackend).
+2025-10-04 16:24:18.424 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CartId], [c].[ImageData], [c].[ImageMimeType], [c].[Name], [c].[Price], [c].[ProductId], [c].[Quantity], [c].[Size], [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c0].[Id], [c0].[IsDeleted], [c0].[UserId]
+FROM [CartItems] AS [c]
+INNER JOIN [Carts] AS [c0] ON [c].[CartId] = [c0].[Id]
+INNER JOIN [Products] AS [p] ON [c].[ProductId] = [p].[Id]
+WHERE [c0].[UserId] = @__userId_0
+2025-10-04 16:24:18.568 +05:30 [INF] Executed DbCommand (31ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime2), @p10='?' (Size = 4000), @p11='?' (DbType = DateTime2), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = DateTime2), @p15='?' (Size = 4000), @p16='?' (Size = 4000), @p17='?' (Size = 4000), @p18='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p19='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [CartItems]
+OUTPUT 1
+WHERE [Id] = @p0;
+DELETE FROM [CartItems]
+OUTPUT 1
+WHERE [Id] = @p1;
+DELETE FROM [CartItems]
+OUTPUT 1
+WHERE [Id] = @p2;
+INSERT INTO [Orders] ([BillingCity], [BillingCountry], [BillingState], [BillingStreet], [BillingZip], [CreatedBy], [CreatedOn], [DeletedBy], [DeletedOn], [IsDeleted], [ModifiedBy], [ModifiedOn], [OrderStatus], [PaymentMethod], [PaymentStatus], [TotalAmount], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19);
+2025-10-04 16:24:18.640 +05:30 [INF] Executed DbCommand (56ms) [Parameters=[@p20='?' (Size = 4000), @p21='?' (DbType = DateTime2), @p22='?' (Size = 4000), @p23='?' (DbType = DateTime2), @p24='?' (Size = 8000) (DbType = Binary), @p25='?' (Size = 4000), @p26='?' (DbType = Boolean), @p27='?' (Size = 4000), @p28='?' (DbType = DateTime2), @p29='?' (Size = 4000), @p30='?' (DbType = Int32), @p31='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p32='?' (DbType = Int32), @p33='?' (DbType = Int32), @p34='?' (Size = 4000), @p35='?' (Size = 4000), @p36='?' (DbType = DateTime2), @p37='?' (Size = 4000), @p38='?' (DbType = DateTime2), @p39='?' (Size = 8000) (DbType = Binary), @p40='?' (Size = 4000), @p41='?' (DbType = Boolean), @p42='?' (Size = 4000), @p43='?' (DbType = DateTime2), @p44='?' (Size = 4000), @p45='?' (DbType = Int32), @p46='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p47='?' (DbType = Int32), @p48='?' (DbType = Int32), @p49='?' (Size = 4000), @p50='?' (Size = 4000), @p51='?' (DbType = DateTime2), @p52='?' (Size = 4000), @p53='?' (DbType = DateTime2), @p54='?' (Size = 8000) (DbType = Binary), @p55='?' (Size = 4000), @p56='?' (DbType = Boolean), @p57='?' (Size = 4000), @p58='?' (DbType = DateTime2), @p59='?' (Size = 4000), @p60='?' (DbType = Int32), @p61='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p62='?' (DbType = Int32), @p63='?' (DbType = Int32), @p64='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+MERGE [OrderItems] USING (
+VALUES (@p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, 0),
+(@p35, @p36, @p37, @p38, @p39, @p40, @p41, @p42, @p43, @p44, @p45, @p46, @p47, @p48, @p49, 1),
+(@p50, @p51, @p52, @p53, @p54, @p55, @p56, @p57, @p58, @p59, @p60, @p61, @p62, @p63, @p64, 2)) AS i ([CreatedBy], [CreatedOn], [DeletedBy], [DeletedOn], [ImageData], [ImageMimeType], [IsDeleted], [ModifiedBy], [ModifiedOn], [Name], [OrderId], [Price], [ProductId], [Quantity], [Size], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CreatedBy], [CreatedOn], [DeletedBy], [DeletedOn], [ImageData], [ImageMimeType], [IsDeleted], [ModifiedBy], [ModifiedOn], [Name], [OrderId], [Price], [ProductId], [Quantity], [Size])
+VALUES (i.[CreatedBy], i.[CreatedOn], i.[DeletedBy], i.[DeletedOn], i.[ImageData], i.[ImageMimeType], i.[IsDeleted], i.[ModifiedBy], i.[ModifiedOn], i.[Name], i.[OrderId], i.[Price], i.[ProductId], i.[Quantity], i.[Size])
+OUTPUT INSERTED.[Id], i._Position;
+2025-10-04 16:24:18.672 +05:30 [INF] Executing OkObjectResult, writing value of type 'OrderDto'.
+2025-10-04 16:24:18.690 +05:30 [INF] Executed action ShoeCartBackend.Controllers.OrdersController.CreateOrder (ShoeCartBackend) in 286.315ms
+2025-10-04 16:24:18.692 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.OrdersController.CreateOrder (ShoeCartBackend)'
+2025-10-04 16:24:18.694 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Orders/checkout - 200 null application/json; charset=utf-8 324.0105ms
+2025-10-04 16:25:52.726 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/Cart - null null
+2025-10-04 16:25:52.738 +05:30 [INF] Executing endpoint 'CartController.Get (ShoeCartBackend)'
+2025-10-04 16:25:52.743 +05:30 [INF] Route matched with {action = "Get", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller CartController (ShoeCartBackend).
+2025-10-04 16:25:52.761 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c1].[Id], [c1].[IsDeleted], [c1].[UserId], [c0].[Id], [c0].[CartId], [c0].[ImageData], [c0].[ImageMimeType], [c0].[Name], [c0].[Price], [c0].[ProductId], [c0].[Quantity], [c0].[Size]
+FROM (
+    SELECT TOP(1) [c].[Id], [c].[IsDeleted], [c].[UserId]
+    FROM [Carts] AS [c]
+    WHERE [c].[UserId] = @__userId_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+) AS [c1]
+LEFT JOIN [CartItems] AS [c0] ON [c1].[Id] = [c0].[CartId]
+ORDER BY [c1].[Id]
+2025-10-04 16:25:52.767 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-04 16:25:52.777 +05:30 [INF] Executed action CartController.Get (ShoeCartBackend) in 32.4855ms
+2025-10-04 16:25:52.779 +05:30 [INF] Executed endpoint 'CartController.Get (ShoeCartBackend)'
+2025-10-04 16:25:52.780 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/Cart - 200 null application/json; charset=utf-8 54.6916ms
+2025-10-04 16:26:27.857 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Cart - application/json 53
+2025-10-04 16:26:27.869 +05:30 [INF] Executing endpoint 'CartController.Add (ShoeCartBackend)'
+2025-10-04 16:26:27.871 +05:30 [INF] Route matched with {action = "Add", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(ShoeCartBackend.DTOs.CartDTO.AddToCartDTO) on controller CartController (ShoeCartBackend).
+2025-10-04 16:26:27.893 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[Id], [s].[Brand], [s].[CategoryId], [s].[CreatedBy], [s].[CreatedOn], [s].[CurrentStock], [s].[DeletedBy], [s].[DeletedOn], [s].[Description], [s].[InStock], [s].[IsActive], [s].[IsDeleted], [s].[ModifiedBy], [s].[ModifiedOn], [s].[Name], [s].[Price], [s].[SpecialOffer], [s].[Id0], [s].[CreatedBy0], [s].[CreatedOn0], [s].[DeletedBy0], [s].[DeletedOn0], [s].[IsDeleted0], [s].[ModifiedBy0], [s].[ModifiedOn0], [s].[Name0], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id] AS [Id0], [c].[CreatedBy] AS [CreatedBy0], [c].[CreatedOn] AS [CreatedOn0], [c].[DeletedBy] AS [DeletedBy0], [c].[DeletedOn] AS [DeletedOn0], [c].[IsDeleted] AS [IsDeleted0], [c].[ModifiedBy] AS [ModifiedBy0], [c].[ModifiedOn] AS [ModifiedOn0], [c].[Name] AS [Name0]
+    FROM [Products] AS [p]
+    INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+    WHERE [p].[Id] = @__id_0
+) AS [s]
+LEFT JOIN [ProductSize] AS [p0] ON [s].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [s].[Id] = [p1].[ProductId]
+ORDER BY [s].[Id], [s].[Id0], [p0].[Id]
+2025-10-04 16:26:27.904 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c1].[Id], [c1].[IsDeleted], [c1].[UserId], [c0].[Id], [c0].[CartId], [c0].[ImageData], [c0].[ImageMimeType], [c0].[Name], [c0].[Price], [c0].[ProductId], [c0].[Quantity], [c0].[Size]
+FROM (
+    SELECT TOP(1) [c].[Id], [c].[IsDeleted], [c].[UserId]
+    FROM [Carts] AS [c]
+    WHERE [c].[UserId] = @__userId_0 AND [c].[IsDeleted] = CAST(0 AS bit)
+) AS [c1]
+LEFT JOIN [CartItems] AS [c0] ON [c1].[Id] = [c0].[CartId]
+ORDER BY [c1].[Id]
+2025-10-04 16:26:27.913 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 8000) (DbType = Binary), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [CartItems] ([CartId], [ImageData], [ImageMimeType], [Name], [Price], [ProductId], [Quantity], [Size])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+2025-10-04 16:26:27.918 +05:30 [INF] Executing ObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-04 16:26:27.919 +05:30 [INF] Executed action CartController.Add (ShoeCartBackend) in 46.7497ms
+2025-10-04 16:26:27.922 +05:30 [INF] Executed endpoint 'CartController.Add (ShoeCartBackend)'
+2025-10-04 16:26:27.923 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Cart - 200 null application/json; charset=utf-8 68.561ms
+2025-10-04 16:27:22.335 +05:30 [INF] Request starting HTTP/2 POST https://localhost:58476/api/Orders/checkout - application/json 164
+2025-10-04 16:27:22.350 +05:30 [INF] Executing endpoint 'ShoeCartBackend.Controllers.OrdersController.CreateOrder (ShoeCartBackend)'
+2025-10-04 16:27:22.353 +05:30 [INF] Route matched with {action = "CreateOrder", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateOrder(ShoeCartBackend.DTOs.CreateOrderDto) on controller ShoeCartBackend.Controllers.OrdersController (ShoeCartBackend).
+2025-10-04 16:27:22.371 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[Id], [c].[CartId], [c].[ImageData], [c].[ImageMimeType], [c].[Name], [c].[Price], [c].[ProductId], [c].[Quantity], [c].[Size], [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c0].[Id], [c0].[IsDeleted], [c0].[UserId]
+FROM [CartItems] AS [c]
+INNER JOIN [Carts] AS [c0] ON [c].[CartId] = [c0].[Id]
+INNER JOIN [Products] AS [p] ON [c].[ProductId] = [p].[Id]
+WHERE [c0].[UserId] = @__userId_0
+2025-10-04 16:27:22.384 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (DbType = DateTime2), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime2), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime2), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p17='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [CartItems]
+OUTPUT 1
+WHERE [Id] = @p0;
+INSERT INTO [Orders] ([BillingCity], [BillingCountry], [BillingState], [BillingStreet], [BillingZip], [CreatedBy], [CreatedOn], [DeletedBy], [DeletedOn], [IsDeleted], [ModifiedBy], [ModifiedOn], [OrderStatus], [PaymentMethod], [PaymentStatus], [TotalAmount], [UserId])
+OUTPUT INSERTED.[Id]
+VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17);
+2025-10-04 16:27:22.391 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@p18='?' (Size = 4000), @p19='?' (DbType = DateTime2), @p20='?' (Size = 4000), @p21='?' (DbType = DateTime2), @p22='?' (Size = 8000) (DbType = Binary), @p23='?' (Size = 4000), @p24='?' (DbType = Boolean), @p25='?' (Size = 4000), @p26='?' (DbType = DateTime2), @p27='?' (Size = 4000), @p28='?' (DbType = Int32), @p29='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p30='?' (DbType = Int32), @p31='?' (DbType = Int32), @p32='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [OrderItems] ([CreatedBy], [CreatedOn], [DeletedBy], [DeletedOn], [ImageData], [ImageMimeType], [IsDeleted], [ModifiedBy], [ModifiedOn], [Name], [OrderId], [Price], [ProductId], [Quantity], [Size])
+OUTPUT INSERTED.[Id]
+VALUES (@p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32);
+2025-10-04 16:27:22.397 +05:30 [INF] Executing OkObjectResult, writing value of type 'OrderDto'.
+2025-10-04 16:27:22.399 +05:30 [INF] Executed action ShoeCartBackend.Controllers.OrdersController.CreateOrder (ShoeCartBackend) in 43.6654ms
+2025-10-04 16:27:22.402 +05:30 [INF] Executed endpoint 'ShoeCartBackend.Controllers.OrdersController.CreateOrder (ShoeCartBackend)'
+2025-10-04 16:27:22.404 +05:30 [INF] Request finished HTTP/2 POST https://localhost:58476/api/Orders/checkout - 200 null application/json; charset=utf-8 69.4604ms

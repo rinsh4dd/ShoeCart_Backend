@@ -23,8 +23,7 @@ namespace ShoeCartBackend.Services
             _mapper = mapper;
         }
 
-        // 1️⃣ Create order from cart
-        public async Task<OrderDto> CreateOrderAsync(int userId, CreateOrderDto dto)
+         public async Task<OrderDto> CreateOrderAsync(int userId, CreateOrderDto dto)
         {
             var cartItems = await _context.CartItems
                 .Include(c => c.Product)

@@ -125,7 +125,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseMiddleware<ExceptionMiddleware>(); // global exception handling
+app.UseMiddleware<ExceptionMiddleware>(); // global exception handling
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
@@ -134,16 +134,16 @@ app.MapControllers();
 
 
 //handling unexpected app crash
-//try
-//{
-//    Log.Information("Starting up ShoeCartBackend...");
+try
+{
+    Log.Information("Starting up ShoeCartBackend...");
 app.Run();
-//}
-//catch (Exception ex)
-//{
-//    Log.Fatal(ex, "Application startup failed!");
-//}
-//finally
-//{
-//    Log.CloseAndFlush();
-//}
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Application startup failed!");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
