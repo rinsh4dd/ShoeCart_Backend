@@ -12,44 +12,19 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
-                "required": [
-                  "Email",
-                  "Name",
-                  "Password"
-                ],
-                "type": "object",
-                "properties": {
-                  "Name": {
-                    "maxLength": 50,
-                    "pattern": "^[A-Z][a-zA-Z\\s]*$",
-                    "type": "string"
-                  },
-                  "Email": {
-                    "maxLength": 150,
-                    "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
-                    "type": "string",
-                    "format": "email"
-                  },
-                  "Password": {
-                    "maxLength": 50,
-                    "minLength": 8,
-                    "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&]).{8,}$",
-                    "type": "string"
-                  }
-                }
-              },
-              "encoding": {
-                "Name": {
-                  "style": "form"
-                },
-                "Email": {
-                  "style": "form"
-                },
-                "Password": {
-                  "style": "form"
-                }
+                "$ref": "#/components/schemas/RegisterRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequestDto"
               }
             }
           }
@@ -68,38 +43,47 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "application/json": {
               "schema": {
-                "required": [
-                  "Email",
-                  "Password"
-                ],
-                "type": "object",
-                "properties": {
-                  "Email": {
-                    "maxLength": 150,
-                    "type": "string",
-                    "format": "email"
-                  },
-                  "Password": {
-                    "maxLength": 50,
-                    "minLength": 8,
-                    "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&]).{8,}$",
-                    "type": "string"
-                  }
-                }
-              },
-              "encoding": {
-                "Email": {
-                  "style": "form"
-                },
-                "Password": {
-                  "style": "form"
-                }
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
               }
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/refresh-token": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/revoke-token": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -949,12 +933,64 @@
         },
         "additionalProperties": false
       },
+      "LoginRequestDto": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "maxLength": 150,
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "maxLength": 50,
+            "minLength": 8,
+            "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&]).{8,}$",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "PaymentMethod": {
         "enum": [
           "CashOnDelivery",
           "Razorpay"
         ],
         "type": "string"
+      },
+      "RegisterRequestDto": {
+        "required": [
+          "email",
+          "name",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 50,
+            "minLength": 1,
+            "pattern": "^[A-Z][a-zA-Z\\s]*$",
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 150,
+            "minLength": 1,
+            "pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "maxLength": 50,
+            "minLength": 8,
+            "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&]).{8,}$",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
       },
       "UpdateQuantityDTO": {
         "type": "object",

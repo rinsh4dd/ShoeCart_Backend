@@ -1,15 +1,168 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
+﻿//using Microsoft.EntityFrameworkCore;
+//using Microsoft.Extensions.Configuration;
+//using Microsoft.IdentityModel.Tokens;
+//using ShoeCartBackend.Data;
+//using ShoeCartBackend.DTOs.AuthDTO;
+//using ShoeCartBackend.Models;
+//using ShoeCartBackend.Repositories.Interfaces;
+//using ShoeCartBackend.Services.Interfaces;
+//using System;
+//using System.Collections.Generic;
+//using System.IdentityModel.Tokens.Jwt;
+//using System.Security.Claims;
+//using System.Security.Cryptography;
+//using System.Text;
+//using System.Threading.Tasks;
+
+//namespace ShoeCartBackend.Services.Implementations
+//{
+//    public class AuthService : IAuthService
+//    {
+//        private readonly AppDbContext _appDbContext;
+//        private readonly IGenericRepository<User> _userRepo;
+//        private readonly IConfiguration _configuration;
+
+//        public AuthService(AppDbContext appDbContext, IGenericRepository<User> userRepo,
+//            IConfiguration configuration)
+//        {
+//            _appDbContext = appDbContext;
+//            _userRepo = userRepo;
+//            _configuration = configuration;
+//        }
+
+//        // Register user
+//        public async Task<AuthResponseDto> RegisterAsync(RegisterRequestDto registerRequestDto)
+//        {
+//            if (registerRequestDto == null)
+//                throw new ArgumentNullException("Register request cannot be null");
+
+//            registerRequestDto.Email = registerRequestDto.Email.ToLower().Trim();
+//            registerRequestDto.Name = registerRequestDto.Name.Trim();
+//            registerRequestDto.Password = registerRequestDto.Password.Trim();
+
+//            var userExist = await _appDbContext.Users
+//                .SingleOrDefaultAsync(u => u.Email == registerRequestDto.Email);
+
+//            if (userExist != null)
+//                return new AuthResponseDto(409, "Email already exists");
+
+//            var newUser = new User
+//            {
+//                Email = registerRequestDto.Email,
+//                Name = registerRequestDto.Name,
+//                PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerRequestDto.Password),
+//                Role = Roles.user
+//            };
+
+//            await _userRepo.AddAsync(newUser);
+//            return new AuthResponseDto(200, "Registration Successful");
+//        }
+
+//        // Login user
+//        public async Task<AuthResponseDto> LoginAsync(LoginRequestDto loginRequestDto)
+//        {
+//            if (loginRequestDto == null)
+//                throw new ArgumentException("Login request cannot be null");
+
+//            loginRequestDto.Email = loginRequestDto.Email.Trim().ToLower();
+//            loginRequestDto.Password = loginRequestDto.Password.Trim();
+
+//            var user = await _appDbContext.Users
+//                .SingleOrDefaultAsync(u => u.Email == loginRequestDto.Email);
+
+//            if (user == null || !BCrypt.Net.BCrypt.Verify(loginRequestDto.Password, user.PasswordHash))
+//                return new AuthResponseDto(401, "Invalid username or password");
+
+//            if (user.IsBlocked)
+//                return new AuthResponseDto(403, "This Account has been Blocked!");
+
+//            // Generate tokens
+//            var accessToken = GenerateJwtToken(user);
+//            var refreshToken = GenerateRefreshToken();
+
+//            user.RefreshToken = refreshToken;
+//            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+
+//            await _appDbContext.SaveChangesAsync();
+
+//            return new AuthResponseDto(200, "Login Successful", accessToken, refreshToken);
+//        }
+
+//        // Refresh token
+//        public async Task<AuthResponseDto> RefreshTokenAsync(string refreshToken)
+//        {
+//            if (string.IsNullOrEmpty(refreshToken))
+//                return new AuthResponseDto(400, "Refresh token is required");
+
+//            var user = await _appDbContext.Users
+//                .SingleOrDefaultAsync(u => u.RefreshToken == refreshToken);
+
+//            if (user == null || user.RefreshTokenExpiryTime <= DateTime.UtcNow)
+//                return new AuthResponseDto(401, "Invalid or expired refresh token");
+
+//            var newAccessToken = GenerateJwtToken(user);
+//            var newRefreshToken = GenerateRefreshToken();
+
+//            user.RefreshToken = newRefreshToken;
+//            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+
+//            await _appDbContext.SaveChangesAsync();
+
+//            return new AuthResponseDto(200, "Token refreshed successfully", newAccessToken, newRefreshToken);
+//        }
+
+//        // Generate JWT Access Token
+//        private string GenerateJwtToken(User user)
+//        {
+//            var tokenHandler = new JwtSecurityTokenHandler();
+//            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]);
+
+//            var claims = new List<Claim>
+//            {
+//                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+//                new Claim(ClaimTypes.Name, user.Name),
+//                new Claim(ClaimTypes.Email, user.Email),
+//                new Claim(ClaimTypes.Role, user.Role.ToString().ToLower())
+//            };
+
+//            var tokenDescriptor = new SecurityTokenDescriptor
+//            {
+//                Subject = new ClaimsIdentity(claims),
+//                Expires = DateTime.UtcNow.AddMinutes(15),
+//                SigningCredentials = new SigningCredentials(
+//                    new SymmetricSecurityKey(key),
+//                    SecurityAlgorithms.HmacSha256Signature
+//                )
+//            };
+
+//            var token = tokenHandler.CreateToken(tokenDescriptor);
+//            return tokenHandler.WriteToken(token);
+//        }
+
+//        // Generate simple Refresh Token
+//        private string GenerateRefreshToken()
+//        {
+//            return Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
+//        }
+//    }
+//}
+
+
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using ShoeCartBackend.Data;
+using ShoeCartBackend.DTOs.AuthDTO;
 using ShoeCartBackend.Models;
 using ShoeCartBackend.Repositories.Interfaces;
 using ShoeCartBackend.Services.Interfaces;
-using ShoeCartBackend.DTOs.AuthDTO;
-using ShoeCartBackend.Data;
-using Microsoft.EntityFrameworkCore;
-using ShoeCartBackend.Repositories.Implementations;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ShoeCartBackend.Services.Implementations
 {
@@ -18,78 +171,86 @@ namespace ShoeCartBackend.Services.Implementations
         private readonly AppDbContext _appDbContext;
         private readonly IGenericRepository<User> _userRepo;
         private readonly IConfiguration _configuration;
-        public AuthService(AppDbContext appDbContext, IGenericRepository<User> userRepo,IConfiguration configuration)
+
+        public AuthService(AppDbContext appDbContext, IGenericRepository<User> userRepo,
+            IConfiguration configuration)
         {
             _appDbContext = appDbContext;
             _userRepo = userRepo;
             _configuration = configuration;
         }
 
-
-        public async Task<AuthResponseDto> RegisterAsync(RegisterRequestDto registerRequestDto)
+        public async Task<AuthResponseDto> RegisterAsync(RegisterRequestDto dto)
         {
-            try
+            dto.Email = dto.Email.ToLower().Trim();
+            dto.Name = dto.Name.Trim();
+            dto.Password = dto.Password.Trim();
+
+            var userExist = await _appDbContext.Users
+                .AnyAsync(u => u.Email == dto.Email);
+            if (userExist) return new AuthResponseDto(409, "Email already exists");
+
+            var newUser = new User
             {
-                if (registerRequestDto == null)
-                {
-                    throw new ArgumentNullException("Register request cannot be null");
-                }
-                registerRequestDto.Email = registerRequestDto.Email.ToLower().Trim();
-                registerRequestDto.Name = registerRequestDto.Name.Trim();
-                registerRequestDto.Password = registerRequestDto.Password.Trim();
-
-                var UserExist = await _appDbContext.Users
-                    .SingleOrDefaultAsync(u => u.Email == registerRequestDto.Email);
-
-                if (UserExist != null)
-                {
-                    return new AuthResponseDto(409, "Email already exists");
-                }
-                var newUser = new User
-                {
-                    Email = registerRequestDto.Email,
-                    Name = registerRequestDto.Name,
-                    PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerRequestDto.Password),
-                    Role = Roles.user
-                };
-                await _userRepo.AddAsync(newUser);
-                return new AuthResponseDto(200, "Registration Successfull");
-
-            }
-            catch (Exception ex)
-            {
-                return new AuthResponseDto(500, $"Error Adding User{ex.Message}");
-            }
+                Email = dto.Email,
+                Name = dto.Name,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
+                Role = Roles.user
+            };
+            await _userRepo.AddAsync(newUser);
+            return new AuthResponseDto(200, "Registration Successful");
         }
 
-        public async Task<AuthResponseDto> LoginAsync(LoginRequestDto loginRequestDto)
+        public async Task<AuthResponseDto> LoginAsync(LoginRequestDto dto)
         {
-            try
-            {
-                if (loginRequestDto == null)
-                {
-                    throw new ArgumentException("Login request cannot be null");
-                }
-                loginRequestDto.Email = loginRequestDto.Email.Trim().ToLower();
-                loginRequestDto.Password = loginRequestDto.Password.Trim();
+            dto.Email = dto.Email.Trim().ToLower();
+            dto.Password = dto.Password.Trim();
 
-                var user = await _appDbContext.Users
-                    .SingleOrDefaultAsync(u => u.Email == loginRequestDto.Email);
-                if (user == null || !BCrypt.Net.BCrypt.Verify(loginRequestDto.Password, user.PasswordHash))
-                {
-                    return new AuthResponseDto(401, "Invalid username or password");
-                }
-                else if (user.IsBlocked)
-                {
-                    return new AuthResponseDto(403, "This Account has been Blocked!");
-                }
-                var token = GenerateJwtToken(user);
-                return new AuthResponseDto(200, "Login Successful", token);
-            }
-            catch (Exception ex)
-            { 
-                return new AuthResponseDto(500, $"Error While Login{ex.Message}");
-            }
+            var user = await _appDbContext.Users
+                .SingleOrDefaultAsync(u => u.Email == dto.Email);
+            if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
+                return new AuthResponseDto(401, "Invalid username or password");
+
+            if (user.IsBlocked) return new AuthResponseDto(403, "This Account has been Blocked!");
+
+            // Generate tokens
+            var accessToken = GenerateJwtToken(user);
+            var refreshToken = GenerateRefreshToken();
+
+            user.RefreshToken = refreshToken;
+            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+            await _appDbContext.SaveChangesAsync();
+
+            return new AuthResponseDto(200, "Login Successful", accessToken, refreshToken);
+        }
+
+        public async Task<AuthResponseDto> RefreshTokenAsync(string refreshToken)
+        {
+            var user = await _appDbContext.Users
+                .SingleOrDefaultAsync(u => u.RefreshToken == refreshToken);
+            if (user == null || user.RefreshTokenExpiryTime <= DateTime.UtcNow)
+                return new AuthResponseDto(401, "Invalid or expired refresh token");
+
+            var newAccessToken = GenerateJwtToken(user);
+            var newRefreshToken = GenerateRefreshToken();
+
+            user.RefreshToken = newRefreshToken;
+            user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
+            await _appDbContext.SaveChangesAsync();
+
+            return new AuthResponseDto(200, "Token refreshed successfully", newAccessToken, newRefreshToken);
+        }
+
+        public async Task<bool> RevokeTokenAsync(string refreshToken)
+        {
+            var user = await _appDbContext.Users
+                .SingleOrDefaultAsync(u => u.RefreshToken == refreshToken);
+            if (user == null) return false;
+
+            user.RefreshToken = null;
+            user.RefreshTokenExpiryTime = null;
+            await _appDbContext.SaveChangesAsync();
+            return true;
         }
 
         private string GenerateJwtToken(User user)
@@ -102,19 +263,26 @@ namespace ShoeCartBackend.Services.Implementations
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Name),
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Role,user.Role.ToString().ToLower())
+                new Claim(ClaimTypes.Role, user.Role.ToString().ToLower())
             };
-            var TokenDiscriptor = new SecurityTokenDescriptor
+
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddDays(1),
+                Expires = DateTime.UtcNow.AddMinutes(15),
                 SigningCredentials = new SigningCredentials(
-                new SymmetricSecurityKey(key),
-                SecurityAlgorithms.HmacSha256Signature
-            )
+                    new SymmetricSecurityKey(key),
+                    SecurityAlgorithms.HmacSha256Signature
+                )
             };
-            var token = tokenHandler.CreateToken(TokenDiscriptor);
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
+        }
+
+        private string GenerateRefreshToken()
+        {
+            return Convert.ToBase64String(RandomNumberGenerator.GetBytes(32));
         }
     }
 }

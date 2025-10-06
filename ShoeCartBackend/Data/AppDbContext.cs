@@ -13,7 +13,7 @@ namespace ShoeCartBackend.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
-
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Wishlist> Wishlists { get; set; }
         public DbSet<User> Users { get; set; }  
         public DbSet<Category>Categories{ get; set;}
@@ -86,6 +86,7 @@ namespace ShoeCartBackend.Data
         .HasForeignKey(w => w.ProductId)
         .OnDelete(DeleteBehavior.Restrict);
 
+
             modelBuilder.Entity<Order>()
                              .Property(o => o.PaymentStatus)
                              .HasConversion<string>();
@@ -97,6 +98,7 @@ namespace ShoeCartBackend.Data
             modelBuilder.Entity<Order>()
                 .Property(o => o.OrderStatus)
                 .HasConversion<string>();
+          
         }
     }
 }

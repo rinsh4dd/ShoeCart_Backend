@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ShoeCartBackend.Services.Interfaces;
 using System.Threading.Tasks;
 
@@ -6,6 +7,7 @@ namespace ShoeCartBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy="Admin")]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
