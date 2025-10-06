@@ -1,4 +1,5 @@
 using ShoeCartBackend.DTOs;
+using ShoeCartBackend.Enums;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,5 +12,6 @@ namespace ShoeCartBackend.Services.Interfaces
         Task<OrderDto> GetOrderByIdAsync(int userId, int orderId);
         Task<IEnumerable<OrderDto>> GetAllOrdersAsync();
         Task CancelOrderAsync(int orderId);
+        Task<OrderDto> UpdateOrderStatusAsync(int orderId, OrderStatus newStatus);
     }
 }

@@ -74,7 +74,6 @@ namespace ShoeCartBackend.Services
             return _mapper.Map<OrderDto>(order);
         }
 
-        // 2️⃣ Get all orders for a specific user
         public async Task<IEnumerable<OrderDto>> GetOrdersByUserAsync(int userId)
         {
             var orders = await _context.Orders
@@ -87,7 +86,27 @@ namespace ShoeCartBackend.Services
             return _mapper.Map<IEnumerable<OrderDto>>(orders);
         }
 
-        // 3️⃣ Get specific order by id for a user
+        public async Task<OrderDto> UpdateOrderStatusAsync(int orderId, OrderStatus newStatus)
+        {
+            var order = await _context.Orders.FindAsync(orderId);
+            if (order == null)
+                throw new Exception("Order not found.");
+
+            order.OrderStatus = newStatus;
+
+            // Auto-update COD payment
+            if (order.PaymentMethod == PaymentMethod.CashOnDelivery && newStatus == OrderStatus.Delivered)
+            {
+                order.PaymentStatus = PaymentStatus.Completed;
+            }
+
+            _context.Orders.Update(order);
+            await _context.SaveChangesAsync();
+
+            // Map entity to DTO using AutoMapper
+            var orderDto = _mapper.Map<OrderDto>(order);
+            return orderDto;
+        }
         public async Task<OrderDto> GetOrderByIdAsync(int userId, int orderId)
         {
             var order = await _context.Orders

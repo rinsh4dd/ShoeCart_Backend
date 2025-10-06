@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ShoeCartBackend.Common;
 using ShoeCartBackend.DTOs;
 using ShoeCartBackend.Services.Interfaces;
 using System.Security.Claims;
@@ -63,6 +64,17 @@ namespace ShoeCartBackend.Controllers
             var orders = await _orderService.GetAllOrdersAsync();
             return Ok(orders);
         }
+
+        // ✅ POST: api/orders/admin/update-status/{orderId}
+
+        [HttpPost("admin/update-status/{orderId}")]
+        [Authorize(Policy = "Admin")]
+        public async Task<IActionResult> UpdateOrderStatus(int orderId, [FromBody] UpdateOrderStatusDto dto)
+        {
+            var updatedOrder = await _orderService.UpdateOrderStatusAsync(orderId, dto.NewStatus);
+            return Ok(new ApiResponse<OrderDto>(StatusCodes.Status200OK, "Order status updated successfully", updatedOrder));
+        }
+
 
         // ✅ POST: api/orders/cancel/{orderId}
         [HttpPost("cancel/{orderId}")]

@@ -267,6 +267,27 @@
   },
   {
     "ContainingType": "ShoeCartBackend.Controllers.OrdersController",
+    "Method": "UpdateOrderStatus",
+    "RelativePath": "api/Orders/admin/update-status/{orderId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "ShoeCartBackend.DTOs.UpdateOrderStatusDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ShoeCartBackend.Controllers.OrdersController",
     "Method": "CancelOrder",
     "RelativePath": "api/Orders/cancel/{orderId}",
     "HttpMethod": "POST",

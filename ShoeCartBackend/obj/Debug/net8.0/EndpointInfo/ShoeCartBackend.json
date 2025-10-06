@@ -443,6 +443,48 @@
         }
       }
     },
+    "/api/Orders/admin/update-status/{orderId}": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderStatusDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderStatusDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderStatusDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Orders/cancel/{orderId}": {
       "post": {
         "tags": [
@@ -955,6 +997,16 @@
         },
         "additionalProperties": false
       },
+      "OrderStatus": {
+        "enum": [
+          "Pending",
+          "Processing",
+          "Shipped",
+          "Delivered",
+          "Cancelled"
+        ],
+        "type": "string"
+      },
       "PaymentMethod": {
         "enum": [
           "CashOnDelivery",
@@ -988,6 +1040,15 @@
             "minLength": 8,
             "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&]).{8,}$",
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateOrderStatusDto": {
+        "type": "object",
+        "properties": {
+          "newStatus": {
+            "$ref": "#/components/schemas/OrderStatus"
           }
         },
         "additionalProperties": false
