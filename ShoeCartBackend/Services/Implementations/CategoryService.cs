@@ -11,7 +11,8 @@ namespace ShoeCartBackend.Services.Implementations
         {
             _categoryRepository = categoryRepository;
         }
-        public async Task<IEnumerable<CategoryDTO>> GetAllAsync()
+        public async Task<IEnumerable<CategoryDTO>> GetAllAsync() 
+        
         {
             var allCategories = await _categoryRepository.GetAllAsync();
             return allCategories.Select(c => new CategoryDTO
