@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using ShoeCartBackend.Common;
 using ShoeCartBackend.Data;
 using ShoeCartBackend.DTOs;
@@ -13,13 +14,15 @@ namespace ShoeCartBackend.Services.Implementations
     public class ProductService : IProductService
     {
         private readonly AppDbContext _context;
+        private readonly IMapper _mapper;
 
-        public ProductService(AppDbContext context)
+        public ProductService(AppDbContext context,IMapper mapper )
         {
             _context = context;
+            _mapper = mapper;
         }
 
-        //  Add Product 
+      
         public async Task<ApiResponse<ProductDTO>> AddProductAsync(CreateProductDTO dto)
         {
             // Map basic fields
@@ -166,6 +169,56 @@ namespace ShoeCartBackend.Services.Implementations
            
 
         }
+
+        public async Task<ApiResponse<IEnumerable<ProductDTO>>> GetFilteredProducts(
+      string? name = null,
+      int? categoryId = null,
+      string? brand = null,
+      decimal? minPrice = null,
+      decimal? maxPrice = null,
+      bool? inStock = null,
+      int page = 1,
+      int pageSize = 20,
+      string? sortBy = null,
+      bool descending = false)
+        {
+            var query = _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.Images)
+                .Include(p => p.AvailableSizes)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(name))
+                query = query.Where(p => p.Name.Contains(name) || p.Category.Name.Contains(name) || p.Brand.Contains(name));
+
+            if (categoryId.HasValue)
+                query = query.Where(p => p.CategoryId == categoryId.Value);
+
+            if (!string.IsNullOrWhiteSpace(brand))
+                query = query.Where(p => p.Brand.Contains(brand));
+
+            if (minPrice.HasValue)
+                query = query.Where(p => p.Price >= minPrice.Value);
+
+            if (maxPrice.HasValue)
+                query = query.Where(p => p.Price <= maxPrice.Value);
+
+            if (inStock.HasValue)
+                query = query.Where(p => p.InStock == inStock.Value);
+
+            if (!string.IsNullOrWhiteSpace(sortBy))
+                query = descending
+                    ? query.OrderByDescending(p => EF.Property<object>(p, sortBy))
+                    : query.OrderBy(p => EF.Property<object>(p, sortBy));
+
+            query = query.Skip((page - 1) * pageSize).Take(pageSize);
+
+            var products = await query.ToListAsync();
+            var productDto = _mapper.Map<IEnumerable<ProductDTO>>(products);
+
+            return new ApiResponse<IEnumerable<ProductDTO>>(200, "Filtered products successfully", productDto);
+        }
+
         private ProductDTO MapToDTO(Product p)
         {
             return new ProductDTO

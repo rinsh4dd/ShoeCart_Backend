@@ -5,17 +5,23 @@ using System.Threading.Tasks;
 
 public interface IProductService
 {
-    // Create
     Task<ApiResponse<ProductDTO>> AddProductAsync(CreateProductDTO dto);
-
-    // Read
     Task<ProductDTO?> GetProductByIdAsync(int id);
     Task<IEnumerable<ProductDTO>> GetProductsByCategoryAsync(int categoryId);
     Task<IEnumerable<ProductDTO>> GetAllProductsAsync();
-
-    // Update
     Task<ApiResponse<ProductDTO>>UpdateProductAsync(UpdateProductDTO dto);
-
-    // Delete
     Task<ApiResponse<string>> ToggleProductStatusAsync(int id);
+Task<ApiResponse<IEnumerable<ProductDTO>>> GetFilteredProducts(
+    string? name = null,
+    int? categoryId = null,
+    string? brand = null,
+    decimal? minPrice = null,
+    decimal? maxPrice = null,
+    bool? inStock = null,
+    int page = 1,
+    int pageSize = 20,
+    string? sortBy = null,
+    bool descending = false
+);
+
 }

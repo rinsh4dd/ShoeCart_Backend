@@ -499,6 +499,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ProductsController",
+    "Method": "GetfiteredProducts",
+    "RelativePath": "api/Products/filter",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ShoeCartBackend.Controllers.UsersController",
     "Method": "GetAllUsers",
     "RelativePath": "api/Users",

@@ -24,7 +24,6 @@ namespace ShoeCartBackend.Mapping
     {
         public MappingProfile()
         {
-            // Map OrderItem → OrderItemDto
             CreateMap<OrderItem, OrderItemDto>()
                 .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
                 .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Product.Price))
@@ -35,7 +34,6 @@ namespace ShoeCartBackend.Mapping
                 .ForMember(dest => dest.ImageData, opt => opt.MapFrom(src => src.ImageData))
                 .ForMember(dest => dest.ImageMimeType, opt => opt.MapFrom(src => src.ImageMimeType));
 
-            // Map Order → OrderDto
             CreateMap<Order, OrderDto>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.BillingStreet, opt => opt.MapFrom(src => src.BillingStreet))

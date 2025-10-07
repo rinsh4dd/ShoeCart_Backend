@@ -15,7 +15,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPost]
-    [Authorize(Roles = "admin")]
+    [Authorize(Policy = "Admin")]
     public async Task<IActionResult> Create([FromForm] CreateProductDTO dto)
     {
         var product = await _productService.AddProductAsync(dto);
@@ -23,7 +23,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPut]
-    [Authorize(Roles = "admin")]
+    [Authorize(Policy ="Admin")]
     public async Task<IActionResult> Update([FromForm] UpdateProductDTO dto)
     {
         var product = await _productService.UpdateProductAsync(dto);
@@ -31,7 +31,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPatch("{id}/status")]
-    [Authorize(Roles = "admin")]
+    [Authorize(Policy = "Admin")]
     public async Task<IActionResult> ToggleStatus([Range(1, int.MaxValue)] int id)
     {
         var newStatus = await _productService.ToggleProductStatusAsync(id);
@@ -67,4 +67,26 @@ public class ProductsController : ControllerBase
         var products = await _productService.GetAllProductsAsync();
         return Ok(new ApiResponse<List<ProductDTO>>(200, "All products fetched successfully", products.ToList()));
     }
+
+    [HttpGet("filter")]
+    [AllowAnonymous]
+   
+    public async Task<IActionResult> GetFilteredProducts(
+    [FromQuery] string? name,
+    [FromQuery] int? categoryId,
+    [FromQuery] string? brand,
+    [FromQuery] decimal? minPrice,
+    [FromQuery] decimal? maxPrice,
+    [FromQuery] bool? inStock,
+    [FromQuery] int page = 1,
+    [FromQuery] int pageSize = 20,
+    [FromQuery] string? sortBy = null,
+    [FromQuery] bool descending = false)
+    {
+        var result = await _productService.GetFilteredProducts(
+            name, categoryId, brand, minPrice, maxPrice, inStock, page, pageSize, sortBy, descending);
+
+        return StatusCode(result.StatusCode, result);
+    }
+
 }

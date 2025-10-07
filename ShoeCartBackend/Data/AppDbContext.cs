@@ -19,6 +19,7 @@ namespace ShoeCartBackend.Data
         public DbSet<Category>Categories{ get; set;}
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
+       
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
@@ -63,7 +64,7 @@ namespace ShoeCartBackend.Data
     modelBuilder.Entity<OrderItem>()
         .HasOne(oi => oi.Order)
         .WithMany(o => o.Items)
-        .HasForeignKey(oi => oi.OrderId)
+        .HasForeignKey(oi => oi.OrderId) 
         .OnDelete(DeleteBehavior.Cascade);
 
     // OrderItem → Product
