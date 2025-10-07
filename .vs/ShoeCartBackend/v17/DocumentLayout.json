@@ -3,12 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\services\\implementations\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\services\\implementations\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\services\\implementations\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\services\\implementations\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\common\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\common\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\services\\interfaces\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\services\\interfaces\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\middlewares\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\middlewares\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\services\\implementations\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\services\\implementations\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\services\\interfaces\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,28 +75,12 @@
       "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\dtos\\productdto\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\services\\implementations\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\services\\implementations\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\services\\implementations\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\services\\implementations\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\dtos\\orderdto\\updateorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\dtos\\orderdto\\updateorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\services\\interfaces\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\services\\interfaces\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\common\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\common\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\dtos\\orderdto\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -63,28 +91,12 @@
       "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\dtos\\orderdto\\orderitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\enums\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\enums\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\services\\implementations\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\services\\implementations\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\models\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -105,10 +117,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\dtos\\authdto\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\dtos\\authdto\\authresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\migrations\\20251006043303_addrefreshtokenfieldstouser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -157,10 +165,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\logs\\app-20251003.log||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\logs\\app-20251003.log||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\middlewares\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\middlewares\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\services\\implementations\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -229,10 +233,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\models\\productsize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\models\\productsize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|solutionrelative:shoecartbackend\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D4B7C62A-BF91-43F3-B085-6FDC31B8C9C4}|ShoeCartBackend\\ShoeCartBackend.csproj|c:\\users\\rinsh\\source\\repos\\shoecartbackend\\shoecartbackend\\controllers\\wishlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -411,84 +411,187 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Controllers\\ProductController.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\ProductController.cs*",
-              "RelativeToolTip": "ShoeCartBackend\\Controllers\\ProductController.cs*",
-              "ViewState": "AgIAADsAAAAAAAAAAAAAwE4AAAAAAAAAAAAAAA==",
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\OrderController.cs*",
+              "RelativeToolTip": "ShoeCartBackend\\Controllers\\OrderController.cs*",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAYwF0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-24T10:29:32.186Z",
+              "WhenOpened": "2025-10-03T09:38:32.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ExceptionMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Middlewares\\ExceptionMiddleware.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Middlewares\\ExceptionMiddleware.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Middlewares\\ExceptionMiddleware.cs",
+              "RelativeToolTip": "ShoeCartBackend\\Middlewares\\ExceptionMiddleware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-30T08:35:31.516Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Program.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Program.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Program.cs*",
+              "RelativeToolTip": "ShoeCartBackend\\Program.cs*",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T09:14:38.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "ShoeCartBackend\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAADwv3gAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-23T10:31:04.88Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "OrderService.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\OrderService.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Implementations\\OrderService.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\OrderService.cs*",
+              "RelativeToolTip": "ShoeCartBackend\\Services\\Implementations\\OrderService.cs*",
+              "ViewState": "AgIAAKgAAAAAAAAAAAAYwKgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-23T10:08:42.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApiResponse.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Common\\ApiResponse.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Common\\ApiResponse.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Common\\ApiResponse.cs",
+              "RelativeToolTip": "ShoeCartBackend\\Common\\ApiResponse.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAmwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T09:49:25.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IOrderService.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Interfaces\\IOrderService.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Interfaces\\IOrderService.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Interfaces\\IOrderService.cs*",
+              "RelativeToolTip": "ShoeCartBackend\\Services\\Interfaces\\IOrderService.cs*",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-23T09:08:40.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\AuthService.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Implementations\\AuthService.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\AuthService.cs",
+              "RelativeToolTip": "ShoeCartBackend\\Services\\Implementations\\AuthService.cs",
+              "ViewState": "AgIAAOYAAAAAAAAAAAAmwAABAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-23T10:26:40.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "ShoeCartBackend\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAAEIAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-22T07:42:33.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Controllers\\CategoryController.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "ShoeCartBackend\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAADwvywAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T15:26:38.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Controllers\\CartController.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\CartController.cs",
+              "RelativeToolTip": "ShoeCartBackend\\Controllers\\CartController.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAswBcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T19:18:19.972Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "ProductService.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\ProductService.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Implementations\\ProductService.cs",
               "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\ProductService.cs",
               "RelativeToolTip": "ShoeCartBackend\\Services\\Implementations\\ProductService.cs",
-              "ViewState": "AgIAAJQAAAAAAAAAAAAQwNAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAiwPEAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-23T08:54:09.505Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ProductDto.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\DTOs\\ProductDTO\\ProductDto.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\DTOs\\ProductDTO\\ProductDto.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\DTOs\\ProductDTO\\ProductDto.cs",
-              "RelativeToolTip": "ShoeCartBackend\\DTOs\\ProductDTO\\ProductDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 12,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "ShoeCartBackend\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAAwFwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-24T11:18:32.906Z",
+              "WhenOpened": "2025-09-24T10:29:32.186Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IProductRepository.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Repositories\\Interfaces\\IProductRepository.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Repositories\\Interfaces\\IProductRepository.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Repositories\\Interfaces\\IProductRepository.cs",
-              "RelativeToolTip": "ShoeCartBackend\\Repositories\\Interfaces\\IProductRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 18,
+              "Title": "CategoryService.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\CategoryService.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Implementations\\CategoryService.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\CategoryService.cs",
+              "RelativeToolTip": "ShoeCartBackend\\Services\\Implementations\\CategoryService.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAqwEIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T03:56:43.006Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-25T15:09:02.754Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ICartService.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Interfaces\\ICartService.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Interfaces\\ICartService.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Interfaces\\ICartService.cs",
-              "RelativeToolTip": "ShoeCartBackend\\Services\\Interfaces\\ICartService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-27T04:50:46.444Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IProductService.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Interfaces\\IProductService.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Interfaces\\IProductService.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Interfaces\\IProductService.cs",
-              "RelativeToolTip": "ShoeCartBackend\\Services\\Interfaces\\IProductService.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAmwBYAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-23T08:54:12.358Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 14,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Profiles\\MappingProfile.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Profiles\\MappingProfile.cs",
@@ -501,19 +604,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CategoryService.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\CategoryService.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Implementations\\CategoryService.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\CategoryService.cs",
-              "RelativeToolTip": "ShoeCartBackend\\Services\\Implementations\\CategoryService.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAqwEIAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "IProductService.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Interfaces\\IProductService.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Interfaces\\IProductService.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Interfaces\\IProductService.cs",
+              "RelativeToolTip": "ShoeCartBackend\\Services\\Interfaces\\IProductService.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAmwBYAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T15:09:02.754Z"
+              "WhenOpened": "2025-09-23T08:54:12.358Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
+              "Title": "ICartService.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Interfaces\\ICartService.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Interfaces\\ICartService.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Interfaces\\ICartService.cs",
+              "RelativeToolTip": "ShoeCartBackend\\Services\\Interfaces\\ICartService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-27T04:50:46.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IProductRepository.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Repositories\\Interfaces\\IProductRepository.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\Repositories\\Interfaces\\IProductRepository.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Repositories\\Interfaces\\IProductRepository.cs",
+              "RelativeToolTip": "ShoeCartBackend\\Repositories\\Interfaces\\IProductRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-25T03:56:43.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ProductDto.cs",
+              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\DTOs\\ProductDTO\\ProductDto.cs",
+              "RelativeDocumentMoniker": "ShoeCartBackend\\DTOs\\ProductDTO\\ProductDto.cs",
+              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\DTOs\\ProductDTO\\ProductDto.cs",
+              "RelativeToolTip": "ShoeCartBackend\\DTOs\\ProductDTO\\ProductDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-24T11:18:32.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
               "Title": "UpdateOrderDto.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\DTOs\\OrderDTO\\UpdateOrderDto.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\DTOs\\OrderDTO\\UpdateOrderDto.cs",
@@ -525,56 +668,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Controllers\\OrderController.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "ShoeCartBackend\\Controllers\\OrderController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAA8AAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T09:38:32.957Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "OrderService.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\OrderService.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Implementations\\OrderService.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\OrderService.cs",
-              "RelativeToolTip": "ShoeCartBackend\\Services\\Implementations\\OrderService.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAmwCQAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-23T10:08:42.123Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "IOrderService.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Interfaces\\IOrderService.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Interfaces\\IOrderService.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Interfaces\\IOrderService.cs",
-              "RelativeToolTip": "ShoeCartBackend\\Services\\Interfaces\\IOrderService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-23T09:08:40.791Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ApiResponse.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Common\\ApiResponse.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Common\\ApiResponse.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Common\\ApiResponse.cs",
-              "RelativeToolTip": "ShoeCartBackend\\Common\\ApiResponse.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAiwBcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T09:49:25.287Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 21,
               "Title": "OrderItemDto.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\DTOs\\OrderDTO\\OrderItemDto.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\DTOs\\OrderDTO\\OrderItemDto.cs",
@@ -586,7 +680,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 20,
               "Title": "OrderDto.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\DTOs\\OrderDTO\\OrderDto.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\DTOs\\OrderDTO\\OrderDto.cs",
@@ -598,19 +692,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Data\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Data\\AppDbContext.cs",
-              "RelativeToolTip": "ShoeCartBackend\\Data\\AppDbContext.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAswGQAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T07:42:33.178Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 22,
               "Title": "OrderStatus.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Enums\\OrderStatus.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Enums\\OrderStatus.cs",
@@ -622,7 +704,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 23,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Controllers\\UserController.cs",
@@ -634,19 +716,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "CartController.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\CartController.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Controllers\\CartController.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\CartController.cs",
-              "RelativeToolTip": "ShoeCartBackend\\Controllers\\CartController.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAswBcAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T19:18:19.972Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "RefreshToken.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Models\\RefreshToken.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Models\\RefreshToken.cs",
@@ -658,7 +728,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "IAuthService.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Interfaces\\IAuthService.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Interfaces\\IAuthService.cs",
@@ -670,19 +740,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "ShoeCartBackend\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAKIAAAAAAAAAAAAuwKAAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-23T10:31:04.88Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "UserModel.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Models\\UserModel.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Models\\UserModel.cs",
@@ -694,31 +752,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\AuthService.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Implementations\\AuthService.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\AuthService.cs",
-              "RelativeToolTip": "ShoeCartBackend\\Services\\Implementations\\AuthService.cs",
-              "ViewState": "AgIAAP8AAAAAAAAAAAAuwAABAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-23T10:26:40.527Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Program.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Program.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Program.cs",
-              "RelativeToolTip": "ShoeCartBackend\\Program.cs",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAYwIMAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-22T09:14:38.168Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "RefreshTokenRequestDto.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\DTOs\\AuthDTO\\RefreshTokenRequestDto.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\DTOs\\AuthDTO\\RefreshTokenRequestDto.cs",
@@ -730,7 +764,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 29,
               "Title": "20251006043303_AddRefreshTokenFieldsToUser.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Migrations\\20251006043303_AddRefreshTokenFieldsToUser.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Migrations\\20251006043303_AddRefreshTokenFieldsToUser.cs",
@@ -742,7 +776,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "AuthResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\DTOs\\AuthDTO\\AuthResponseDto.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\DTOs\\AuthDTO\\AuthResponseDto.cs",
@@ -754,7 +788,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 31,
               "Title": "PaymentMethod.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Enums\\PaymentMethod.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Enums\\PaymentMethod.cs",
@@ -766,7 +800,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 32,
               "Title": "PaymentStatus.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Enums\\PaymentStatus.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Enums\\PaymentStatus.cs",
@@ -778,7 +812,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 30,
               "Title": "BaseEnity.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Models\\BaseEnity.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Models\\BaseEnity.cs",
@@ -790,7 +824,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "OrderItemModel.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Models\\OrderItemModel.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Models\\OrderItemModel.cs",
@@ -802,7 +836,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "CartItems.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Models\\CartItems.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Models\\CartItems.cs",
@@ -826,7 +860,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "OrderModel.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Models\\OrderModel.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Models\\OrderModel.cs",
@@ -838,7 +872,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "CreateOrderDto.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\DTOs\\OrderDTO\\CreateOrderDto.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\DTOs\\OrderDTO\\CreateOrderDto.cs",
@@ -862,7 +896,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "ProductModel.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Models\\ProductModel.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Models\\ProductModel.cs",
@@ -874,7 +908,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "CartService.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\CartService.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Implementations\\CartService.cs",
@@ -898,7 +932,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\appsettings.json",
               "RelativeDocumentMoniker": "ShoeCartBackend\\appsettings.json",
@@ -910,7 +944,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 40,
               "Title": "app-20251003.log",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Logs\\app-20251003.log",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Logs\\app-20251003.log",
@@ -922,19 +956,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "ExceptionMiddleware.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Middlewares\\ExceptionMiddleware.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Middlewares\\ExceptionMiddleware.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Middlewares\\ExceptionMiddleware.cs",
-              "RelativeToolTip": "ShoeCartBackend\\Middlewares\\ExceptionMiddleware.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwCUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T08:35:31.516Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "UserService.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Implementations\\UserService.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Implementations\\UserService.cs",
@@ -946,7 +968,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "IGenericRepository.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Repositories\\Interfaces\\IGenericRepository.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Repositories\\Interfaces\\IGenericRepository.cs",
@@ -958,7 +980,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "IUserService.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Services\\Interfaces\\IUserService.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Services\\Interfaces\\IUserService.cs",
@@ -970,7 +992,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "LoginRequestDto.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\DTOs\\AuthDTO\\LoginRequestDto.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\DTOs\\AuthDTO\\LoginRequestDto.cs",
@@ -982,7 +1004,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "GenericRepository.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Repositories\\Implementations\\GenericRepository.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Repositories\\Implementations\\GenericRepository.cs",
@@ -994,7 +1016,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "CategoryRepository.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Repositories\\Implementations\\CategoryRepository.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Repositories\\Implementations\\CategoryRepository.cs",
@@ -1006,7 +1028,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Repositories\\Implementations\\UserRepository.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Repositories\\Implementations\\UserRepository.cs",
@@ -1018,7 +1040,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Repositories\\Interfaces\\IUserRepository.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Repositories\\Interfaces\\IUserRepository.cs",
@@ -1030,7 +1052,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "ProductRepository.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Repositories\\Implementations\\ProductRepository.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Repositories\\Implementations\\ProductRepository.cs",
@@ -1042,7 +1064,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "CreateProductDto.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\DTOs\\ProductDTO\\CreateProductDto.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\DTOs\\ProductDTO\\CreateProductDto.cs",
@@ -1054,7 +1076,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "AddToCartDto.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\DTOs\\CartDTO\\AddToCartDto.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\DTOs\\CartDTO\\AddToCartDto.cs",
@@ -1066,7 +1088,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": "UpdateQuantityCart.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\DTOs\\CartDTO\\UpdateQuantityCart.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\DTOs\\CartDTO\\UpdateQuantityCart.cs",
@@ -1078,7 +1100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 53,
               "Title": "CartModel.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Models\\CartModel.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Models\\CartModel.cs",
@@ -1090,7 +1112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 54,
               "Title": "UpdateProductdto.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\DTOs\\ProductDTO\\UpdateProductdto.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\DTOs\\ProductDTO\\UpdateProductdto.cs",
@@ -1102,7 +1124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 55,
               "Title": "GeneralAutoMapper.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\AutoMapper\\GeneralAutoMapper.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\AutoMapper\\GeneralAutoMapper.cs",
@@ -1150,7 +1172,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 56,
               "Title": "ProductImagesModel.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Models\\ProductImagesModel.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Models\\ProductImagesModel.cs",
@@ -1162,7 +1184,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 57,
               "Title": "ProductSize.cs",
               "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Models\\ProductSize.cs",
               "RelativeDocumentMoniker": "ShoeCartBackend\\Models\\ProductSize.cs",
@@ -1171,18 +1193,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-22T07:31:35.795Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 57,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "ShoeCartBackend\\Controllers\\CategoryController.cs",
-              "ToolTip": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "ShoeCartBackend\\Controllers\\CategoryController.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAADwvywAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T15:26:38.011Z"
             },
             {
               "$type": "Document",

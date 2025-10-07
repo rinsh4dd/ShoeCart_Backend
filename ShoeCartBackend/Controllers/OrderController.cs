@@ -84,5 +84,13 @@ namespace ShoeCartBackend.Controllers
             await _orderService.CancelOrderAsync(orderId);
             return Ok(new { message = "Order cancelled successfully." });
         }
+
+        [HttpGet("admin/dashboard")]
+        [Authorize(Policy = "Admin")]
+        public async Task<IActionResult> GetDashboardStats([FromQuery] string type = "all")
+        {
+            var response = await _orderService.GetDashboardStatsAsync(type);
+            return StatusCode(response.StatusCode, response);
+        }
     }
 }

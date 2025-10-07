@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using ShoeCartBackend.Common;
 using ShoeCartBackend.Data;
 using ShoeCartBackend.DTOs;
 using ShoeCartBackend.Enums;
@@ -142,5 +143,44 @@ namespace ShoeCartBackend.Services
             order.OrderStatus = OrderStatus.Cancelled;
             await _context.SaveChangesAsync();
         }
+
+        public async Task<ApiResponse<object>> GetDashboardStatsAsync(string type = "all")
+        {
+            // 1️⃣ Get all orders including items
+            var orders = await _context.Orders
+                .Include(o => o.Items)
+                .ToListAsync();
+
+            // 2️⃣ Filter only delivered orders
+            var deliveredOrders = orders
+                .Where(o => o.OrderStatus == OrderStatus.Delivered)
+                .ToList();
+
+            if (!deliveredOrders.Any())
+                return new ApiResponse<object>(404, "No delivered orders found");
+
+            // 3️⃣ Calculate metrics
+            var totalRevenue = deliveredOrders.Sum(o => o.TotalAmount);
+            var totalProducts = deliveredOrders.Sum(o => o.Items.Sum(i => i.Quantity));
+            var deliveredCount = deliveredOrders.Count;
+
+            // 4️⃣ Prepare response based on 'type' query
+            object data = type.ToLower() switch
+            {
+                "revenue" => new { TotalRevenue = totalRevenue },
+                "products" => new { TotalProductsPurchased = totalProducts },
+                "orders" => new { DeliveredOrdersCount = deliveredCount },
+                _ => new
+                {
+                    TotalRevenue = totalRevenue,
+                    TotalProductsPurchased = totalProducts,
+                    DeliveredOrdersCount = deliveredCount
+                }
+            };
+
+            // 5️⃣ Return ApiResponse
+            return new ApiResponse<object>(200, "Dashboard stats fetched successfully", data);
+        }
+
     }
 }

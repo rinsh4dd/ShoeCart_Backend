@@ -15,12 +15,11 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// serilog configuration
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
     .WriteTo.Console()
     .WriteTo.File("Logs/app-.log",
-    rollingInterval: RollingInterval.Day) // daily logs
+    rollingInterval: RollingInterval.Day) 
     .CreateLogger();
 
 builder.Host.UseSerilog();//replaced .net logger with siri logger
@@ -29,16 +28,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
-// automapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-// repositories
+ 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
-// services
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
@@ -70,7 +67,6 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-//auth policies
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("Admin", policy => policy.RequireRole("admin"));
@@ -78,7 +74,6 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("Customer", policy => policy.RequireRole("user"));
 });
 
-//swagger
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -90,7 +85,6 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "ShoeCartBackend API", Version = "v1" });
 
-    // JWT Auth in Swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         In = ParameterLocation.Header,
@@ -118,14 +112,13 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// pipeline configuration
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseMiddleware<ExceptionMiddleware>(); // global exception handling
+app.UseMiddleware<ExceptionMiddleware>(); 
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
@@ -133,7 +126,6 @@ app.MapControllers();
 
 
 
-//handling unexpected app crash
 try
 {
     Log.Information("Starting up ShoeCartBackend...");
