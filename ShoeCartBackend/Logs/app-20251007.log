@@ -1,0 +1,20 @@
+2025-10-07 11:28:11.917 +05:30 [INF] Starting up ShoeCartBackend...
+2025-10-07 11:28:12.037 +05:30 [INF] User profile is available. Using 'C:\Users\rinsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-07 11:28:12.474 +05:30 [INF] Now listening on: http://localhost:58477
+2025-10-07 11:28:12.477 +05:30 [INF] Now listening on: https://localhost:58476
+2025-10-07 11:28:12.582 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-07 11:28:12.585 +05:30 [INF] Hosting environment: Development
+2025-10-07 11:28:12.586 +05:30 [INF] Content root path: C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend
+2025-10-07 11:28:13.734 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:58477/ - null null
+2025-10-07 11:28:14.068 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:58477/ - 307 0 null 350.404ms
+2025-10-07 11:28:14.195 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/ - null null
+2025-10-07 11:28:14.277 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/ - 404 0 null 81.6163ms
+2025-10-07 11:28:14.283 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:58476/, Response status code: 404
+2025-10-07 11:28:42.471 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/index.html - null null
+2025-10-07 11:28:42.866 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/index.html - 200 null text/html;charset=utf-8 395.5716ms
+2025-10-07 11:28:43.509 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-07 11:28:43.513 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_vs/browserLink - null null
+2025-10-07 11:28:43.523 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 14.279ms
+2025-10-07 11:28:43.595 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_vs/browserLink - 200 null text/javascript; charset=UTF-8 82.5071ms
+2025-10-07 11:28:43.648 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-07 11:28:43.669 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.1149ms
