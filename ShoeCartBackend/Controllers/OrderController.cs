@@ -20,7 +20,6 @@ namespace ShoeCartBackend.Controllers
             _orderService = orderService;
         }
 
-        // ✅ POST: api/orders/checkout
         [HttpPost("checkout")]
         [Authorize(Policy = "Customer")]
         public async Task<IActionResult> CreateOrder([FromBody] CreateOrderDto dto)
@@ -36,7 +35,6 @@ namespace ShoeCartBackend.Controllers
             return Ok(order);
         }
 
-        // ✅ GET: api/orders
         [HttpGet]
         [Authorize(Policy = "Customer")]
         public async Task<IActionResult> GetMyOrders()
@@ -46,7 +44,6 @@ namespace ShoeCartBackend.Controllers
             return Ok(orders);
         }
 
-        // ✅ GET: api/orders/{orderId}
         [HttpGet("{orderId}")]
         [Authorize(Policy = "Customer")]
         public async Task<IActionResult> GetOrderById(int orderId)
@@ -56,7 +53,6 @@ namespace ShoeCartBackend.Controllers
             return Ok(order);
         }
 
-        // ✅ GET: api/orders/admin/all
         [HttpGet("admin/all")]
         [Authorize(Policy = "Admin")]
         public async Task<IActionResult> GetAllOrders()
@@ -65,7 +61,6 @@ namespace ShoeCartBackend.Controllers
             return Ok(orders);
         }
 
-        // ✅ POST: api/orders/admin/update-status/{orderId}
 
         [HttpPost("admin/update-status/{orderId}")]
         [Authorize(Policy = "Admin")]
@@ -76,7 +71,6 @@ namespace ShoeCartBackend.Controllers
         }
 
 
-        // ✅ POST: api/orders/cancel/{orderId}
         [HttpPost("cancel/{orderId}")]
         [Authorize(Policy = "Customer")]
         public async Task<IActionResult> CancelOrder(int orderId)
