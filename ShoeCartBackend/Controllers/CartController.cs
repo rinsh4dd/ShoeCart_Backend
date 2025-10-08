@@ -17,14 +17,13 @@ public class CartController : ControllerBase
     }
 
     [HttpGet("test-error")]
-    [AllowAnonymous] // <--- bypass JWT auth for testing
+    [AllowAnonymous] 
 
     public IActionResult TestError()
     {
         throw new Exception("Test exception from controller!");
     }
 
-    // POST: api/cart/add
     [Authorize(Policy = "Customer")]
     [HttpPost]
     public async Task<IActionResult> Add([FromBody] AddToCartDTO dto)
@@ -34,7 +33,6 @@ public class CartController : ControllerBase
         return StatusCode(response.StatusCode, response);
     }
 
-    // GET: api/cart/{userId?}
     [Authorize(Policy = "Admin")]
     [HttpGet("{userId?}")]
     public async Task<IActionResult> Get(int userId )
@@ -51,24 +49,15 @@ public class CartController : ControllerBase
         return StatusCode(response.StatusCode, response);
     }
 
-    // PUT: api/cart/{cartItemId}
     [Authorize(Policy = "Customer")]
     [HttpPut("{cartItemId}")]
     public async Task<IActionResult> UpdateItem(int cartItemId, [FromBody] UpdateQuantityDTO dto)
     {
         int userId = GetUserId();
-        //string role = User.FindFirst("role")?.Value ?? "";
-
-        //if (role.ToLower() != "customer")
-        //{
-        //    return StatusCode(403, new { StatusCode = 403, Message = "Only customers can update cart items." });
-        //}
-
         var response = await _cartService.UpdateCartItemAsync(userId, cartItemId, dto.Quantity);
         return StatusCode(response.StatusCode, response);
     }
 
-    // DELETE: api/cart/{cartItemId}
     [Authorize(Policy = "Customer")]
     [HttpDelete("{cartItemId}")]
     public async Task<IActionResult> DeleteItem(int cartItemId)
