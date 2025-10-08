@@ -7,9 +7,7 @@ using ShoeCartBackend.Enums;
 using ShoeCartBackend.Models;
 using ShoeCartBackend.Services.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace ShoeCartBackend.Services
 {
@@ -95,7 +93,6 @@ namespace ShoeCartBackend.Services
 
             order.OrderStatus = newStatus;
 
-            // Auto-update COD payment
             if (order.PaymentMethod == PaymentMethod.CashOnDelivery && newStatus == OrderStatus.Delivered)
             {
                 order.PaymentStatus = PaymentStatus.Completed;
@@ -104,7 +101,6 @@ namespace ShoeCartBackend.Services
             _context.Orders.Update(order);
             await _context.SaveChangesAsync();
 
-            // Map entity to DTO using AutoMapper
             var orderDto = _mapper.Map<OrderDto>(order);
             return orderDto;
         }
@@ -121,7 +117,6 @@ namespace ShoeCartBackend.Services
             return _mapper.Map<OrderDto>(order);
         }
 
-        // 4️⃣ Get all orders (admin)
         public async Task<IEnumerable<OrderDto>> GetAllOrdersAsync()
         {
             var orders = await _context.Orders
@@ -146,12 +141,10 @@ namespace ShoeCartBackend.Services
 
         public async Task<ApiResponse<object>> GetDashboardStatsAsync(string type = "all")
         {
-            // 1️⃣ Get all orders including items
             var orders = await _context.Orders
                 .Include(o => o.Items)
                 .ToListAsync();
 
-            // 2️⃣ Filter only delivered orders
             var deliveredOrders = orders
                 .Where(o => o.OrderStatus == OrderStatus.Delivered)
                 .ToList();
@@ -159,12 +152,10 @@ namespace ShoeCartBackend.Services
             if (!deliveredOrders.Any())
                 return new ApiResponse<object>(404, "No delivered orders found");
 
-            // 3️⃣ Calculate metrics
             var totalRevenue = deliveredOrders.Sum(o => o.TotalAmount);
             var totalProducts = deliveredOrders.Sum(o => o.Items.Sum(i => i.Quantity));
             var deliveredCount = deliveredOrders.Count;
 
-            // 4️⃣ Prepare response based on 'type' query
             object data = type.ToLower() switch
             {
                 "revenue" => new { TotalRevenue = totalRevenue },
@@ -178,7 +169,6 @@ namespace ShoeCartBackend.Services
                 }
             };
 
-            // 5️⃣ Return ApiResponse
             return new ApiResponse<object>(200, "Dashboard stats fetched successfully", data);
         }
 

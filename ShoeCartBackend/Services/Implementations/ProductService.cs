@@ -190,35 +190,26 @@ namespace ShoeCartBackend.Services.Implementations
 
             if (!string.IsNullOrWhiteSpace(name))
                 query = query.Where(p => p.Name.Contains(name) || p.Category.Name.Contains(name) || p.Brand.Contains(name));
-
             if (categoryId.HasValue)
                 query = query.Where(p => p.CategoryId == categoryId.Value);
-
             if (!string.IsNullOrWhiteSpace(brand))
                 query = query.Where(p => p.Brand.Contains(brand));
-
             if (minPrice.HasValue)
                 query = query.Where(p => p.Price >= minPrice.Value);
-
             if (maxPrice.HasValue)
                 query = query.Where(p => p.Price <= maxPrice.Value);
-
             if (inStock.HasValue)
                 query = query.Where(p => p.InStock == inStock.Value);
-
             if (!string.IsNullOrWhiteSpace(sortBy))
                 query = descending
                     ? query.OrderByDescending(p => EF.Property<object>(p, sortBy))
                     : query.OrderBy(p => EF.Property<object>(p, sortBy));
 
             query = query.Skip((page - 1) * pageSize).Take(pageSize);
-
             var products = await query.ToListAsync();
             var productDto = _mapper.Map<IEnumerable<ProductDTO>>(products);
-
             return new ApiResponse<IEnumerable<ProductDTO>>(200, "Filtered products successfully", productDto);
         }
-
         private ProductDTO MapToDTO(Product p)
         {
             return new ProductDTO
