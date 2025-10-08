@@ -16,7 +16,7 @@ public class ExceptionMiddleware
     {
         try
         {
-            await _next(context); // go to next middleware/controller
+            await _next(context);
         }
         catch (Exception ex)
         {

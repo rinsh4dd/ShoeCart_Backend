@@ -25,6 +25,6 @@ namespace ShoeCartBackend.Services.Interfaces
         Task<AuthResponseDto> RegisterAsync(RegisterRequestDto registerRequestDto);
         Task<AuthResponseDto> LoginAsync(LoginRequestDto loginRequestDto);
         Task<AuthResponseDto> RefreshTokenAsync(string refreshToken);
-        Task<bool> RevokeTokenAsync(string refreshToken); // logout/revoke
+        Task<bool> RevokeTokenAsync(string refreshToken); 
     }
 }

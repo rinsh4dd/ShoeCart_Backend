@@ -11,13 +11,11 @@ namespace ShoeCartBackend.Services
     {
         private readonly IGenericRepository<User> _genericRepo;
         private readonly IUserRepository _userRepo;
-
         public UserService(IGenericRepository<User> genericRepo, IUserRepository userRepo)
         {
             _genericRepo = genericRepo;
             _userRepo = userRepo;
         }
-
         public async Task<ApiResponse<IEnumerable<User>>> GetAllUsersAsync()
         {
             var users = await _genericRepo.GetAllAsync();
@@ -32,7 +30,6 @@ namespace ShoeCartBackend.Services
 
             return new ApiResponse<User>(200, "User retrieved successfully", user);
         }
-
         public async Task<ApiResponse<string>> BlockUnblockUserAsync(int id)
         {
             var user = await _genericRepo.GetByIdAsync(id);
@@ -42,7 +39,6 @@ namespace ShoeCartBackend.Services
             await _userRepo.BlockUnblockUserAsync(id);
             return new ApiResponse<string>(200, $"User {(user.IsBlocked ? "unblocked" : "blocked")} successfully");
         }
-
         public async Task<ApiResponse<string>> SoftDeleteUserAsync(int id)
         {
             var user = await _genericRepo.GetByIdAsync(id);

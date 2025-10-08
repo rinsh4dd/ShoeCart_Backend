@@ -41,17 +41,14 @@ namespace ShoeCartBackend.Controllers
             var result = await _categoryService.AddAsync(dto);
             return Ok(new ApiResponse<CategoryDTO>(201, "Category created", result));
         }
-
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, CategoryDTO dto)
         {
             var result = await _categoryService.UpdateAsync(id, dto);
             if (result == null)
                 return NotFound(new ApiResponse<string>(404, "Category not found"));
-
             return Ok(new ApiResponse<CategoryDTO>(200, "Category updated", result));
         }
-
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

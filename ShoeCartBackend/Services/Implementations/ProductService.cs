@@ -15,17 +15,13 @@ namespace ShoeCartBackend.Services.Implementations
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
-
         public ProductService(AppDbContext context,IMapper mapper )
         {
             _context = context;
             _mapper = mapper;
-        }
-
-      
+        }   
         public async Task<ApiResponse<ProductDTO>> AddProductAsync(CreateProductDTO dto)
         {
-            // Map basic fields
             var product = new Product
             {
                 Name = dto.Name,
@@ -84,14 +80,12 @@ namespace ShoeCartBackend.Services.Implementations
             if (dto.IsActive.HasValue)
                 product.IsActive = dto.IsActive.Value;
 
-            // Update sizes if provided
             if (dto.AvailableSizes != null && dto.AvailableSizes.Any())
             {
                 product.AvailableSizes.Clear();
                 product.AvailableSizes = dto.AvailableSizes.Select(s => new ProductSize { Size = s }).ToList();
             }
 
-            // Add new images if any
             if (dto.NewImages != null && dto.NewImages.Any())
             {
                 foreach (var file in dto.NewImages)
@@ -105,11 +99,9 @@ namespace ShoeCartBackend.Services.Implementations
                     });
                 }
             }
-
             await _context.SaveChangesAsync();
             return new ApiResponse<ProductDTO>(200,"Product Updated Successfully");
         }
-
         public async Task<ProductDTO?> GetProductByIdAsync(int id)
         {
             var product = await _context.Products
@@ -121,7 +113,6 @@ namespace ShoeCartBackend.Services.Implementations
             if (product == null) return null;
             return MapToDTO(product);
         }
-
         public async Task<IEnumerable<ProductDTO>> GetProductsByCategoryAsync(int categoryId)
         {
             var products = await _context.Products
@@ -153,11 +144,9 @@ namespace ShoeCartBackend.Services.Implementations
             {
                 return new ApiResponse<string>(404, "Product not found");
             }
-            product.IsActive = !product.IsActive;
-           
+            product.IsActive = !product.IsActive;           
             product.IsDeleted = !product.IsDeleted;
             await _context.SaveChangesAsync();
-
             if (product.IsActive==true && product.IsDeleted == false)
             {
                 return new ApiResponse<string>(200, "Product Activated Successfully");
@@ -166,8 +155,6 @@ namespace ShoeCartBackend.Services.Implementations
             {
                 return new ApiResponse<string>(200, "Product Deactivated Successfully");
             }
-           
-
         }
 
         public async Task<ApiResponse<IEnumerable<ProductDTO>>> GetFilteredProducts(

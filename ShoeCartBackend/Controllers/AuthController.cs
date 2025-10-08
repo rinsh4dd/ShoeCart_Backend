@@ -33,8 +33,7 @@ namespace ShoeCartBackend.Controllers
             var result = await _authService.LoginAsync(dto);
             if (result.StatusCode != 200) return StatusCode(result.StatusCode, result);
 
-            // Set cookies
-            SetTokenCookies(result.AccessToken, result.RefreshToken);
+\            SetTokenCookies(result.AccessToken, result.RefreshToken);
 
             return Ok(new
             {
