@@ -38,7 +38,7 @@ public class ProductsController : ControllerBase
         return StatusCode(newStatus.StatusCode, newStatus);
     }
 
-    [HttpGet("category/{categoryId}")]
+    [HttpGet("ByCategory/{categoryId}")]
     [AllowAnonymous]
     public async Task<IActionResult> GetByCategory(int categoryId)
     {

@@ -22,7 +22,7 @@ namespace ShoeCartBackend.Repositories
             {
                 user.IsBlocked = !user.IsBlocked;
                 user.ModifiedOn = DateTime.UtcNow;
-                _context.Users.Update(user);
+                _upontext.Users.Update(user);
                 await _context.SaveChangesAsync();
             }
         }

@@ -4,6 +4,7 @@ using ShoeCartBackend.Common;
 using ShoeCartBackend.Data;
 using ShoeCartBackend.DTOs;
 using ShoeCartBackend.Models;
+using ShoeCartBackend.Repositories.Interfaces;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,10 +16,12 @@ namespace ShoeCartBackend.Services.Implementations
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
-        public ProductService(AppDbContext context,IMapper mapper )
+        private readonly IGenericRepository<Product> _repository;
+        public ProductService(AppDbContext context,IMapper mapper,IGenericRepository<Product> repository )
         {
             _context = context;
             _mapper = mapper;
+            _repository = repository;
         }   
         public async Task<ApiResponse<ProductDTO>> AddProductAsync(CreateProductDTO dto)
         {
@@ -48,7 +51,8 @@ namespace ShoeCartBackend.Services.Implementations
                 });
             }
 
-            _context.Products.Add(product);
+            //_context.Products.Add(product);
+            _repository.AddAsync(product);
             var isAdded =  await _context.SaveChangesAsync()>0;
 
             return isAdded? new ApiResponse<ProductDTO>(200,"Product Added Successfully"):
@@ -131,7 +135,8 @@ namespace ShoeCartBackend.Services.Implementations
                 .Include(p => p.AvailableSizes)
                 .Include(p => p.Images)
                 .Include(p => p.Category)
-                .Where(p => p.IsActive)
+                .Where(p => p.IsActive && p.IsDeleted==false)
+                
 
                 .ToListAsync();
 
@@ -215,7 +220,8 @@ namespace ShoeCartBackend.Services.Implementations
                 CategoryName = p.Category?.Name,
                 AvailableSizes = p.AvailableSizes.Select(s => s.Size).ToList(),
                 ImageBase64 = p.Images
-                    .Select(i => $"data:{i.ImageMimeType};base64,{Convert.ToBase64String(i.ImageData)}")
+                    .Select(i => $"data:{i.ImageMimeType};base64," +
+                    $"{Convert.ToBase64String(i.ImageData)}")
                     .ToList()
             };
         }
