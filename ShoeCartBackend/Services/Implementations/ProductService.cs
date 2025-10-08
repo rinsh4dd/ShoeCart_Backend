@@ -131,6 +131,8 @@ namespace ShoeCartBackend.Services.Implementations
                 .Include(p => p.AvailableSizes)
                 .Include(p => p.Images)
                 .Include(p => p.Category)
+                .Where(p => p.IsActive)
+
                 .ToListAsync();
 
             return products.Select(MapToDTO).ToList();

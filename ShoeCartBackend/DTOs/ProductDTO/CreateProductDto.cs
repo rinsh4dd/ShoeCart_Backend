@@ -29,4 +29,6 @@ public class CreateProductDTO
     [Required(ErrorMessage = "At least one image is required")]
     [MinLength(1, ErrorMessage = "At least one image is required")]
     public List<IFormFile> Images { get; set; } = new List<IFormFile>();
+    public int? MainImageIndex { get; set; } = 0;
+
 }
