@@ -5,6 +5,7 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using ShoeCartBackend.Common;
 using ShoeCartBackend.Data;
+using ShoeCartBackend.Extensions;
 using ShoeCartBackend.Repositories;
 using ShoeCartBackend.Repositories.Implementations;
 using ShoeCartBackend.Repositories.Interfaces;
@@ -22,7 +23,7 @@ Log.Logger = new LoggerConfiguration()
     rollingInterval: RollingInterval.Day) 
     .CreateLogger();
 
-builder.Host.UseSerilog();//replaced .net logger with siri logger
+builder.Host.UseSerilog();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
@@ -30,19 +31,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
- 
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<ICartService, CartService>();
-builder.Services.AddScoped<IWishlistService, WishlistService>();
-builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddRepositories();
+builder.Services.AddServices();
 
 //jwt authentication
 var jwtSecret = builder.Configuration["Jwt:Secret"];
@@ -128,7 +118,14 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseReDoc(options =>
+    {
+        options.RoutePrefix = "redoc";                 
+        options.SpecUrl = "/swagger/v1/swagger.json";  
+        options.DocumentTitle = "ShoeCart API Documentation";
+    });
 }
+app.MapGet("/", () => Results.Redirect("/swagger"));
 
 app.UseMiddleware<ExceptionMiddleware>(); 
 app.UseHttpsRedirection();

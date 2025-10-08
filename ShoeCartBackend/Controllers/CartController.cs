@@ -16,14 +16,6 @@ public class CartController : ControllerBase
         _cartService = cartService;
     }
 
-    [HttpGet("test-error")]
-    [AllowAnonymous] 
-
-    public IActionResult TestError()
-    {
-        throw new Exception("Test exception from controller!");
-    }
-
     [Authorize(Policy = "Customer")]
     [HttpPost]
     public async Task<IActionResult> Add([FromBody] AddToCartDTO dto)

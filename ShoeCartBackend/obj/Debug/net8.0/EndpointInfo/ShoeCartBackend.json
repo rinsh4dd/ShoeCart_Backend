@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.0.4",
   "info": {
     "title": "ShoeCartBackend API",
     "version": "v1"
@@ -83,18 +83,6 @@
       "post": {
         "tags": [
           "Auth"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Cart/test-error": {
-      "get": {
-        "tags": [
-          "Cart"
         ],
         "responses": {
           "200": {
@@ -590,6 +578,10 @@
                       "type": "string",
                       "format": "binary"
                     }
+                  },
+                  "MainImageIndex": {
+                    "type": "integer",
+                    "format": "int32"
                   }
                 }
               },
@@ -619,6 +611,9 @@
                   "style": "form"
                 },
                 "Images": {
+                  "style": "form"
+                },
+                "MainImageIndex": {
                   "style": "form"
                 }
               }
@@ -773,7 +768,7 @@
         }
       }
     },
-    "/api/Products/category/{categoryId}": {
+    "/api/Products/ByCategory/{categoryId}": {
       "get": {
         "tags": [
           "Products"
@@ -903,6 +898,18 @@
               "default": false
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "ShoeCartBackend"
         ],
         "responses": {
           "200": {
