@@ -1,0 +1,161 @@
+2025-10-09 09:40:29.915 +05:30 [INF] Starting up ShoeCartBackend...
+2025-10-09 09:40:30.015 +05:30 [INF] User profile is available. Using 'C:\Users\rinsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-09 09:40:30.189 +05:30 [INF] Now listening on: http://localhost:58477
+2025-10-09 09:40:30.191 +05:30 [INF] Now listening on: https://localhost:58476
+2025-10-09 09:40:30.196 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-09 09:40:30.199 +05:30 [INF] Hosting environment: Development
+2025-10-09 09:40:30.201 +05:30 [INF] Content root path: C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend
+2025-10-09 09:40:35.995 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/index.html - null null
+2025-10-09 09:40:36.204 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/index.html - 200 null text/html;charset=utf-8 211.6062ms
+2025-10-09 09:40:36.694 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-09 09:40:36.982 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/ - null null
+2025-10-09 09:40:37.123 +05:30 [INF] Executing endpoint 'HTTP: GET /'
+2025-10-09 09:40:37.149 +05:30 [INF] Executing RedirectResult, redirecting to /swagger.
+2025-10-09 09:40:37.149 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 454.4161ms
+2025-10-09 09:40:37.159 +05:30 [INF] Executed endpoint 'HTTP: GET /'
+2025-10-09 09:40:37.175 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/ - 302 0 null 192.8338ms
+2025-10-09 09:40:37.263 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-09 09:40:37.267 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_vs/browserLink - null null
+2025-10-09 09:40:37.290 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - 404 0 null 26.9588ms
+2025-10-09 09:40:37.318 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_vs/browserLink - 404 0 null 51.3488ms
+2025-10-09 09:40:37.331 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js, Response status code: 404
+2025-10-09 09:40:37.363 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:58476/_vs/browserLink, Response status code: 404
+2025-10-09 09:40:37.463 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-09 09:40:37.516 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 53.3007ms
+2025-10-09 09:40:38.273 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-09 09:40:38.283 +05:30 [INF] CORS policy execution successful.
+2025-10-09 09:40:38.286 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:38.322 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-09 09:40:39.196 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'CartItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-09 09:40:39.198 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Product'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-10-09 09:40:39.510 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-09 09:40:39.539 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 28.9237ms
+2025-10-09 09:40:39.874 +05:30 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-10-09 09:40:40.822 +05:30 [INF] Executed DbCommand (389ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-09 09:40:41.544 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-09 09:40:41.611 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-09 09:40:41.626 +05:30 [INF] CORS policy execution successful.
+2025-10-09 09:40:41.631 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:41.639 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-09 09:40:41.652 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 3320.0457ms
+2025-10-09 09:40:41.655 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:41.674 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 3401.7303ms
+2025-10-09 09:40:41.758 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-09 09:40:41.825 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-09 09:40:41.832 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-09 09:40:41.841 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 194.995ms
+2025-10-09 09:40:41.843 +05:30 [INF] CORS policy execution successful.
+2025-10-09 09:40:41.846 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:41.848 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:41.849 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 237.9411ms
+2025-10-09 09:40:41.851 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-09 09:40:41.902 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-09 09:40:41.942 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-09 09:40:41.948 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-09 09:40:41.954 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 94.8411ms
+2025-10-09 09:40:41.956 +05:30 [INF] CORS policy execution successful.
+2025-10-09 09:40:41.958 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:41.960 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:41.962 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 130.365ms
+2025-10-09 09:40:41.964 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-09 09:40:41.991 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-09 09:40:42.035 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-09 09:40:42.040 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-09 09:40:42.045 +05:30 [INF] CORS policy execution successful.
+2025-10-09 09:40:42.048 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:42.050 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 76.7036ms
+2025-10-09 09:40:42.051 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-09 09:40:42.053 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:42.058 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 109.8066ms
+2025-10-09 09:40:42.059 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-09 09:40:42.099 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-09 09:40:42.105 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-09 09:40:42.119 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 62.4448ms
+2025-10-09 09:40:42.125 +05:30 [INF] CORS policy execution successful.
+2025-10-09 09:40:42.128 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:42.131 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:42.132 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 92.0906ms
+2025-10-09 09:40:42.133 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-09 09:40:42.154 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-09 09:40:42.189 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-09 09:40:42.198 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-09 09:40:42.203 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 61.9605ms
+2025-10-09 09:40:42.204 +05:30 [INF] CORS policy execution successful.
+2025-10-09 09:40:42.206 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:42.207 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:42.209 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 103.3447ms
+2025-10-09 09:40:42.210 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-09 09:40:42.228 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-09 09:40:42.258 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-09 09:40:42.264 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/api/products - null null
+2025-10-09 09:40:42.271 +05:30 [INF] CORS policy execution successful.
+2025-10-09 09:40:42.273 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 56.2537ms
+2025-10-09 09:40:42.274 +05:30 [INF] Executing endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:42.276 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:42.278 +05:30 [INF] Route matched with {action = "GetAll", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller ProductsController (ShoeCartBackend).
+2025-10-09 09:40:42.279 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 81.0373ms
+2025-10-09 09:40:42.291 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Brand], [p].[CategoryId], [p].[CreatedBy], [p].[CreatedOn], [p].[CurrentStock], [p].[DeletedBy], [p].[DeletedOn], [p].[Description], [p].[InStock], [p].[IsActive], [p].[IsDeleted], [p].[ModifiedBy], [p].[ModifiedOn], [p].[Name], [p].[Price], [p].[SpecialOffer], [c].[Id], [p0].[Id], [p0].[CreatedBy], [p0].[CreatedOn], [p0].[DeletedBy], [p0].[DeletedOn], [p0].[IsDeleted], [p0].[ModifiedBy], [p0].[ModifiedOn], [p0].[ProductId], [p0].[Size], [p1].[Id], [p1].[CreatedBy], [p1].[CreatedOn], [p1].[DeletedBy], [p1].[DeletedOn], [p1].[ImageData], [p1].[ImageMimeType], [p1].[IsDeleted], [p1].[IsMain], [p1].[ModifiedBy], [p1].[ModifiedOn], [p1].[ProductId], [c].[CreatedBy], [c].[CreatedOn], [c].[DeletedBy], [c].[DeletedOn], [c].[IsDeleted], [c].[ModifiedBy], [c].[ModifiedOn], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[Id]
+LEFT JOIN [ProductSize] AS [p0] ON [p].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductImage] AS [p1] ON [p].[Id] = [p1].[ProductId]
+WHERE [p].[IsActive] = CAST(1 AS bit) AND [p].[IsDeleted] = CAST(0 AS bit)
+ORDER BY [p].[Id], [c].[Id], [p0].[Id]
+2025-10-09 09:40:42.342 +05:30 [INF] Executing OkObjectResult, writing value of type 'ShoeCartBackend.Common.ApiResponse`1[[System.Collections.Generic.List`1[[ProductDTO, ShoeCartBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-09 09:40:42.377 +05:30 [INF] Executed action ProductsController.GetAll (ShoeCartBackend) in 95.3618ms
+2025-10-09 09:40:42.391 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
+2025-10-09 09:40:42.398 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 133.7403ms
+2025-10-09 09:40:46.995 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-09 09:40:47.018 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 23.3509ms
+2025-10-09 09:41:04.739 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-09 09:41:04.747 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 7.7895ms

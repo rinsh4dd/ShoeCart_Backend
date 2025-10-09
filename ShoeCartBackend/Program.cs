@@ -127,7 +127,7 @@ if (app.Environment.IsDevelopment())
 }
 app.MapGet("/", () => Results.Redirect("/swagger"));
 
-app.UseMiddleware<ExceptionMiddleware>(); 
+// app.UseMiddleware<ExceptionMiddleware>(); 
 app.UseHttpsRedirection();
 app.UseCors("AllowReactApp");
 
