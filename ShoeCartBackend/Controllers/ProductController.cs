@@ -61,8 +61,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
-    [AllowAnonymous]
-    public async Task<IActionResult> GetAll()
+    [AllowAnonymous]    public async Task<IActionResult> GetAll()
     {
         var products = await _productService.GetAllProductsAsync();
         return Ok(new ApiResponse<List<ProductDTO>>(200, "All products fetched successfully", products.ToList()));
