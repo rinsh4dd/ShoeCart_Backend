@@ -54,8 +54,11 @@ namespace ShoeCartBackend.Services.Implementations
 
             _context.Products.Add(product);
     
-            //_context.Products.Add(product);
-            _repository.AddAsync(product);
+            _context.Products.Add(product);
+            // _repository.AddAsync(product);
+
+            _context.Products.Add(product);
+            // _repository.AddAsync(product);
             var isAdded =  await _context.SaveChangesAsync()>0;
 
             return isAdded? new ApiResponse<ProductDTO>(200,"Product Added Successfully"):

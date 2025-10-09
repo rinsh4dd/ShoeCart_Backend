@@ -159,6 +159,7 @@ ORDER BY [p].[Id], [c].[Id], [p0].[Id]
 2025-10-09 09:40:47.018 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 23.3509ms
 2025-10-09 09:41:04.739 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
 2025-10-09 09:41:04.747 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 7.7895ms
+<<<<<<< HEAD
 2025-10-09 10:16:06.862 +05:30 [INF] Starting up ShoeCartBackend...
 2025-10-09 10:16:06.935 +05:30 [INF] User profile is available. Using 'C:\Users\rinsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2025-10-09 10:16:07.063 +05:30 [INF] Now listening on: http://localhost:58477
@@ -14839,3 +14840,5 @@ RolesAuthorizationRequirement:User.IsInRole must be true for one of the followin
 RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (admin)
 2025-10-09 15:56:07.110 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
 2025-10-09 15:56:07.111 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/users/15 - 401 0 null 23.4037ms
+=======
+>>>>>>> 856024c (updated program.cs)
