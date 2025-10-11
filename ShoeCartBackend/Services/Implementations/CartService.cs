@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Razorpay.Api;
 using ShoeCartBackend.Common;
 using ShoeCartBackend.Data;
 using ShoeCartBackend.Models;
@@ -17,27 +18,35 @@ public class CartService : ICartService
     public async Task<ApiResponse<string>> AddToCartAsync(int userId, int productId, string size, int quantity)
     {
         var product = await _productRepository.GetProductWithDetailsAsync(productId);
-        if (product == null) return new ApiResponse<string>(404, "Product not found");
-        if (!product.IsActive) return new ApiResponse<string>(400, "Product is deactivated");
-        if (!product.InStock) return new ApiResponse<string>(400, "Product is out of stock");
-        if (quantity < 1 || quantity > 5) return new ApiResponse<string>(400, "Quantity must be between 1 and 5");
+        if (product == null)
+            return new ApiResponse<string>(404, "Product not found");
+        if (!product.IsActive)
+            return new ApiResponse<string>(400, "Product is deactivated");
+        if (!product.InStock)
+            return new ApiResponse<string>(400, "Product is out of stock");
+        if (quantity < 1 || quantity > 5)
+            return new ApiResponse<string>(400, "Quantity must be between 1 and 5");
 
+        var cart = await _context.Carts
+            .Include(c => c.Items)
+            .FirstOrDefaultAsync(c => c.UserId == userId && !c.IsDeleted)
+            ?? new Cart { UserId = userId, Items = new List<CartItem>() };
 
-        var cart = await _context.Carts.Include(c => c.Items).FirstOrDefaultAsync(c => c.UserId == userId && !c.IsDeleted)
-                    ?? new Cart { UserId = userId, Items = new List<CartItem>() };
-
-        if (!_context.Carts.Local.Contains(cart)) _context.Carts.Add(cart);
+        if (!_context.Carts.Local.Contains(cart))
+            _context.Carts.Add(cart);
 
         var existingItem = cart.Items.FirstOrDefault(i => i.ProductId == productId && i.Size == size);
         if (existingItem != null)
         {
             if (existingItem.Quantity + quantity > 5)
                 return new ApiResponse<string>(400, "Quantity cannot exceed 5 per item");
+
             existingItem.Quantity += quantity;
         }
         else
         {
-            var mainImage = product.Images.FirstOrDefault(i => i.IsMain);
+            var firstImage = product.Images?.FirstOrDefault();
+
             cart.Items.Add(new CartItem
             {
                 ProductId = product.Id,
@@ -45,14 +54,15 @@ public class CartService : ICartService
                 Price = product.Price,
                 Size = size,
                 Quantity = quantity,
-                ImageData = mainImage?.ImageData,
-                ImageMimeType = mainImage?.ImageMimeType
+                ImageData = firstImage?.ImageData,
+                ImageMimeType = firstImage?.ImageMimeType
             });
         }
 
         await _context.SaveChangesAsync();
         return new ApiResponse<string>(200, "Product added to cart successfully");
     }
+
 
     public async Task<ApiResponse<object>> GetCartForUserAsync(int userId)
     {
@@ -75,7 +85,6 @@ public class CartService : ICartService
                 i.Price,
                 i.Size,
                 i.Quantity,
-                // 👇 Convert byte[] to Base64 string if exists
                 Image = i.ImageData != null
                     ? $"data:{i.ImageMimeType};base64,{Convert.ToBase64String(i.ImageData)}"
                     : null

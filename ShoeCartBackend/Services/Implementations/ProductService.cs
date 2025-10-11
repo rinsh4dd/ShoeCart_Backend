@@ -50,15 +50,7 @@ namespace ShoeCartBackend.Services.Implementations
                     ImageMimeType = file.ContentType
                 });
             }
-
-
             _context.Products.Add(product);
-    
-            _context.Products.Add(product);
-            // _repository.AddAsync(product);
-
-            _context.Products.Add(product);
-            // _repository.AddAsync(product);
             var isAdded =  await _context.SaveChangesAsync()>0;
 
             return isAdded? new ApiResponse<ProductDTO>(200,"Product Added Successfully"):
@@ -142,8 +134,6 @@ namespace ShoeCartBackend.Services.Implementations
                 .Include(p => p.Images)
                 .Include(p => p.Category)
                 .Where(p => p.IsActive && p.IsDeleted==false)
-                
-
                 .ToListAsync();
 
             return products.Select(MapToDTO).ToList();
@@ -186,6 +176,7 @@ namespace ShoeCartBackend.Services.Implementations
                 .Include(p => p.Category)
                 .Include(p => p.Images)
                 .Include(p => p.AvailableSizes)
+                .Where(p => p.IsActive && p.IsDeleted == false)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(name))

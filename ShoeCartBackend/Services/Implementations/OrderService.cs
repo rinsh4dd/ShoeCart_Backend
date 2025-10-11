@@ -75,6 +75,7 @@ namespace ShoeCartBackend.Services
 
         public async Task<IEnumerable<OrderDto>> GetOrdersByUserAsync(int userId)
         {
+
             var orders = await _context.Orders
                 .Include(o => o.Items)
                 .ThenInclude(i => i.Product)
@@ -110,11 +111,9 @@ namespace ShoeCartBackend.Services
                 .Include(o => o.Items)
                 .ThenInclude(i => i.Product)
                 .FirstOrDefaultAsync(o => o.Id == orderId && o.UserId == userId);
-
             if (order == null)
                 throw new Exception("Order not found");
-
-            return _mapper.Map<OrderDto>(order);
+                return _mapper.Map<OrderDto>(order);
         }
 
         public async Task<IEnumerable<OrderDto>> GetAllOrdersAsync()
