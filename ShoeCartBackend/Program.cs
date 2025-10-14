@@ -34,6 +34,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddRepositories();
 builder.Services.AddServices();
 
+
 //jwt authentication
 var jwtSecret = builder.Configuration["Jwt:Secret"];
 var key = Encoding.ASCII.GetBytes(jwtSecret);

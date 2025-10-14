@@ -3,20 +3,21 @@ using Razorpay.Api;
 using ShoeCartBackend.Common;
 using ShoeCartBackend.Data;
 using ShoeCartBackend.Models;
+using ShoeCartBackend.Repositories.Interfaces;
 
 public class CartService : ICartService
 {
-    private readonly AppDbContext _context;
     private readonly IProductRepository _productRepository;
-        
-    public CartService(AppDbContext context, IProductRepository productRepository)
+    private readonly ICartRepository _cartRepository;
+    public CartService( IProductRepository productRepository,ICartRepository cartRepository)
     {
-        _context = context;
         _productRepository = productRepository;
+        _cartRepository = cartRepository;
     }
 
     public async Task<ApiResponse<string>> AddToCartAsync(int userId, int productId, string size, int quantity)
     {
+        // 1. Validate product
         var product = await _productRepository.GetProductWithDetailsAsync(productId);
         if (product == null)
             return new ApiResponse<string>(404, "Product not found");
@@ -27,14 +28,14 @@ public class CartService : ICartService
         if (quantity < 1 || quantity > 5)
             return new ApiResponse<string>(400, "Quantity must be between 1 and 5");
 
-        var cart = await _context.Carts
-            .Include(c => c.Items)
-            .FirstOrDefaultAsync(c => c.UserId == userId && !c.IsDeleted)
-            ?? new Cart { UserId = userId, Items = new List<CartItem>() };
+        // 2. Get or create cart
+        var cart = await _cartRepository.GetCartWithItemsByUserIdAsync(userId)
+                   ?? new Cart { UserId = userId, Items = new List<CartItem>() };
 
-        if (!_context.Carts.Local.Contains(cart))
-            _context.Carts.Add(cart);
+        if (cart.Id == 0) // New cart
+            await _cartRepository.AddAsync(cart);
 
+        // 3. Add or update cart item
         var existingItem = cart.Items.FirstOrDefault(i => i.ProductId == productId && i.Size == size);
         if (existingItem != null)
         {
@@ -42,12 +43,12 @@ public class CartService : ICartService
                 return new ApiResponse<string>(400, "Quantity cannot exceed 5 per item");
 
             existingItem.Quantity += quantity;
+            _cartRepository.Update(existingItem);
         }
         else
         {
             var firstImage = product.Images?.FirstOrDefault();
-
-            cart.Items.Add(new CartItem
+            var cartItem = new CartItem
             {
                 ProductId = product.Id,
                 Name = product.Name,
@@ -55,23 +56,27 @@ public class CartService : ICartService
                 Size = size,
                 Quantity = quantity,
                 ImageData = firstImage?.ImageData,
-                ImageMimeType = product.Images.FirstOrDefault()?.ImageMimeType
-            });
+                ImageMimeType = firstImage?.ImageMimeType
+            };
+            cart.Items.Add(cartItem);
+            _cartRepository.Update(cart);
         }
 
-        await _context.SaveChangesAsync();
+        await _cartRepository.SaveChangesAsync();
+
         return new ApiResponse<string>(200, "Product added to cart successfully");
     }
 
 
+
     public async Task<ApiResponse<object>> GetCartForUserAsync(int userId)
     {
-        var cart = await _context.Carts
-            .Include(c => c.Items)
-            .FirstOrDefaultAsync(c => c.UserId == userId && !c.IsDeleted);
+        var cart = await _cartRepository.GetCartWithItemsByUserIdAsync(userId);
 
-        if (cart == null || !cart.Items.Any())
+        if (cart == null || cart.Items == null || !cart.Items.Any())
+        {
             return new ApiResponse<object>(200, "Cart is empty", new { Items = Array.Empty<object>() });
+        }
 
         var cartResponse = new
         {
@@ -88,13 +93,13 @@ public class CartService : ICartService
                 Image = i.ImageData != null
                     ? $"data:{i.ImageMimeType};base64,{Convert.ToBase64String(i.ImageData)}"
                     : null,
-                    i.ImageMimeType
+                i.ImageMimeType
             })
         };
 
-
         return new ApiResponse<object>(200, "Cart fetched successfully", cartResponse);
     }
+
 
 
     public async Task<ApiResponse<string>> UpdateCartItemAsync(int userId, int cartItemId, int quantity)
@@ -102,35 +107,54 @@ public class CartService : ICartService
         if (quantity < 1 || quantity > 5)
             return new ApiResponse<string>(400, "Quantity must be between 1 and 5");
 
-        var cartItem = await _context.CartItems.Include(ci => ci.Cart)
-            .FirstOrDefaultAsync(ci => ci.Id == cartItemId && ci.Cart.UserId == userId);
+        var cartItem = await _cartRepository.GetCartItemByIdAsync(cartItemId, userId);
+        if (cartItem == null)
+            return new ApiResponse<string>(404, "Cart item not found");
 
-        if (cartItem == null) return new ApiResponse<string>(404, "Cart item not found");
         cartItem.Quantity = quantity;
-        await _context.SaveChangesAsync();
+        _cartRepository.Update(cartItem);
+
+        // Save changes
+        await _cartRepository.SaveChangesAsync();
+
         return new ApiResponse<string>(200, "Cart item quantity updated successfully");
     }
 
+
     public async Task<ApiResponse<string>> RemoveCartItemAsync(int userId, int cartItemId)
     {
-        var cartItem = await _context.CartItems.Include(ci => ci.Cart)
-            .FirstOrDefaultAsync(ci => ci.Id == cartItemId && ci.Cart.UserId == userId);
+        var cart = await _cartRepository.GetCartWithItemsByUserIdAsync(userId);
+        if (cart == null || !cart.Items.Any())
+            return new ApiResponse<string>(404, "Cart or items not found");
 
-        if (cartItem == null) return new ApiResponse<string>(404, "Cart item not found");
+        var cartItem = cart.Items.FirstOrDefault(ci => ci.Id == cartItemId);
+        if (cartItem == null)
+            return new ApiResponse<string>(404, "Cart item not found");
 
-        _context.CartItems.Remove(cartItem);
-        await _context.SaveChangesAsync();
+        cart.Items.Remove(cartItem);
+
+        await _cartRepository.SaveChangesAsync();
+
         return new ApiResponse<string>(200, "Cart item removed successfully");
     }
 
+
+
     public async Task<ApiResponse<string>> ClearCartAsync(int userId)
     {
-        var cart = await _context.Carts.Include(c => c.Items)
-            .FirstOrDefaultAsync(c => c.UserId == userId && !c.IsDeleted);
+        var cart = await _cartRepository.GetCartWithItemsByUserIdAsync(userId);
 
-        if (cart != null) _context.CartItems.RemoveRange(cart.Items);
+        if (cart == null || cart.Items == null || !cart.Items.Any())
+            return new ApiResponse<string>(200, "Cart is already empty");
 
-        await _context.SaveChangesAsync();
+        foreach (var item in cart.Items)
+        {
+            await _cartRepository.DeleteAsync(item.Id);
+        }
+
+        await _cartRepository.SaveChangesAsync();
+
         return new ApiResponse<string>(200, "Cart cleared successfully");
     }
+
 }

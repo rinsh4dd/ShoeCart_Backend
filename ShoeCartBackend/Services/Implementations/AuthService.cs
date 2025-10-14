@@ -19,14 +19,12 @@ namespace ShoeCartBackend.Services.Implementations
 {
     public class AuthService : IAuthService
     {
-        private readonly AppDbContext _appDbContext;
         private readonly IGenericRepository<User> _userRepo;
         private readonly IConfiguration _configuration;
 
-        public AuthService(AppDbContext appDbContext, IGenericRepository<User> userRepo,
+        public AuthService( IGenericRepository<User> userRepo,
             IConfiguration configuration)
         {
-            _appDbContext = appDbContext;
             _userRepo = userRepo;
             _configuration = configuration;
         }
@@ -37,9 +35,9 @@ namespace ShoeCartBackend.Services.Implementations
             dto.Name = dto.Name.Trim();
             dto.Password = dto.Password.Trim();
 
-            var userExist = await _appDbContext.Users
-                .AnyAsync(u => u.Email == dto.Email);
-            if (userExist) return new AuthResponseDto(409, "Email already exists");
+            var userExist = await _userRepo.GetAsync(u => u.Email == dto.Email);
+            if (userExist != null)
+                return new AuthResponseDto(409, "Email already exists");
 
             var newUser = new User
             {
@@ -48,37 +46,41 @@ namespace ShoeCartBackend.Services.Implementations
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
                 Role = Roles.user
             };
+
             await _userRepo.AddAsync(newUser);
+            await _userRepo.SaveChangesAsync();  
+
             return new AuthResponseDto(200, "Registration Successful");
         }
+
 
         public async Task<AuthResponseDto> LoginAsync(LoginRequestDto dto)
         {
             dto.Email = dto.Email.Trim().ToLower();
             dto.Password = dto.Password.Trim();
 
-            var user = await _appDbContext.Users
-                .SingleOrDefaultAsync(u => u.Email == dto.Email);
+            var user = await _userRepo.GetAsync(u => u.Email == dto.Email);
             if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
                 return new AuthResponseDto(401, "Invalid username or password");
 
-            if (user.IsBlocked) return new AuthResponseDto(403, "This Account has been Blocked!");
+            if (user.IsBlocked)
+                return new AuthResponseDto(403, "This Account has been Blocked!");
 
-            // Generate tokens
             var accessToken = GenerateJwtToken(user);
             var refreshToken = GenerateRefreshToken();
 
             user.RefreshToken = refreshToken;
             user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
-            await _appDbContext.SaveChangesAsync();
+            _userRepo.Update(user);
+            await _userRepo.SaveChangesAsync();  
 
             return new AuthResponseDto(200, "Login Successful", accessToken, refreshToken);
         }
 
+
         public async Task<AuthResponseDto> RefreshTokenAsync(string refreshToken)
         {
-            var user = await _appDbContext.Users
-                .SingleOrDefaultAsync(u => u.RefreshToken == refreshToken);
+            var user = await _userRepo.GetAsync(u => u.RefreshToken == refreshToken);
             if (user == null || user.RefreshTokenExpiryTime <= DateTime.UtcNow)
                 return new AuthResponseDto(401, "Invalid or expired refresh token");
 
@@ -87,22 +89,24 @@ namespace ShoeCartBackend.Services.Implementations
 
             user.RefreshToken = newRefreshToken;
             user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(7);
-            await _appDbContext.SaveChangesAsync();
-
+            _userRepo.Update(user);
+            await _userRepo.SaveChangesAsync(); 
             return new AuthResponseDto(200, "Token refreshed successfully", newAccessToken, newRefreshToken);
         }
 
         public async Task<bool> RevokeTokenAsync(string refreshToken)
         {
-            var user = await _appDbContext.Users
-                .SingleOrDefaultAsync(u => u.RefreshToken == refreshToken);
+            var user = await _userRepo.GetAsync(u => u.RefreshToken == refreshToken);
             if (user == null) return false;
 
             user.RefreshToken = null;
             user.RefreshTokenExpiryTime = null;
-            await _appDbContext.SaveChangesAsync();
+            _userRepo.Update(user);
+            await _userRepo.SaveChangesAsync(); 
+
             return true;
         }
+
 
         private string GenerateJwtToken(User user)
         {

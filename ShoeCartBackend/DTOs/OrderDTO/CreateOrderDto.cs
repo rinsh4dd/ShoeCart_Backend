@@ -3,7 +3,10 @@
 namespace ShoeCartBackend.DTOs
 {
     public class CreateOrderDto
+
     {
+        public int UserId { get; set; }  // Add this
+
         // Payment method: COD or Razorpay
         public PaymentMethod PaymentMethod { get; set; }
 

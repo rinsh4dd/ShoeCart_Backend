@@ -1093,6 +1093,10 @@
       "CreateOrderDto": {
         "type": "object",
         "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
           "paymentMethod": {
             "$ref": "#/components/schemas/PaymentMethod"
           },

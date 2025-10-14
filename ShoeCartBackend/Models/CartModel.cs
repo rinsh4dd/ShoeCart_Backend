@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class Cart
+public class Cart:BaseEntity
 {
     public int Id { get; set; }
     public int UserId { get; set; }

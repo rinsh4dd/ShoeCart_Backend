@@ -4,10 +4,12 @@ using ShoeCartBackend.Common;
 using ShoeCartBackend.Data;
 using ShoeCartBackend.DTOs;
 using ShoeCartBackend.Models;
+using ShoeCartBackend.Repositories.Implementations;
 using ShoeCartBackend.Repositories.Interfaces;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace ShoeCartBackend.Services.Implementations
@@ -15,14 +17,14 @@ namespace ShoeCartBackend.Services.Implementations
     public class ProductService : IProductService
     {
 
-        private readonly AppDbContext _context;
         private readonly IMapper _mapper;
         private readonly IGenericRepository<Product> _repository;
-        public ProductService(AppDbContext context,IMapper mapper,IGenericRepository<Product> repository )
+        private readonly IProductRepository _productRepository;
+        public ProductService(IMapper mapper,IGenericRepository<Product> repository,IProductRepository productRepository )
         {
-            _context = context;
             _mapper = mapper;
             _repository = repository;
+            _productRepository = productRepository;
         }   
         public async Task<ApiResponse<ProductDTO>> AddProductAsync(CreateProductDTO dto)
         {
@@ -51,22 +53,31 @@ namespace ShoeCartBackend.Services.Implementations
                     ImageMimeType = file.ContentType
                 });
             }
-            _context.Products.Add(product);
-            var isAdded =  await _context.SaveChangesAsync()>0;
 
-            return isAdded? new ApiResponse<ProductDTO>(200,"Product Added Successfully"):
-                new ApiResponse<ProductDTO>(500, "Failed to add product");
+            await _repository.AddAsync(product);
+
+            try
+            {
+                await _repository.SaveChangesAsync();
+                return new ApiResponse<ProductDTO>(200, "Product Added Successfully");
+            }
+            catch
+            {
+                return new ApiResponse<ProductDTO>(500, "Failed to add product");
+            }
+
         }
 
         public async Task<ApiResponse<ProductDTO>> UpdateProductAsync(UpdateProductDTO dto)
         {
-            var product = await _context.Products
-                .Include(p => p.AvailableSizes)
-                .Include(p => p.Images)
-                .SingleOrDefaultAsync(p => p.Id == dto.Id);
+            var product = await _repository.GetAsync(
+                p => p.Id == dto.Id,
+                include: q => q.Include(p => p.AvailableSizes)
+                               .Include(p => p.Images)
+            );
 
             if (product == null)
-                return new ApiResponse<ProductDTO>(404, "Product not Found");
+                return new ApiResponse<ProductDTO>(404, "Product not found");
 
             if (!string.IsNullOrWhiteSpace(dto.Name)) product.Name = dto.Name.Trim();
             if (!string.IsNullOrWhiteSpace(dto.Description)) product.Description = dto.Description.Trim();
@@ -79,14 +90,14 @@ namespace ShoeCartBackend.Services.Implementations
                 product.CurrentStock = dto.CurrentStock.Value;
                 product.InStock = dto.CurrentStock.Value > 0;
             }
-
-            if (dto.IsActive.HasValue)
-                product.IsActive = dto.IsActive.Value;
+            if (dto.IsActive.HasValue) product.IsActive = dto.IsActive.Value;
 
             if (dto.AvailableSizes != null && dto.AvailableSizes.Any())
             {
                 product.AvailableSizes.Clear();
-                product.AvailableSizes = dto.AvailableSizes.Select(s => new ProductSize { Size = s }).ToList();
+                product.AvailableSizes = dto.AvailableSizes
+                    .Select(s => new ProductSize { Size = s })
+                    .ToList();
             }
 
             if (dto.NewImages != null && dto.NewImages.Any())
@@ -102,106 +113,135 @@ namespace ShoeCartBackend.Services.Implementations
                     });
                 }
             }
-            await _context.SaveChangesAsync();
-            return new ApiResponse<ProductDTO>(200,"Product Updated Successfully");
+
+            _repository.Update(product);
+
+            try
+            {
+                await _repository.SaveChangesAsync();
+                var productDto = MapToDTO(product);
+                return new ApiResponse<ProductDTO>(200, "Product updated successfully", productDto);
+            }
+            catch
+            {
+                return new ApiResponse<ProductDTO>(500, "Failed to update product");
+            }
         }
+
         public async Task<ProductDTO?> GetProductByIdAsync(int id)
         {
-            var product = await _context.Products
-                .Include(p => p.AvailableSizes)
-                .Include(p => p.Images)
-                .Include(p => p.Category)
-                .FirstOrDefaultAsync(p => p.Id == id);
+            var product = await _repository.GetAsync(
+                p => p.Id == id,
+                include: q => q
+                    .Include(p => p.AvailableSizes)
+                    .Include(p => p.Images)
+                    .Include(p => p.Category)
+            );
 
-            if (product == null) return null;
+            if (product == null)
+                return null;
+
             return MapToDTO(product);
         }
         public async Task<IEnumerable<ProductDTO>> GetProductsByCategoryAsync(int categoryId)
         {
-            var products = await _context.Products
-                .Include(p => p.AvailableSizes)
-                .Include(p => p.Images)
-                .Include(p => p.Category)
-                .Where(p => p.CategoryId == categoryId)
-                .ToListAsync();
+            var products = await _productRepository.GetProductsByCategoryAsync(categoryId);
+
+            if (products == null || !products.Any())
+                return new List<ProductDTO>();
 
             return products.Select(MapToDTO).ToList();
         }
+
+
 
         public async Task<IEnumerable<ProductDTO>> GetAllProductsAsync()
         {
-            var products = await _context.Products
-                .Include(p => p.AvailableSizes)
-                .Include(p => p.Images)
-                .Include(p => p.Category)
-                .Where(p => p.IsActive && p.IsDeleted==false)
-                .ToListAsync();
-
-            return products.Select(MapToDTO).ToList();
+            var products = await _productRepository.GetAllAsync(
+                predicate: p => p.IsActive && !p.IsDeleted,
+                include: q => q.Include(p => p.Images)
+                               .Include(p => p.Category)
+                               .Include(p => p.AvailableSizes)
+            ); var activeProducts = products
+                .Where(p => p.IsActive && !p.IsDeleted)
+                .ToList();
+            return activeProducts.Any()
+                ? activeProducts.Select(MapToDTO).ToList()
+                : new List<ProductDTO>();
         }
+
 
         public async Task<ApiResponse<string>> ToggleProductStatusAsync(int id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await _repository.GetByIdAsync(id);
 
             if (product == null)
-            {
                 return new ApiResponse<string>(404, "Product not found");
-            }
-            product.IsActive = !product.IsActive;           
+
+            product.IsActive = !product.IsActive;
             product.IsDeleted = !product.IsDeleted;
-            await _context.SaveChangesAsync();
-            if (product.IsActive==true && product.IsDeleted == false)
-            {
-                return new ApiResponse<string>(200, "Product Activated Successfully");
-            }
-            else
-            {
-                return new ApiResponse<string>(200, "Product Deactivated Successfully");
-            }
+
+            _repository.Update(product);
+            await _repository.SaveChangesAsync();
+
+            var message = product.IsActive && !product.IsDeleted
+                ? "Product Activated Successfully"
+                : "Product Deactivated Successfully";
+
+            return new ApiResponse<string>(200, message);
         }
+
 
         public async Task<ApiResponse<IEnumerable<ProductDTO>>> GetFilteredProducts(
-      string? name = null,
-      int? categoryId = null,
-      string? brand = null,
-      decimal? minPrice = null,
-      decimal? maxPrice = null,
-      bool? inStock = null,
-      int page = 1,
-      int pageSize = 20,
-      string? sortBy = null,
-      bool descending = false)
+    string? name = null,
+    int? categoryId = null,
+    string? brand = null,
+    decimal? minPrice = null,
+    decimal? maxPrice = null,
+    bool? inStock = null,
+    int page = 1,
+    int pageSize = 20,
+    string? sortBy = null,
+    bool descending = false)
         {
-            var query = _context.Products
-                .Include(p => p.Category)
-                .Include(p => p.Images)
-                .Include(p => p.AvailableSizes)
-                .Where(p => p.IsActive && p.IsDeleted == false)
-                .AsQueryable();
+            // Build dynamic filter
+            Expression<Func<Product, bool>> filter = p =>
+                p.IsActive && !p.IsDeleted &&
+                (string.IsNullOrWhiteSpace(name) || p.Name.Contains(name) || p.Category.Name.Contains(name) || p.Brand.Contains(name)) &&
+                (!categoryId.HasValue || p.CategoryId == categoryId.Value) &&
+                (string.IsNullOrWhiteSpace(brand) || p.Brand.Contains(brand)) &&
+                (!minPrice.HasValue || p.Price >= minPrice.Value) &&
+                (!maxPrice.HasValue || p.Price <= maxPrice.Value) &&
+                (!inStock.HasValue || p.InStock == inStock.Value);
 
-            if (!string.IsNullOrWhiteSpace(name))
-                query = query.Where(p => p.Name.Contains(name) || p.Category.Name.Contains(name) || p.Brand.Contains(name));
-            if (categoryId.HasValue)
-                query = query.Where(p => p.CategoryId == categoryId.Value);
-            if (!string.IsNullOrWhiteSpace(brand))
-                query = query.Where(p => p.Brand.Contains(brand));
-            if (minPrice.HasValue)
-                query = query.Where(p => p.Price >= minPrice.Value);
-            if (maxPrice.HasValue)
-                query = query.Where(p => p.Price <= maxPrice.Value);
-            if (inStock.HasValue)
-                query = query.Where(p => p.InStock == inStock.Value);
+            // Use repository to fetch filtered products with related data
+            var productsQuery = await _productRepository.GetAllAsync(
+                predicate: filter,
+                include: q => q.Include(p => p.Category)
+                               .Include(p => p.Images)
+                               .Include(p => p.AvailableSizes)
+            );
+
+            // Sorting
             if (!string.IsNullOrWhiteSpace(sortBy))
-                query = descending
-                    ? query.OrderByDescending(p => EF.Property<object>(p, sortBy))
-                    : query.OrderBy(p => EF.Property<object>(p, sortBy));
+            {
+                productsQuery = descending
+                    ? productsQuery.OrderByDescending(p => EF.Property<object>(p, sortBy)).ToList()
+                    : productsQuery.OrderBy(p => EF.Property<object>(p, sortBy)).ToList();
+            }
 
-            query = query.Skip((page - 1) * pageSize).Take(pageSize);
-            var products = await query.ToListAsync();
-            var productDto = _mapper.Map<IEnumerable<ProductDTO>>(products);
+            // Pagination
+            var pagedProducts = productsQuery
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            // Map to DTOs
+            var productDto = pagedProducts.Select(MapToDTO).ToList();
+
             return new ApiResponse<IEnumerable<ProductDTO>>(200, "Filtered products successfully", productDto);
         }
+
         private ProductDTO MapToDTO(Product p)
         {
             return new ProductDTO

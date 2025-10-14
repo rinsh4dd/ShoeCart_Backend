@@ -15,8 +15,6 @@ namespace ShoeCartBackend.Services.Interfaces
         Task CancelOrderAsync(int orderId);
         Task<OrderDto> UpdateOrderStatusAsync(int orderId, OrderStatus newStatus);
         Task<ApiResponse<object>> GetDashboardStatsAsync(string type = "all");
-
-        // 🆕 Admin endpoint to fetch orders for any specific user
         Task<ApiResponse<IEnumerable<OrderDto>>> GetOrdersByUserIdAsync(int userId);
     }
 }

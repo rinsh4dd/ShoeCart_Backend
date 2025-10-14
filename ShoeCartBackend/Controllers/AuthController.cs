@@ -74,7 +74,7 @@ namespace ShoeCartBackend.Controllers
             if (!success) return BadRequest(new { message = "Invalid token" });
 
             DeleteTokenCookies();
-            return Ok(new { message = "Logged out successfully" });
+            return Ok(new ApiResponse<Object>(200, "Token revoked successfully"));
         }
 
         private void SetTokenCookies(string accessToken, string refreshToken)
