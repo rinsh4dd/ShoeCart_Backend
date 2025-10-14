@@ -54,6 +54,7 @@ namespace ShoeCartBackend.Services
                 PaymentStatus = dto.PaymentMethod == PaymentMethod.CashOnDelivery ? PaymentStatus.Pending : PaymentStatus.Completed,
                 OrderStatus = dto.PaymentMethod == PaymentMethod.CashOnDelivery ? OrderStatus.Processing : OrderStatus.Pending,
                 TotalAmount = totalAmount,
+                CreatedOn = DateTime.UtcNow,
                 Items = cartItems.Select(c => new OrderItem
                 {
                     ProductId = c.ProductId,
@@ -65,14 +66,12 @@ namespace ShoeCartBackend.Services
                     ImageMimeType = c.ImageMimeType
                 }).ToList()
             };
-
             _context.Orders.Add(order);
             _context.CartItems.RemoveRange(cartItems);
             await _context.SaveChangesAsync();
-
             return _mapper.Map<OrderDto>(order);
         }
-
+        
         public async Task<IEnumerable<OrderDto>> GetOrdersByUserAsync(int userId)
         {
 
@@ -85,6 +84,28 @@ namespace ShoeCartBackend.Services
 
             return _mapper.Map<IEnumerable<OrderDto>>(orders);
         }
+
+        public async Task<ApiResponse<IEnumerable<OrderDto>>> GetOrdersByUserIdAsync(int userId)
+        {
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null)
+                return new ApiResponse<IEnumerable<OrderDto>>(404, "User not found");
+
+            var orders = await _context.Orders
+                .Include(o => o.Items)
+                .ThenInclude(i => i.Product)
+                .Where(o => o.UserId == userId)
+                .OrderByDescending(o => o.CreatedOn)
+                .ToListAsync();
+
+            if (!orders.Any())
+                return new ApiResponse<IEnumerable<OrderDto>>(404, $"No orders found for user {user.Name}");
+
+            var orderDtos = _mapper.Map<IEnumerable<OrderDto>>(orders);
+
+            return new ApiResponse<IEnumerable<OrderDto>>(200, "User orders fetched successfully", orderDtos);
+        }
+
 
         public async Task<OrderDto> UpdateOrderStatusAsync(int orderId, OrderStatus newStatus)
         {

@@ -10,5 +10,7 @@
     public string PaymentStatus { get; set; }
     public string OrderStatus { get; set; }
     public decimal TotalAmount { get; set; }
+    public DateTime CreatedOn { get; set; }
+
     public List<OrderItemDto> Items { get; set; }
 }

@@ -30,7 +30,7 @@ public class ProductsController : ControllerBase
         return StatusCode(product.StatusCode, product);
     }
 
-    [HttpPatch("{id}/status")]
+    [HttpPatch("status/{id}")]
     [Authorize(Policy = "Admin")]
     public async Task<IActionResult> ToggleStatus([Range(1, int.MaxValue)] int id)
     {
@@ -67,6 +67,7 @@ public class ProductsController : ControllerBase
         var products = await _productService.GetAllProductsAsync();
         return Ok(new ApiResponse<List<ProductDTO>>(200, "All products fetched successfully", products.ToList()));
     }
+   
 
     [HttpGet("filter")]
     [AllowAnonymous]

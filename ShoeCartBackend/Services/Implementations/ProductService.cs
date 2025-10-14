@@ -14,6 +14,7 @@ namespace ShoeCartBackend.Services.Implementations
 {
     public class ProductService : IProductService
     {
+
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
         private readonly IGenericRepository<Product> _repository;

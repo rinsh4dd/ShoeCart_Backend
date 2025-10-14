@@ -7,7 +7,6 @@ namespace ShoeCartBackend.DTOs
         // Payment method: COD or Razorpay
         public PaymentMethod PaymentMethod { get; set; }
 
-        // Billing address
         public string BillingStreet { get; set; }
         public string BillingCity { get; set; }
         public string BillingState { get; set; }

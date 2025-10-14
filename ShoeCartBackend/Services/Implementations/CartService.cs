@@ -55,7 +55,7 @@ public class CartService : ICartService
                 Size = size,
                 Quantity = quantity,
                 ImageData = firstImage?.ImageData,
-                ImageMimeType = firstImage?.ImageMimeType
+                ImageMimeType = product.Images.FirstOrDefault()?.ImageMimeType
             });
         }
 
@@ -87,9 +87,11 @@ public class CartService : ICartService
                 i.Quantity,
                 Image = i.ImageData != null
                     ? $"data:{i.ImageMimeType};base64,{Convert.ToBase64String(i.ImageData)}"
-                    : null
+                    : null,
+                    i.ImageMimeType
             })
         };
+
 
         return new ApiResponse<object>(200, "Cart fetched successfully", cartResponse);
     }

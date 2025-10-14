@@ -190,3 +190,4 @@ C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\obj\Debug\net8.0\ref
 C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\obj\Debug\net8.0\ShoeCartBackend.pdb
 C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\obj\Debug\net8.0\ShoeCartBackend.genruntimeconfig.cache
 C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\obj\Debug\net8.0\ref\ShoeCartBackend.dll
+C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

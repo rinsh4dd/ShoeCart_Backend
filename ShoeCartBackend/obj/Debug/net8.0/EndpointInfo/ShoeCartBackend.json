@@ -473,6 +473,29 @@
         }
       }
     },
+    "/api/Orders/admin/user/{userId}": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Orders/cancel/{orderId}": {
       "post": {
         "tags": [
@@ -743,7 +766,7 @@
         }
       }
     },
-    "/api/Products/{id}/status": {
+    "/api/Products/status/{id}": {
       "patch": {
         "tags": [
           "Products"
