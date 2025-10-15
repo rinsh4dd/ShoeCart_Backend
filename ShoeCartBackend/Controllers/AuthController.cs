@@ -33,15 +33,21 @@ namespace ShoeCartBackend.Controllers
             var result = await _authService.LoginAsync(dto);
             if (result.StatusCode != 200) return StatusCode(result.StatusCode, result);
 
-            SetTokenCookies(result.AccessToken, result.RefreshToken);
+            Response.Cookies.Append("refreshToken", result.RefreshToken, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.None,
+                Expires = DateTime.UtcNow.AddDays(7)
+            });
 
             return Ok(new
             {
                 message = result.Message,
-                accessToken = result.AccessToken,
-                refreshToken = result.RefreshToken
+                accessToken = result.AccessToken
             });
         }
+
 
         [HttpPost("refresh-token")]
         public async Task<IActionResult> RefreshToken()
@@ -53,15 +59,21 @@ namespace ShoeCartBackend.Controllers
             var result = await _authService.RefreshTokenAsync(refreshToken);
             if (result.StatusCode != 200) return Unauthorized(result);
 
-            SetTokenCookies(result.AccessToken, result.RefreshToken);
+            // Update cookie with new refresh token
+            Response.Cookies.Append("refreshToken", result.RefreshToken, new CookieOptions
+            {
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.None,
+                Expires = DateTime.UtcNow.AddDays(7)
+            });
 
             return Ok(new
             {
-                message = result.Message,
-                accessToken = result.AccessToken,
-                refreshToken = result.RefreshToken
+                accessToken = result.AccessToken
             });
         }
+
 
         [HttpPost("revoke-token")]
         public async Task<IActionResult> RevokeToken()

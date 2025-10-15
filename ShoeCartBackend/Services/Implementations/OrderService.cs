@@ -82,7 +82,7 @@ namespace ShoeCartBackend.Services
                     ImageMimeType = c.ImageMimeType
                 }).ToList()
             };
-
+            await _cartRepository.ClearCartForUserAsync(order.UserId);
             await _orderRepository.AddAsync(order);
             await _orderRepository.SaveChangesAsync();
             await _cartRepository.SaveChangesAsync();

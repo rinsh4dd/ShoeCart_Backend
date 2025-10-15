@@ -24,6 +24,12 @@ namespace ShoeCartBackend.Models
         public string BillingZip { get; set; }
         public string BillingCountry { get; set; }
 
+        // Razorpay order ID (required for online payments)
+        public string? RazorpayOrderId { get; set; }
+
+        // Payment ID returned by Razorpay after payment
+        public string?PaymentId { get; set; }
+
         // Navigation
         public ICollection<OrderItem> Items { get; set; } = new List<OrderItem>();
     }

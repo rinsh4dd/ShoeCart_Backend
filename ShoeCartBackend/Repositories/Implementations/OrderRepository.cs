@@ -22,5 +22,11 @@ namespace ShoeCartBackend.Repositories.Implementations
                 .ThenInclude(i => i.Product)
                 .FirstOrDefaultAsync(o => o.Id == orderId && o.UserId == userId);
         }
+
+        public async Task<Order?> GetByRazorpayOrderIdAsync(string razorpayOrderId)
+        {
+            return await _context.Orders
+                .FirstOrDefaultAsync(o => o.RazorpayOrderId == razorpayOrderId);
+        }
     }
 }

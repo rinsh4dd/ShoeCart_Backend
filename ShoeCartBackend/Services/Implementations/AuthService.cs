@@ -64,7 +64,7 @@ namespace ShoeCartBackend.Services.Implementations
                 return new AuthResponseDto(401, "Invalid username or password");
 
             if (user.IsBlocked)
-                return new AuthResponseDto(403, "This Account has been Blocked!");
+                return new AuthResponseDto(403, "This Account has been Blocked!,Contact Admin");
 
             var accessToken = GenerateJwtToken(user);
             var refreshToken = GenerateRefreshToken();
@@ -124,12 +124,12 @@ namespace ShoeCartBackend.Services.Implementations
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddDays(1),
+                Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature
                 )
-            };
+            }; 
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);

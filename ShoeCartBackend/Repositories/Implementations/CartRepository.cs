@@ -38,5 +38,15 @@ namespace ShoeCartBackend.Repositories.Implementations
             _context.CartItems.Update(cartItem);
         }
 
+        public async Task ClearCartForUserAsync(int userId)
+        {
+            var cart = await GetCartWithItemsByUserIdAsync(userId);
+            if (cart != null && cart.Items.Any())
+            {
+                _context.CartItems.RemoveRange(cart.Items);
+                await _context.SaveChangesAsync();
+            }
+        }
+
     }
 }
