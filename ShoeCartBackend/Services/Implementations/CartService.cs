@@ -17,7 +17,6 @@ public class CartService : ICartService
 
     public async Task<ApiResponse<string>> AddToCartAsync(int userId, int productId, string size, int quantity)
     {
-        // 1. Validate product
         var product = await _productRepository.GetProductWithDetailsAsync(productId);
         if (product == null)
             return new ApiResponse<string>(404, "Product not found");
@@ -28,14 +27,12 @@ public class CartService : ICartService
         if (quantity < 1 || quantity > 5)
             return new ApiResponse<string>(400, "Quantity must be between 1 and 5");
 
-        // 2. Get or create cart
         var cart = await _cartRepository.GetCartWithItemsByUserIdAsync(userId)
                    ?? new Cart { UserId = userId, Items = new List<CartItem>() };
 
-        if (cart.Id == 0) // New cart
+        if (cart.Id == 0) 
             await _cartRepository.AddAsync(cart);
 
-        // 3. Add or update cart item
         var existingItem = cart.Items.FirstOrDefault(i => i.ProductId == productId && i.Size == size);
         if (existingItem != null)
         {
@@ -114,7 +111,6 @@ public class CartService : ICartService
         cartItem.Quantity = quantity;
         _cartRepository.Update(cartItem);
 
-        // Save changes
         await _cartRepository.SaveChangesAsync();
 
         return new ApiResponse<string>(200, "Cart item quantity updated successfully");

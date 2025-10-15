@@ -14,9 +14,8 @@ namespace ShoeCartBackend.Extensions
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICartRepository, CartRepository>();
-           
-
-
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IWishlistRepository, WishlistRepository>();
             return services;
         }
     }

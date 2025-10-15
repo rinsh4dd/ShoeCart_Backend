@@ -40,7 +40,7 @@ namespace ShoeCartBackend.Controllers
         public async Task<IActionResult> GetMyOrders()
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var orders = await _orderService.GetOrdersByUserAsync(userId);
+            var orders = await _orderService.GetOrdersByUserIdAsync(userId);
             return Ok(orders);
         }
 
@@ -69,13 +69,7 @@ namespace ShoeCartBackend.Controllers
             var updatedOrder = await _orderService.UpdateOrderStatusAsync(orderId, dto.NewStatus);
             return Ok(new ApiResponse<OrderDto>(StatusCodes.Status200OK, "Order status updated successfully", updatedOrder));
         }
-        [HttpGet("admin/user/{userId}")]
-        [Authorize(Policy = "Admin")]
-        public async Task<IActionResult> GetOrdersByUserId(int userId)
-        {
-            var response = await _orderService.GetOrdersByUserIdAsync(userId);
-            return StatusCode(response.StatusCode, response);
-        }
+
 
         [HttpPost("cancel/{orderId}")]
         [Authorize(Policy = "Customer")]

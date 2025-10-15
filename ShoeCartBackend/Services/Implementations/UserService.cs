@@ -35,16 +35,22 @@ namespace ShoeCartBackend.Services
             var user = await _genericRepo.GetByIdAsync(id);
             if (user == null || user.IsDeleted)
                 return new ApiResponse<string>(404, "User not found");
-
+            if(user.Role == Roles.admin)
+            {
+                return new ApiResponse<string>(403, "Action forbidden. Admin users cannot be modified.");
+            }
             await _userRepo.BlockUnblockUserAsync(id);
             return new ApiResponse<string>(200, $"User {(user.IsBlocked ? "unblocked" : "blocked")} successfully");
         }
         public async Task<ApiResponse<string>> SoftDeleteUserAsync(int id)
         {
             var user = await _genericRepo.GetByIdAsync(id);
-            if (user == null || user.IsDeleted)
+            if (user == null || user.IsDeleted )
                 return new ApiResponse<string>(404, "User not found");
-
+            if(user.Role == Roles.admin)
+            {
+                return new ApiResponse<string>(403, "Action forbidden. Admin users cannot be modified.");
+            }
             await _userRepo.SoftDeleteUserAsync(id);
             return new ApiResponse<string>(200, "User Soft-Deleted successfully");
         }

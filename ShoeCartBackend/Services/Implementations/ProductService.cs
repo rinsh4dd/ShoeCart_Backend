@@ -20,12 +20,12 @@ namespace ShoeCartBackend.Services.Implementations
         private readonly IMapper _mapper;
         private readonly IGenericRepository<Product> _repository;
         private readonly IProductRepository _productRepository;
-        public ProductService(IMapper mapper,IGenericRepository<Product> repository,IProductRepository productRepository )
+        public ProductService(IMapper mapper, IGenericRepository<Product> repository, IProductRepository productRepository)
         {
             _mapper = mapper;
             _repository = repository;
             _productRepository = productRepository;
-        }   
+        }
         public async Task<ApiResponse<ProductDTO>> AddProductAsync(CreateProductDTO dto)
         {
             var product = new Product
@@ -74,11 +74,12 @@ namespace ShoeCartBackend.Services.Implementations
                 p => p.Id == dto.Id,
                 include: q => q.Include(p => p.AvailableSizes)
                                .Include(p => p.Images)
+
             );
 
             if (product == null)
                 return new ApiResponse<ProductDTO>(404, "Product not found");
-
+            
             if (!string.IsNullOrWhiteSpace(dto.Name)) product.Name = dto.Name.Trim();
             if (!string.IsNullOrWhiteSpace(dto.Description)) product.Description = dto.Description.Trim();
             if (!string.IsNullOrWhiteSpace(dto.Brand)) product.Brand = dto.Brand.Trim();
@@ -158,17 +159,21 @@ namespace ShoeCartBackend.Services.Implementations
         public async Task<IEnumerable<ProductDTO>> GetAllProductsAsync()
         {
             var products = await _productRepository.GetAllAsync(
-                predicate: p => p.IsActive && !p.IsDeleted,
-                include: q => q.Include(p => p.Images)
-                               .Include(p => p.Category)
-                               .Include(p => p.AvailableSizes)
-            ); var activeProducts = products
+                include: q => q
+                    .Include(p => p.Category)
+                    .Include(p => p.Images)
+                    .Include(p => p.AvailableSizes)
+            );
+
+            var activeProducts = products
                 .Where(p => p.IsActive && !p.IsDeleted)
                 .ToList();
+
             return activeProducts.Any()
                 ? activeProducts.Select(MapToDTO).ToList()
                 : new List<ProductDTO>();
         }
+
 
 
         public async Task<ApiResponse<string>> ToggleProductStatusAsync(int id)
@@ -179,12 +184,11 @@ namespace ShoeCartBackend.Services.Implementations
                 return new ApiResponse<string>(404, "Product not found");
 
             product.IsActive = !product.IsActive;
-            product.IsDeleted = !product.IsDeleted;
 
             _repository.Update(product);
             await _repository.SaveChangesAsync();
 
-            var message = product.IsActive && !product.IsDeleted
+            var message = product.IsActive
                 ? "Product Activated Successfully"
                 : "Product Deactivated Successfully";
 
@@ -193,20 +197,20 @@ namespace ShoeCartBackend.Services.Implementations
 
 
         public async Task<ApiResponse<IEnumerable<ProductDTO>>> GetFilteredProducts(
-    string? name = null,
-    int? categoryId = null,
-    string? brand = null,
-    decimal? minPrice = null,
-    decimal? maxPrice = null,
-    bool? inStock = null,
-    int page = 1,
-    int pageSize = 20,
-    string? sortBy = null,
-    bool descending = false)
+        string? name = null,
+        int? categoryId = null,
+        string? brand = null,
+        decimal? minPrice = null,
+        decimal? maxPrice = null,
+        bool? inStock = null,
+        int page = 1,
+        int pageSize = 20,
+        string? sortBy = null,
+        bool descending = false)
         {
-            // Build dynamic filter
             Expression<Func<Product, bool>> filter = p =>
-                p.IsActive && !p.IsDeleted &&
+                  p.IsActive &&
+        !p.IsDeleted &&
                 (string.IsNullOrWhiteSpace(name) || p.Name.Contains(name) || p.Category.Name.Contains(name) || p.Brand.Contains(name)) &&
                 (!categoryId.HasValue || p.CategoryId == categoryId.Value) &&
                 (string.IsNullOrWhiteSpace(brand) || p.Brand.Contains(brand)) &&
@@ -214,7 +218,6 @@ namespace ShoeCartBackend.Services.Implementations
                 (!maxPrice.HasValue || p.Price <= maxPrice.Value) &&
                 (!inStock.HasValue || p.InStock == inStock.Value);
 
-            // Use repository to fetch filtered products with related data
             var productsQuery = await _productRepository.GetAllAsync(
                 predicate: filter,
                 include: q => q.Include(p => p.Category)
@@ -222,7 +225,7 @@ namespace ShoeCartBackend.Services.Implementations
                                .Include(p => p.AvailableSizes)
             );
 
-            // Sorting
+
             if (!string.IsNullOrWhiteSpace(sortBy))
             {
                 productsQuery = descending
@@ -230,13 +233,11 @@ namespace ShoeCartBackend.Services.Implementations
                     : productsQuery.OrderBy(p => EF.Property<object>(p, sortBy)).ToList();
             }
 
-            // Pagination
             var pagedProducts = productsQuery
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
 
-            // Map to DTOs
             var productDto = pagedProducts.Select(MapToDTO).ToList();
 
             return new ApiResponse<IEnumerable<ProductDTO>>(200, "Filtered products successfully", productDto);
@@ -254,13 +255,14 @@ namespace ShoeCartBackend.Services.Implementations
                 InStock = p.InStock,
                 CurrentStock = p.CurrentStock,
                 SpecialOffer = p.SpecialOffer,
-                CategoryId =p.CategoryId,
+                CategoryId = p.CategoryId,
                 CategoryName = p.Category?.Name,
                 AvailableSizes = p.AvailableSizes.Select(s => s.Size).ToList(),
                 ImageBase64 = p.Images
                     .Select(i => $"data:{i.ImageMimeType};base64," +
                     $"{Convert.ToBase64String(i.ImageData)}")
-                    .ToList()
+                    .ToList(),
+                isActive = p.IsActive,
             };
         }
     }

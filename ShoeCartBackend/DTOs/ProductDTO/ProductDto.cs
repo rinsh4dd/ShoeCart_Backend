@@ -12,6 +12,7 @@ public class ProductDTO
 
     public string Brand { get; set; }
 
+    public bool isActive { get; set; }
     public bool InStock { get; set; } = true;
 
     public string SpecialOffer { get; set; }
