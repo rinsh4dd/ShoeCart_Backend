@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -25,7 +24,6 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .WriteTo.File("Logs/app-.log", rollingInterval: RollingInterval.Day)
     .CreateLogger();
-
 builder.Host.UseSerilog();
 
 // -------------------- Database --------------------
@@ -123,10 +121,8 @@ builder.Services.AddSwaggerGen(c =>
 
 // -------------------- DataProtection Key Storage --------------------
 var keyDir = Path.Combine(Directory.GetCurrentDirectory(), "DataProtection-Keys");
-if (!Directory.Exists(keyDir))
-{
-    Directory.CreateDirectory(keyDir);
-}
+if (!Directory.Exists(keyDir)) Directory.CreateDirectory(keyDir);
+
 builder.Services.AddDataProtection()
     .PersistKeysToFileSystem(new DirectoryInfo(keyDir));
 
@@ -134,20 +130,23 @@ builder.Services.AddDataProtection()
 var app = builder.Build();
 
 // -------------------- Swagger UI --------------------
-app.UseSwagger();
-app.UseSwaggerUI();
-app.UseReDoc(options =>
+if (app.Environment.IsDevelopment())
 {
-    options.RoutePrefix = "redoc";
-    options.SpecUrl = "/swagger/v1/swagger.json";
-    options.DocumentTitle = "ShoeCart API Documentation";
-});
+    app.UseSwagger();
+    app.UseSwaggerUI();
+    app.UseReDoc(options =>
+    {
+        options.RoutePrefix = "redoc";
+        options.SpecUrl = "/swagger/v1/swagger.json";
+        options.DocumentTitle = "ShoeCart API Documentation";
+    });
+}
 
 // -------------------- Routing --------------------
-app.MapGet("/", () => Results.Redirect("/swagger"));
+app.MapGet("/", () =>
+    app.Environment.IsDevelopment() ? Results.Redirect("/swagger") : Results.Ok("ShoeCart API is running!"));
 
 // -------------------- Middleware --------------------
-// Remove HTTPS redirection for Render (optional, handled by Render)
 if (!app.Environment.IsProduction())
 {
     app.UseHttpsRedirection();
@@ -164,7 +163,7 @@ try
 {
     Log.Information("Starting up ShoeCartBackend...");
 
-    // Use Render dynamic port
+    // Render dynamic port
     var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
     app.Urls.Add($"http://*:{port}");
 
