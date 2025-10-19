@@ -1,3 +1,4 @@
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -13,29 +14,36 @@ using ShoeCartBackend.Services;
 using ShoeCartBackend.Services.Implementations;
 using ShoeCartBackend.Services.Interfaces;
 using System.Text;
+using System.IO;
+using Microsoft.AspNetCore.DataProtection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// -------------------- Serilog --------------------
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
     .WriteTo.Console()
-    .WriteTo.File("Logs/app-.log",
-    rollingInterval: RollingInterval.Day) 
+    .WriteTo.File("Logs/app-.log", rollingInterval: RollingInterval.Day)
     .CreateLogger();
 
 builder.Host.UseSerilog();
 
+// -------------------- Database --------------------
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
+// -------------------- AutoMapper --------------------
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+// -------------------- Repositories & Services --------------------
 builder.Services.AddRepositories();
 builder.Services.AddServices();
 
+// -------------------- Razorpay Settings --------------------
 builder.Services.Configure<RazorpaySettings>(builder.Configuration.GetSection("Razorpay"));
 
+// -------------------- JWT Authentication --------------------
 var jwtSecret = builder.Configuration["Jwt:Secret"];
 var key = Encoding.ASCII.GetBytes(jwtSecret);
 
@@ -58,6 +66,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+// -------------------- Authorization --------------------
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("Admin", policy => policy.RequireRole("admin"));
@@ -65,24 +74,27 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("Customer", policy => policy.RequireRole("user"));
 });
 
+// -------------------- CORS --------------------
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowReactApp",
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:5173") 
-                  .AllowAnyHeader()
-                  .AllowAnyMethod()
-                  .AllowCredentials(); 
-        });
+    options.AddPolicy("AllowReactApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
 });
 
+// -------------------- Controllers --------------------
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
         options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
     });
+
+// -------------------- Swagger --------------------
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -102,46 +114,61 @@ builder.Services.AddSwaggerGen(c =>
         {
             new OpenApiSecurityScheme
             {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
             },
             new string[] {}
         }
     });
 });
 
+// -------------------- DataProtection Key Storage --------------------
+var keyDir = Path.Combine(Directory.GetCurrentDirectory(), "DataProtection-Keys");
+if (!Directory.Exists(keyDir))
+{
+    Directory.CreateDirectory(keyDir);
+}
+builder.Services.AddDataProtection()
+    .PersistKeysToFileSystem(new DirectoryInfo(keyDir));
+
+// -------------------- Build App --------------------
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+// -------------------- Swagger UI --------------------
+app.UseSwagger();
+app.UseSwaggerUI();
+app.UseReDoc(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-    app.UseReDoc(options =>
-    {
-        options.RoutePrefix = "redoc";                 
-        options.SpecUrl = "/swagger/v1/swagger.json";  
-        options.DocumentTitle = "ShoeCart API Documentation";
-    });
-}
+    options.RoutePrefix = "redoc";
+    options.SpecUrl = "/swagger/v1/swagger.json";
+    options.DocumentTitle = "ShoeCart API Documentation";
+});
+
+// -------------------- Routing --------------------
 app.MapGet("/", () => Results.Redirect("/swagger"));
 
-// app.UseMiddleware<ExceptionMiddleware>(); 
-app.UseHttpsRedirection();
+// -------------------- Middleware --------------------
+// Remove HTTPS redirection for Render (optional, handled by Render)
+if (!app.Environment.IsProduction())
+{
+    app.UseHttpsRedirection();
+}
+
 app.UseCors("AllowReactApp");
 
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
-
-
+// -------------------- Run --------------------
 try
 {
     Log.Information("Starting up ShoeCartBackend...");
-app.Run();
+
+    // Use Render dynamic port
+    var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+    app.Urls.Add($"http://*:{port}");
+
+    app.Run();
 }
 catch (Exception ex)
 {
