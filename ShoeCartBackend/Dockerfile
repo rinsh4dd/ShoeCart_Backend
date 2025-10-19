@@ -1,22 +1,23 @@
-# Use the official .NET 8 SDK image for building
+# ===== Build Stage =====
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-# Copy csproj and restore as distinct layers
+# Copy csproj and restore dependencies
 COPY *.csproj ./
 RUN dotnet restore
 
-# Copy everything else and build
+# Copy the rest of the project and publish
 COPY . ./
-RUN dotnet publish -c Release -o out
+RUN dotnet publish -c Release -o /app/publish
 
-# Use the official .NET 8 runtime image for running
+# ===== Runtime Stage =====
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
-COPY --from=build /app/out ./
+COPY --from=build /app/publish .
 
-# Expose the port your app listens on
-EXPOSE 5000
+# Expose port 1000
+ENV ASPNETCORE_URLS=http://+:1000
+EXPOSE 1000
 
-# Start the app
+# Run the app
 ENTRYPOINT ["dotnet", "ShoeCartBackend.dll"]
