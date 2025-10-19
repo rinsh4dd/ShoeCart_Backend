@@ -21,7 +21,6 @@ namespace ShoeCartBackend.Repositories.Implementations
             _dbSet = _context.Set<T>();
         }
 
-        // Get all (optionally filtered)
         public async Task<IEnumerable<T>> GetAllAsync(
             Expression<Func<T, bool>>? predicate = null,
             Func<IQueryable<T>, IQueryable<T>>? include = null)
@@ -37,7 +36,6 @@ namespace ShoeCartBackend.Repositories.Implementations
             return await query.ToListAsync();
         }
 
-        // Get single entity with optional includes
         public async Task<T?> GetAsync(
             Expression<Func<T, bool>> predicate,
             Func<IQueryable<T>, IQueryable<T>>? include = null)
@@ -49,13 +47,10 @@ namespace ShoeCartBackend.Repositories.Implementations
 
         public async Task<T?> GetByIdAsync(int id) => await _dbSet.FindAsync(id);
 
-        // Add entity (do NOT call SaveChanges here)
         public async Task AddAsync(T entity) => await _dbSet.AddAsync(entity);
 
-        // Update entity (do NOT call SaveChanges here)
         public void Update(T entity) => _dbSet.Update(entity);
 
-        // Soft delete by default, fallback to hard delete
         public void Delete(T entity)
         {
             if (entity.GetType().GetProperty("IsDeleted") != null)
@@ -69,14 +64,12 @@ namespace ShoeCartBackend.Repositories.Implementations
             }
         }
 
-        // Delete by Id (soft delete if property exists)
         public async Task DeleteAsync(int id)
         {
             var entity = await _dbSet.FindAsync(id);
             if (entity != null) Delete(entity);
         }
 
-        // Explicit SaveChanges (call in service)
         public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
     }
 }

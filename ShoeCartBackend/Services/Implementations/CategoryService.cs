@@ -7,9 +7,11 @@ namespace ShoeCartBackend.Services.Implementations
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
-        public CategoryService(ICategoryRepository categoryRepository)
+        private readonly IGenericRepository<Category> _repo;
+        public CategoryService(ICategoryRepository categoryRepository, IGenericRepository<Category> repo    )
         {
             _categoryRepository = categoryRepository;
+            _repo = repo;
         }
         public async Task<IEnumerable<CategoryDTO>> GetAllAsync() 
         
@@ -36,7 +38,8 @@ namespace ShoeCartBackend.Services.Implementations
             {
                 Name = categoryDTO.Name
             };
-            await _categoryRepository.AddAsync(newCategory);
+            await _repo.AddAsync(newCategory);
+            await _repo.SaveChangesAsync();
             categoryDTO.Id = newCategory.Id;
             return categoryDTO;
         }

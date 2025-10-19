@@ -22,11 +22,8 @@ public class UpdateProductDTO
     [Range(0, int.MaxValue, ErrorMessage = "Stock cannot be negative")]
     public int? CurrentStock { get; set; }
 
-    // Optional: activate/deactivate product
     public bool? IsActive { get; set; }
 
     public List<string>? AvailableSizes { get; set; } = new List<string>();
-
-    // Optional: new images to add
     public List<IFormFile>? NewImages { get; set; }
 }

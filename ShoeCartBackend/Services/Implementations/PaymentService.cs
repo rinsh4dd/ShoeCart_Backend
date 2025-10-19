@@ -56,7 +56,7 @@ public class PaymentService : IPaymentService
                 Items = cart.Items.Select(ci => new OrderItem
                 {
                     ProductId = ci.ProductId,
-                    Name = ci.Product.Name,        // ✅ required
+                    Name = ci.Product.Name,        
                     Price = ci.Price,
                     Quantity = ci.Quantity,
                     Size = ci.Size,
@@ -85,15 +85,12 @@ public class PaymentService : IPaymentService
 
     public async Task<ApiResponse<object>> VerifyPaymentAsync(PaymentVerifyDto dto)
     {
-        // Verify Razorpay signature
         if (!Utils.VerifyPaymentSignature(dto.OrderId, dto.PaymentId, dto.Signature, _razorpaySettings.Secret))
             return new ApiResponse<object>(400, "Invalid payment signature");
 
-        // Find the order
         var order = await _orderRepository.GetByRazorpayOrderIdAsync(dto.OrderId);
         if (order != null)
         {
-            // Mark payment complete
             order.PaymentStatus = PaymentStatus.Completed;
             order.PaymentId = dto.PaymentId;
             order.ModifiedOn = DateTime.UtcNow;
@@ -101,7 +98,6 @@ public class PaymentService : IPaymentService
             _orderRepository.Update(order);
             await _orderRepository.SaveChangesAsync();
 
-            // ✅ Clear the user's cart after payment verified
             await _cartRepository.ClearCartForUserAsync(order.UserId);
 
             return new ApiResponse<object>(200, "Payment verified and cart cleared successfully");
