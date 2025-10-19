@@ -6413,3 +6413,23 @@ ORDER BY [w].[Id], [p].[Id]
 2025-10-19 14:18:34.624 +05:30 [INF] Executed endpoint 'ProductsController.GetAll (ShoeCartBackend)'
 2025-10-19 14:18:34.626 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/api/products - 200 null application/json; charset=utf-8 1751.6536ms
 2025-10-19 14:24:18.380 +05:30 [INF] Application is shutting down...
+2025-10-19 15:22:51.623 +05:30 [INF] Starting up ShoeCartBackend...
+2025-10-19 15:22:51.731 +05:30 [INF] User profile is available. Using 'C:\Users\rinsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-19 15:22:52.367 +05:30 [INF] Now listening on: http://localhost:58477
+2025-10-19 15:22:52.369 +05:30 [INF] Now listening on: https://localhost:58476
+2025-10-19 15:22:52.469 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-19 15:22:52.474 +05:30 [INF] Hosting environment: Development
+2025-10-19 15:22:52.475 +05:30 [INF] Content root path: C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend
+2025-10-19 15:22:52.639 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:58477/ - null null
+2025-10-19 15:22:52.918 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:58477/ - 307 0 null 288.4827ms
+2025-10-19 15:22:53.083 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/ - null null
+2025-10-19 15:22:53.149 +05:30 [INF] Executing endpoint 'HTTP: GET /'
+2025-10-19 15:22:53.162 +05:30 [INF] Executing RedirectResult, redirecting to /swagger.
+2025-10-19 15:22:53.163 +05:30 [INF] Executed endpoint 'HTTP: GET /'
+2025-10-19 15:22:53.166 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/ - 302 0 null 83.094ms
+2025-10-19 15:22:53.265 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_vs/browserLink - null null
+2025-10-19 15:22:53.265 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-19 15:22:53.296 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_framework/aspnetcore-browser-refresh.js - 200 13766 application/javascript; charset=utf-8 30.3298ms
+2025-10-19 15:22:53.326 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/_vs/browserLink - 200 null text/javascript; charset=UTF-8 60.3288ms
+2025-10-19 15:22:53.399 +05:30 [INF] Request starting HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - null null
+2025-10-19 15:22:53.433 +05:30 [INF] Request finished HTTP/2 GET https://localhost:58476/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 33.9264ms

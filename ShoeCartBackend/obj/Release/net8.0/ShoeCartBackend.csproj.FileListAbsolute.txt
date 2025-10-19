@@ -190,3 +190,10 @@ C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\obj\Release\net8.0\r
 C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\obj\Release\net8.0\ShoeCartBackend.pdb
 C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\obj\Release\net8.0\ShoeCartBackend.genruntimeconfig.cache
 C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\obj\Release\net8.0\ref\ShoeCartBackend.dll
+C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Release\net8.0\publish\web.config
+C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Release\net8.0\publish\appsettings.Development.json
+C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Release\net8.0\publish\appsettings.json
+C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Release\net8.0\publish\ShoeCartBackend.deps.json
+C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Release\net8.0\publish\ShoeCartBackend.runtimeconfig.json
+C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\bin\Release\net8.0\publish\ShoeCartBackend.staticwebassets.endpoints.json
+C:\Users\rinsh\source\repos\ShoeCartBackend\ShoeCartBackend\obj\Release\net8.0\staticwebassets.upToDateCheck.txt
