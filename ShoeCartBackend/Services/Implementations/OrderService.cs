@@ -91,7 +91,6 @@ namespace ShoeCartBackend.Services
             return new ApiResponse<OrderDto>(200, "Order created successfully", orderDto);
         }
 
-        // Get orders by user
         public async Task<ApiResponse<IEnumerable<OrderDto>>> GetOrdersByUserIdAsync(int userId)
         {
             var user = await _userRepository.GetByIdAsync(userId);
@@ -112,7 +111,6 @@ namespace ShoeCartBackend.Services
             return new ApiResponse<IEnumerable<OrderDto>>(200, "User orders fetched successfully", orderDtos);
         }
 
-        // Update order status
         public async Task<OrderDto> UpdateOrderStatusAsync(int orderId, OrderStatus newStatus)
         {
             var order = await _orderRepository.GetByIdAsync(orderId);
@@ -146,7 +144,6 @@ namespace ShoeCartBackend.Services
             return _mapper.Map<OrderDto>(order);
         }
 
-        // Get all orders
         public async Task<IEnumerable<OrderDto>> GetAllOrdersAsync()
         {
             var orders = await _orderRepository.GetAllAsync(
@@ -159,7 +156,6 @@ namespace ShoeCartBackend.Services
             return _mapper.Map<IEnumerable<OrderDto>>(orders);
         }
 
-        // Cancel order
         public async Task CancelOrderAsync(int orderId)
         {
             var order = await _orderRepository.GetByIdAsync(orderId);
@@ -173,7 +169,6 @@ namespace ShoeCartBackend.Services
 
         public async Task<ApiResponse<IEnumerable<OrderDto>>> GetOrdersByUserAsync(int userId)
         {
-            // Fetch orders via generic repository
             var orders = await _orderRepository.GetAllAsync(
                 predicate: o => o.UserId == userId,
                 include: q => q
@@ -188,7 +183,6 @@ namespace ShoeCartBackend.Services
             return new ApiResponse<IEnumerable<OrderDto>>(200, "User orders fetched successfully", orderDtos);
         }
 
-        // Dashboard stats
         public async Task<ApiResponse<object>> GetDashboardStatsAsync(string type = "all")
         {
             var orders = await _orderRepository.GetAllAsync(include: q => q.Include(o => o.Items));

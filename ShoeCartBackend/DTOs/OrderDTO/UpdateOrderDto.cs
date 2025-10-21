@@ -4,6 +4,6 @@ namespace ShoeCartBackend.DTOs
 {
     public class UpdateOrderStatusDto
     {
-        public OrderStatus NewStatus { get; set; }  // Directly use enum
+        public OrderStatus NewStatus { get; set; } 
     }
 }

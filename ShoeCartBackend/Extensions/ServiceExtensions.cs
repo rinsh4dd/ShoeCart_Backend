@@ -17,9 +17,7 @@ namespace ShoeCartBackend.Extensions
             services.AddScoped<IWishlistService, WishlistService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IPaymentService, PaymentService>();
-
             return services;
-
          }
     }
 }

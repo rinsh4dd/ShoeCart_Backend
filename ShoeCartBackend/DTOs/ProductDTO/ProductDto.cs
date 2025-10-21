@@ -20,12 +20,7 @@ public class ProductDTO
     public int CategoryId { get; set; }
 
     public string CategoryName { get; set; }
-    // Stock info
     public int CurrentStock { get; set; }
-
-    // Available sizes
     public List<string> AvailableSizes { get; set; } = new List<string>();
-
-    // All product images in Base64 format for frontend
     public List<string> ImageBase64 { get; set; } = new List<string>();
 }

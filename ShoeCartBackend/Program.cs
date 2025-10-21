@@ -36,7 +36,6 @@ builder.Services.AddServices();
 
 builder.Services.Configure<RazorpaySettings>(builder.Configuration.GetSection("Razorpay"));
 
-//jwt authentication
 var jwtSecret = builder.Configuration["Jwt:Secret"];
 var key = Encoding.ASCII.GetBytes(jwtSecret);
 

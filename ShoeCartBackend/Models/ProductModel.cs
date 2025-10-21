@@ -12,16 +12,12 @@ namespace ShoeCartBackend.Models
         public Category Category { get; set; }
 
         public string Brand { get; set; }
-
-        public bool InStock { get; set; } = true;  // flag if stock > 0
+        public bool InStock { get; set; } = true;  
         public bool IsActive { get; set; } = true;
 
         public string? SpecialOffer { get; set; }
 
-        // Stock tracking
-        public int CurrentStock { get; set; }  // new field
-
-        // Sizes and images
+        public int CurrentStock { get; set; } 
         public ICollection<ProductSize> AvailableSizes { get; set; } = new List<ProductSize>();
         public ICollection<ProductImage> Images { get; set; } = new List<ProductImage>();
     }

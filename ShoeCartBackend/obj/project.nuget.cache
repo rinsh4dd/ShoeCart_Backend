@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6WP1dl6jbA0=",
+  "dgSpecHash": "r+ud/6wVnPs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\rinsh\\source\\repos\\ShoeCartBackend\\ShoeCartBackend\\ShoeCartBackend.csproj",
+  "projectFilePath": "C:\\Users\\rinsh\\OneDrive\\Desktop\\Hosting\\ShoeCartBackend\\ShoeCartBackend\\ShoeCartBackend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rinsh\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\rinsh\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

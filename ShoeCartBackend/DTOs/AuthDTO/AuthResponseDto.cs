@@ -13,14 +13,12 @@ namespace ShoeCartBackend.DTOs.AuthDTO
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? RefreshToken { get; set; }
 
-        // Default constructor for just status & message
         public AuthResponseDto(int statusCode, string message)
         {
             StatusCode = statusCode;
             Message = message;
         }
 
-        // Constructor for Access Token only (old behavior)
         public AuthResponseDto(int statusCode, string message, string accessToken)
         {
             StatusCode = statusCode;
@@ -28,7 +26,6 @@ namespace ShoeCartBackend.DTOs.AuthDTO
             AccessToken = accessToken;
         }
 
-        // Constructor for Access + Refresh Token
         public AuthResponseDto(int statusCode, string message, string accessToken, string refreshToken)
         {
             StatusCode = statusCode;

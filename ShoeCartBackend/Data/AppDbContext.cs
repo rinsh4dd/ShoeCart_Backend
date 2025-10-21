@@ -15,13 +15,13 @@ namespace ShoeCartBackend.Data
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Wishlist> Wishlists { get; set; }
-        public DbSet<User> Users { get; set; }  
+        public DbSet<User> Users { get; set; }
         public DbSet<Category>Categories{ get; set;}
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
        
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     base.OnModelCreating(modelBuilder);
 
@@ -88,17 +88,17 @@ namespace ShoeCartBackend.Data
         .OnDelete(DeleteBehavior.Restrict);
 
 
-            modelBuilder.Entity<Order>()
-                             .Property(o => o.PaymentStatus)
-                             .HasConversion<string>();
+    modelBuilder.Entity<Order>()
+        .Property(o => o.PaymentStatus)
+        .HasConversion<string>();
 
-            modelBuilder.Entity<Order>()
-                .Property(o => o.PaymentMethod)
-                .HasConversion<string>();
+    modelBuilder.Entity<Order>()
+        .Property(o => o.PaymentMethod)
+        .HasConversion<string>();
 
-            modelBuilder.Entity<Order>()
-                .Property(o => o.OrderStatus)
-                .HasConversion<string>();
+    modelBuilder.Entity<Order>()
+        .Property(o => o.OrderStatus)
+        .HasConversion<string>();
           
         }
     }
