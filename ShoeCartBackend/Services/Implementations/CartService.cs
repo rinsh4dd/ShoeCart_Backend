@@ -52,8 +52,8 @@ public class CartService : ICartService
                 Price = product.Price,
                 Size = size,
                 Quantity = quantity,
-                ImageData = firstImage?.ImageData,
-                ImageMimeType = firstImage?.ImageMimeType
+                ImageUrl = firstImage?.ImageUrl
+
             };
             cart.Items.Add(cartItem);
             _cartRepository.Update(cart);
@@ -87,10 +87,7 @@ public class CartService : ICartService
                 i.Price,
                 i.Size,
                 i.Quantity,
-                Image = i.ImageData != null
-                    ? $"data:{i.ImageMimeType};base64,{Convert.ToBase64String(i.ImageData)}"
-                    : null,
-                i.ImageMimeType
+                i.ImageUrl
             })
         };
 

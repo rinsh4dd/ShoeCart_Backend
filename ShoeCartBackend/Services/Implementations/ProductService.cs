@@ -20,11 +20,14 @@ namespace ShoeCartBackend.Services.Implementations
         private readonly IMapper _mapper;
         private readonly IGenericRepository<Product> _repository;
         private readonly IProductRepository _productRepository;
-        public ProductService(IMapper mapper, IGenericRepository<Product> repository, IProductRepository productRepository)
+        private readonly CloudinaryService _cloudinaryService;
+
+        public ProductService(IMapper mapper, IGenericRepository<Product> repository, IProductRepository productRepository, CloudinaryService cloudinaryService)
         {
             _mapper = mapper;
             _repository = repository;
             _productRepository = productRepository;
+            _cloudinaryService = cloudinaryService;
         }
         public async Task<ApiResponse<ProductDTO>> AddProductAsync(CreateProductDTO dto)
         {
@@ -45,12 +48,10 @@ namespace ShoeCartBackend.Services.Implementations
 
             foreach (var file in dto.Images)
             {
-                using var ms = new MemoryStream();
-                await file.CopyToAsync(ms);
+                var imageUrl = _cloudinaryService.UploadImage(file);
                 product.Images.Add(new ProductImage
                 {
-                    ImageData = ms.ToArray(),
-                    ImageMimeType = file.ContentType
+                    ImageUrl = imageUrl
                 });
             }
 
@@ -105,15 +106,14 @@ namespace ShoeCartBackend.Services.Implementations
             {
                 foreach (var file in dto.NewImages)
                 {
-                    using var ms = new MemoryStream();
-                    await file.CopyToAsync(ms);
+                    var imageUrl = _cloudinaryService.UploadImage(file);
                     product.Images.Add(new ProductImage
                     {
-                        ImageData = ms.ToArray(),
-                        ImageMimeType = file.ContentType
+                        ImageUrl = imageUrl
                     });
                 }
             }
+
 
             _repository.Update(product);
 
@@ -258,10 +258,8 @@ namespace ShoeCartBackend.Services.Implementations
                 CategoryId = p.CategoryId,
                 CategoryName = p.Category?.Name,
                 AvailableSizes = p.AvailableSizes.Select(s => s.Size).ToList(),
-                ImageBase64 = p.Images
-                    .Select(i => $"data:{i.ImageMimeType};base64," +
-                    $"{Convert.ToBase64String(i.ImageData)}")
-                    .ToList(),
+                ImageUrls = p.Images.Select(i => i.ImageUrl).ToList(), // changed from ImageBase64
+
                 isActive = p.IsActive,
             };
         }

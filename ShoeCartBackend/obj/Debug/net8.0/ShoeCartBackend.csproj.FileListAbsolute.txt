@@ -383,3 +383,5 @@ C:\Users\rinsh\OneDrive\Desktop\Hosting\ShoeCartBackend\ShoeCartBackend\obj\Debu
 C:\Users\rinsh\OneDrive\Desktop\Hosting\ShoeCartBackend\ShoeCartBackend\obj\Debug\net8.0\ShoeCartBackend.pdb
 C:\Users\rinsh\OneDrive\Desktop\Hosting\ShoeCartBackend\ShoeCartBackend\obj\Debug\net8.0\ShoeCartBackend.genruntimeconfig.cache
 C:\Users\rinsh\OneDrive\Desktop\Hosting\ShoeCartBackend\ShoeCartBackend\obj\Debug\net8.0\ref\ShoeCartBackend.dll
+C:\Users\rinsh\OneDrive\Desktop\Hosting\ShoeCartBackend\ShoeCartBackend\bin\Debug\net8.0\CloudinaryDotNet.dll
+C:\Users\rinsh\OneDrive\Desktop\Hosting\ShoeCartBackend\ShoeCartBackend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

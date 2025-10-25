@@ -60,7 +60,7 @@ public class PaymentService : IPaymentService
                     Price = ci.Price,
                     Quantity = ci.Quantity,
                     Size = ci.Size,
-                   ImageData = ci.ImageData
+                   ImageUrl = ci.ImageUrl
                 }).ToList()
             };
                 await _orderRepository.AddAsync(order);

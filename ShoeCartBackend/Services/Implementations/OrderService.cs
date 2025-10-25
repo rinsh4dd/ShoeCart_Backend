@@ -64,11 +64,11 @@ namespace ShoeCartBackend.Services
                 BillingCountry = dto.BillingCountry,
                 PaymentMethod = dto.PaymentMethod,
                 PaymentStatus = dto.PaymentMethod == PaymentMethod.CashOnDelivery
-                                    ? PaymentStatus.Pending
-                                    : PaymentStatus.Completed,
+                         ? PaymentStatus.Pending
+                         : PaymentStatus.Completed,
                 OrderStatus = dto.PaymentMethod == PaymentMethod.CashOnDelivery
-                                    ? OrderStatus.Processing
-                                    : OrderStatus.Pending,
+                         ? OrderStatus.Processing
+                         : OrderStatus.Pending,
                 TotalAmount = totalAmount,
                 CreatedOn = DateTime.UtcNow,
                 Items = cart.Items.Select(c => new OrderItem
@@ -78,10 +78,10 @@ namespace ShoeCartBackend.Services
                     Quantity = c.Quantity,
                     Price = c.Price,
                     Size = c.Size,
-                    ImageData = c.ImageData,
-                    ImageMimeType = c.ImageMimeType
+                    ImageUrl = c.ImageUrl // use Cloudinary URL instead of ImageData
                 }).ToList()
             };
+
             await _cartRepository.ClearCartForUserAsync(order.UserId);
             await _orderRepository.AddAsync(order);
             await _orderRepository.SaveChangesAsync();
@@ -89,6 +89,21 @@ namespace ShoeCartBackend.Services
 
             var orderDto = _mapper.Map<OrderDto>(order);
             return new ApiResponse<OrderDto>(200, "Order created successfully", orderDto);
+        }
+        public async Task<ApiResponse<IEnumerable<OrderDto>>> GetOrdersByUserAsync(int userId)
+        {
+            var orders = await _orderRepository.GetAllAsync(
+                predicate: o => o.UserId == userId,
+                include: q => q.Include(o => o.Items)
+                               .ThenInclude(i => i.Product)
+                               .ThenInclude(p => p.Images)
+            );
+
+            if (orders == null || !orders.Any())
+                return new ApiResponse<IEnumerable<OrderDto>>(404, $"No orders found for user with ID {userId}");
+
+            var orderDtos = _mapper.Map<IEnumerable<OrderDto>>(orders);
+            return new ApiResponse<IEnumerable<OrderDto>>(200, "User orders fetched successfully", orderDtos);
         }
 
         public async Task<ApiResponse<IEnumerable<OrderDto>>> GetOrdersByUserIdAsync(int userId)
@@ -165,22 +180,6 @@ namespace ShoeCartBackend.Services
             order.OrderStatus = OrderStatus.Cancelled;
             _orderRepository.Update(order);
             await _orderRepository.SaveChangesAsync();
-        }
-
-        public async Task<ApiResponse<IEnumerable<OrderDto>>> GetOrdersByUserAsync(int userId)
-        {
-            var orders = await _orderRepository.GetAllAsync(
-                predicate: o => o.UserId == userId,
-                include: q => q
-                    .Include(o => o.Items)
-                        .ThenInclude(i => i.Product)
-            );
-
-            if (orders == null || !orders.Any())
-                return new ApiResponse<IEnumerable<OrderDto>>(404, $"No orders found for user with ID {userId}");
-
-            var orderDtos = _mapper.Map<IEnumerable<OrderDto>>(orders);
-            return new ApiResponse<IEnumerable<OrderDto>>(200, "User orders fetched successfully", orderDtos);
         }
 
         public async Task<ApiResponse<object>> GetDashboardStatsAsync(string type = "all")

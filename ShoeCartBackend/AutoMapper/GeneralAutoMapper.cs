@@ -25,10 +25,6 @@ public class GeneralMappingProfile : Profile
         // Entity → DTO (for Get operations)
         CreateMap<Product, ProductDTO>()
             .ForMember(dest => dest.AvailableSizes,
-                       opt => opt.MapFrom(src => src.AvailableSizes.Select(s => s.Size)))
-            .ForMember(dest => dest.ImageBase64,
-                       opt => opt.MapFrom(src => src.Images
-                           .Select(i => $"data:{i.ImageMimeType};base64,{Convert.ToBase64String(i.ImageData)}")
-                           .ToList()));
+                       opt => opt.MapFrom(src => src.AvailableSizes.Select(s => s.Size)));
     }
 }

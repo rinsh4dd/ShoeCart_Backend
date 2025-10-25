@@ -26,8 +26,8 @@ public class WishlistService : IWishlistService
             i.Product.Price,
             i.Product.Brand,
             Images = i.Product.Images != null && i.Product.Images.Any()
-                ? i.Product.Images.Select(img => $"data:{img.ImageMimeType};base64,{Convert.ToBase64String(img.ImageData)}")
-                : null
+            ? i.Product.Images.Select(img => img.ImageUrl)
+            : null
         });
 
         return new ApiResponse<object>(200, "Wishlist fetched successfully", result);

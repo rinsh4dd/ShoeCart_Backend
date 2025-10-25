@@ -15,9 +15,8 @@ namespace ShoeCartBackend.Mapping
                 .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductId))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.Quantity))
-                .ForMember(dest => dest.Size, opt => opt.MapFrom(src => src.Size))
-                .ForMember(dest => dest.ImageData, opt => opt.MapFrom(src => src.ImageData))
-                .ForMember(dest => dest.ImageMimeType, opt => opt.MapFrom(src => src.ImageMimeType));
+                .ForMember(dest => dest.Size, opt => opt.MapFrom(src => src.Size));
+              
 
             CreateMap<Order, OrderDto>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))

@@ -14,7 +14,6 @@ public class CartItem
     public decimal Price { get; set; }
     public string Size { get; set; } = string.Empty;
     public int Quantity { get; set; } = 1;
-    public byte[]? ImageData { get; set; }
-    public string? ImageMimeType { get; set; }
+    public string ImageUrl { get; set; }
+
 }
- 

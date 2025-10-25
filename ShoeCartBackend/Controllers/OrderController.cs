@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Azure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoeCartBackend.Common;
 using ShoeCartBackend.DTOs;
@@ -86,5 +87,15 @@ namespace ShoeCartBackend.Controllers
             var response = await _orderService.GetDashboardStatsAsync(type);
             return StatusCode(response.StatusCode, response);
         }
+        [HttpGet("admin/user/{userId}")]
+        [Authorize(Policy = "Admin")]
+        public async Task<IActionResult> GetOrdersByUser(int userId)
+        {
+            var response = await _orderService.GetOrdersByUserIdAsync(userId);
+            return StatusCode(response.StatusCode, response);
+        }
+
     }
+
+
 }
