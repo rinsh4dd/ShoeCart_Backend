@@ -22,11 +22,8 @@ public class ProductDTO
     public string CategoryName { get; set; }
     public int CurrentStock { get; set; }
     public List<string> AvailableSizes { get; set; } = new List<string>();
-<<<<<<< HEAD
 
-    // Change this to ImageUrls
+
     public List<string> ImageUrls { get; set; } = new List<string>();
-=======
     public List<string> ImageBase64 { get; set; } = new List<string>();
->>>>>>> 0062e2104efb5f37dee9847d942c252829c4f04a
 }
