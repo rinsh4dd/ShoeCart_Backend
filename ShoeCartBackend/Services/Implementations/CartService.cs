@@ -14,7 +14,6 @@ public class CartService : ICartService
         _productRepository = productRepository;
         _cartRepository = cartRepository;
     }
-
     public async Task<ApiResponse<string>> AddToCartAsync(int userId, int productId, string size, int quantity)
     {
         var product = await _productRepository.GetProductWithDetailsAsync(productId);
@@ -27,12 +26,16 @@ public class CartService : ICartService
         if (quantity < 1 || quantity > 5)
             return new ApiResponse<string>(400, "Quantity must be between 1 and 5");
 
-        var cart = await _cartRepository.GetCartWithItemsByUserIdAsync(userId)
-                   ?? new Cart { UserId = userId, Items = new List<CartItem>() };
+        // Get user's cart or create new
+        var cart = await _cartRepository.GetCartWithItemsByUserIdAsync(userId);
 
-        if (cart.Id == 0) 
-            await _cartRepository.AddAsync(cart);
+        if (cart == null)
+        {
+            cart = new Cart { UserId = userId, Items = new List<CartItem>() };
+            await _cartRepository.AddAsync(cart); // New cart → Add
+        }
 
+        // Check for existing item
         var existingItem = cart.Items.FirstOrDefault(i => i.ProductId == productId && i.Size == size);
         if (existingItem != null)
         {
@@ -40,7 +43,7 @@ public class CartService : ICartService
                 return new ApiResponse<string>(400, "Quantity cannot exceed 5 per item");
 
             existingItem.Quantity += quantity;
-            _cartRepository.Update(existingItem);
+            // **No Update call here if EF is tracking the entity**
         }
         else
         {
@@ -56,9 +59,10 @@ public class CartService : ICartService
 
             };
             cart.Items.Add(cartItem);
-            _cartRepository.Update(cart);
+            // EF will track new CartItem automatically
         }
 
+        // Save all changes at once
         await _cartRepository.SaveChangesAsync();
 
         return new ApiResponse<string>(200, "Product added to cart successfully");

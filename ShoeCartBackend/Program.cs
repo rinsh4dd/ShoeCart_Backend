@@ -20,7 +20,7 @@ Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
     .WriteTo.Console()
     .WriteTo.File("Logs/app-.log",
-    rollingInterval: RollingInterval.Day) 
+    rollingInterval: RollingInterval.Day)
     .CreateLogger();
 
 builder.Host.UseSerilog();
@@ -70,10 +70,10 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173") 
+            policy.WithOrigins("http://localhost:5173")
                   .AllowAnyHeader()
                   .AllowAnyMethod()
-                  .AllowCredentials(); 
+                  .AllowCredentials();
         });
 });
 
@@ -121,8 +121,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.UseReDoc(options =>
     {
-        options.RoutePrefix = "redoc";                 
-        options.SpecUrl = "/swagger/v1/swagger.json";  
+        options.RoutePrefix = "redoc";
+        options.SpecUrl = "/swagger/v1/swagger.json";
         options.DocumentTitle = "ShoeCart API Documentation";
     });
 }
@@ -141,7 +141,7 @@ app.MapControllers();
 try
 {
     Log.Information("Starting up ShoeCartBackend...");
-app.Run();
+    app.Run();
 }
 catch (Exception ex)
 {

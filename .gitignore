@@ -3,3 +3,6 @@
 *.db-shm
 *.db-wal
 *.sqlite
+bin/
+obj/
+Logs/

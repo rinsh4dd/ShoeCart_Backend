@@ -182,6 +182,25 @@ namespace ShoeCartBackend.Services
             await _orderRepository.SaveChangesAsync();
         }
 
+<<<<<<< HEAD
+=======
+        public async Task<ApiResponse<IEnumerable<OrderDto>>> GetOrdersByUserAsync(int userId)
+        {
+            var orders = await _orderRepository.GetAllAsync(
+                predicate: o => o.UserId == userId,
+                include: q => q
+                    .Include(o => o.Items)
+                        .ThenInclude(i => i.Product)
+            );
+
+            if (orders == null || !orders.Any())
+                return new ApiResponse<IEnumerable<OrderDto>>(404, $"No orders found for user with ID {userId}");
+
+            var orderDtos = _mapper.Map<IEnumerable<OrderDto>>(orders);
+            return new ApiResponse<IEnumerable<OrderDto>>(200, "User orders fetched successfully", orderDtos);
+        }
+
+>>>>>>> 0062e2104efb5f37dee9847d942c252829c4f04a
         public async Task<ApiResponse<object>> GetDashboardStatsAsync(string type = "all")
         {
             var orders = await _orderRepository.GetAllAsync(include: q => q.Include(o => o.Items));

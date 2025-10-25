@@ -17,8 +17,11 @@ namespace ShoeCartBackend.Extensions
             services.AddScoped<IWishlistService, WishlistService>();
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IPaymentService, PaymentService>();
+<<<<<<< HEAD
             services.AddSingleton<CloudinaryService>();
 
+=======
+>>>>>>> 0062e2104efb5f37dee9847d942c252829c4f04a
             return services;
          }
     }
